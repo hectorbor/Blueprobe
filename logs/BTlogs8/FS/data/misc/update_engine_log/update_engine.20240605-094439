@@ -1,0 +1,49 @@
+[0605/094439.349448] [INFO:main.cc(54)] A/B Update Engine starting
+[0605/094439.367575] [INFO:BootControlClient.cpp(341)] AIDL IBootControl not available, falling back to HIDL.
+[0605/094439.373517] [INFO:BootControlClient.cpp(354)] Using HIDL version 1.2 of IBootControl
+[0605/094439.375922] [INFO:boot_control_android.cc(64)] Loaded boot control hal.
+[0605/094439.392253] [INFO:vendor_update_engine_utils.cpp(590)] createUnisocSplUpdateHelperFactory!
+[0605/094439.403125] createSplUpdateHelperFactory uni_ext: 0xb4000070ba248460
+[0605/094439.405711] ISplUpdateHelper spl_ext 0xb4000070ba248460
+[0605/094439.413216] [ERROR:update_attempter_android.cc(950)] prefs_->GetInt64(kPrefsPreviousSlot, &previous_slot) failed.
+[0605/094439.418320] [INFO:update_attempter_android.cc(202)] OTAResult::NOT_ATTEMPTED
+[0605/094439.428933] [INFO:update_attempter_android.cc(842)] Clearing update complete marker.
+[0605/094439.436079] [INFO:update_attempter_android.cc(1293)] Scheduling CleanupPreviousUpdateAction.
+[0605/094439.438747] ISplUpdateHelper spl_ext 0xb4000070ba248460
+[0605/094439.441247] [INFO:action_processor.cc(51)] ActionProcessor: starting CleanupPreviousUpdateAction
+[0605/094439.448433] [INFO:cleanup_previous_update_action.cc(152)] Starting/resuming CleanupPreviousUpdateAction
+[0605/094439.458767] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 1 for WaitBootCompleted
+[0605/094441.460301] [INFO:cleanup_previous_update_action.cc(115)] Executing task 1
+[0605/094441.474383] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 3 for WaitBootCompleted
+[0605/094443.477154] [INFO:cleanup_previous_update_action.cc(115)] Executing task 3
+[0605/094443.520546] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 4 for WaitBootCompleted
+[0605/094445.523421] [INFO:cleanup_previous_update_action.cc(115)] Executing task 4
+[0605/094445.526073] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 5 for WaitBootCompleted
+[0605/094447.529022] [INFO:cleanup_previous_update_action.cc(115)] Executing task 5
+[0605/094447.530861] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 6 for WaitBootCompleted
+[0605/094449.532195] [INFO:cleanup_previous_update_action.cc(115)] Executing task 6
+[0605/094449.565827] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 7 for WaitBootCompleted
+[0605/094451.568225] [INFO:cleanup_previous_update_action.cc(115)] Executing task 7
+[0605/094451.577090] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 8 for WaitBootCompleted
+[0605/094453.579300] [INFO:cleanup_previous_update_action.cc(115)] Executing task 8
+[0605/094453.596505] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 9 for WaitBootCompleted
+[0605/094455.604213] [INFO:cleanup_previous_update_action.cc(115)] Executing task 9
+[0605/094455.610581] [INFO:cleanup_previous_update_action.cc(192)] Boot completed, waiting on markBootSuccessful()
+[0605/094455.655419] [INFO:snapshot.cpp(3836)] EnsureMetadataMounted does nothing in Android mode.
+[0605/094455.711169] [INFO:snapshot_stats.cpp(37)] Read merge statistics file failed: No such file or directory
+[0605/094455.808568] [INFO:cleanup_previous_update_action.cc(264)] Waiting for any previous merge request to complete. This can take up to several minutes.
+[0605/094455.832604] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0605/094455.880326] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0605/094455.892061] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0605/094455.943117] [INFO:snapshot.cpp(1077)] CheckMergeState for snapshots returned: None
+[0605/094455.965674] [INFO:snapshot.cpp(1049)] ProcessUpdateState handling state: None
+[0605/094455.992250] [INFO:cleanup_previous_update_action.cc(300)] Can't find any snapshot to merge.
+[0605/094456.007001] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0605/094456.074264] [INFO:cleanup_previous_update_action.cc(133)] Stopping/suspending/completing CleanupPreviousUpdateAction
+[0605/094456.097823] [INFO:cleanup_previous_update_action.cc(490)] Not reporting merge stats because state is None
+[0605/094456.110735] [INFO:cleanup_previous_update_action.cc(133)] Stopping/suspending/completing CleanupPreviousUpdateAction
+[0605/094456.132753] [INFO:action_processor.cc(116)] ActionProcessor: finished last action CleanupPreviousUpdateAction with code ErrorCode::kSuccess
+[0605/094456.145753] [INFO:update_attempter_android.cc(589)] Processing Done.
+[0605/094456.178191] [INFO:update_attempter_android.cc(842)] Clearing update complete marker.
+[0605/094456.212637] [INFO:update_attempter_android.cc(737)] Terminating cleanup previous update.
+[0605/094518.563504] [INFO:main.cc(71)] A/B Update Engine terminating with exit code 0
