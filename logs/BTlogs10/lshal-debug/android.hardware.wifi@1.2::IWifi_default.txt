@@ -1,0 +1,1 @@
+*** command 'lshal debug -E android.hardware.wifi@1.2::IWifi/default': Error after 0.0009s (killing pid 3393)
