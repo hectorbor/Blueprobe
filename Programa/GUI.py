@@ -1,4 +1,4 @@
-#!/bin/python3
+#!/home/hector/Desktop/Bluetooth/Blueprobe/Programa/Blueprobe/bin/python3
 
 # import sys
 
@@ -8,6 +8,7 @@
 
 import PySimpleGUI as sg
 import csv, os, json
+import array
 from datetime import datetime
 
 #Auxiliary functions
@@ -26,13 +27,49 @@ def convert_csv_array(csv_address):
 def filter_by_time(start_date,end_date, values):
     res=[]
     for i in values:
-        elem_date=datetime.strptime(i["time"], '%Y-%m-%d %H:%M:%S')
+        elem_date=datetime.strptime(i[1], '%Y-%m-%d %H:%M:%S')
         if(elem_date>=start_date and elem_date<=end_date):
-            print('\n'+'correcto'+'fecha inicio: '+start_date.strftime("%m/%d/%Y, %H:%M:%S")+' fecha de final: '+end_date.strftime("%m/%d/%Y, %H:%M:%S")+' fecha de prueba: '+elem_date.strftime("%m/%d/%Y, %H:%M:%S"))
+            #print('\n'+'correcto'+'fecha inicio: '+start_date.strftime("%m/%d/%Y, %H:%M:%S")+' fecha de final: '+end_date.strftime("%m/%d/%Y, %H:%M:%S")+' fecha de prueba: '+elem_date.strftime("%m/%d/%Y, %H:%M:%S"))
             res.append(i)
-        else:
-            print('\n'+'incorrecto'+'fecha inicio: '+start_date.strftime("%m/%d/%Y, %H:%M:%S")+' fecha de final: '+end_date.strftime("%m/%d/%Y, %H:%M:%S")+' fecha de prueba: '+elem_date.strftime("%m/%d/%Y, %H:%M:%S"))
+        elif(elem_date>end_date):
+            break
+        #else:
+            #print('\n'+'incorrecto'+'fecha inicio: '+start_date.strftime("%m/%d/%Y, %H:%M:%S")+' fecha de final: '+end_date.strftime("%m/%d/%Y, %H:%M:%S")+' fecha de prueba: '+elem_date.strftime("%m/%d/%Y, %H:%M:%S"))
     return res
+
+def find_protocols(values_timed):
+    res={}
+    for i in values_timed:
+        if not  i[4] in res:
+            res[i[4]]=[]
+    return res
+
+def format_packets(values_timed,protocols_list):
+    for i in values_timed:
+        current_protocol=i[4]
+        match current_protocol:
+            case 'HCI_CMD':
+                protocols_list[i[4]].append({"order":i[0],"time":i[1], "OGF":i[7],"OCF":i[8],"Bytes":i[9]})
+            case 'HCI_EVT':
+                protocols_list[i[4]].append({"order":i[0],"time":i[1], "Code":i[10], "Command_Opcode":i[11]})
+            case 'L2CAP':
+                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3], "CID":i[12], "Opcode":i[13]})
+            case 'RFCOMM':
+                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3], "CID":i[12], "DLCI":i[14], "Frame_Type":i[15],"Opcode_MCC":i[16]})
+            case 'AVCTP':
+                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3], "CID":i[12], "Transaction":i[17],"C/R":i[18]})
+            case 'AVRCP':
+                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3], "CID":i[12], "Transaction":i[17],"C/R":i[18], "CType":i[19], "Opcode":i[20], "PUD_ID":i[21], "OpID":i[22]})
+            case 'AVDTP':
+                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3], "CID":i[12], "Transaction":i[23], "MessageType":i[24], "Signal":i[25]})
+            case 'SBC':
+                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3], "CID":i[12], "ACP_SEID":i[26],"INT_SEID":i[27], "DataSpeed":i[28]})
+            case 'ATT':
+                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3],"Operation":i[29],"Handle":i[30],"Value":i[31]})
+            case _:
+                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3],"protocol":i[4],"info":i[6]})
+
+
 
 def find_filters(values_timed):
     res=[[],[], []]
@@ -86,46 +123,47 @@ while True:
         csv_address = values["-FILE_PATH-"]
         csv_values=convert_csv_array(csv_address)
         print(csv_values[0])
-        dict_values=[]
-        for i in csv_values:
-            dict_element={"order":i[0],"time":i[1].split('.')[0],"source":i[2],"destination":i[3], "protocol":i[4], "code":i[5], "description":i[6], "OpCode":i[7], "OpGroup":i[8], "Bytes":i[9]}
-            dict_values.append(dict_element)
+        for i in range(len(csv_values)):
+            csv_values[i][1]=csv_values[i][1].split('.')[0]
         datetime_from = datetime.strptime(values["-FROM-"], '%Y-%m-%d %H:%M:%S')
         datetime_to = datetime.strptime(values["-TO-"], '%Y-%m-%d %H:%M:%S')
-        datetime_test = datetime.strptime(dict_values[0]["time"], '%Y-%m-%d %H:%M:%S')
-        dict_values_timed=filter_by_time(datetime_from,datetime_to,dict_values)
-        filters=find_filters(dict_values_timed)
-        sources_element = window.find_element('-SOURCES-', silent_on_error=True)
-        destinations_element = window.find_element('-DESTINATIONS-', silent_on_error=True)
-        protocols_element = window.find_element('-PROTOCOLS-', silent_on_error=True)
-        sources_element.update(values=filters[0])
-        destinations_element.update(values=filters[1])
-        protocols_element.update(values=filters[2])
+        values_timed=filter_by_time(datetime_from,datetime_to,csv_values)
+        protocols_list=find_protocols(values_timed)
+        format_packets(values_timed,protocols_list)
+        print(protocols_list)
+        protocols = list(protocols_list.keys())
+        # sources_element = window.find_element('-SOURCES-', silent_on_error=True)
+        # destinations_element = window.find_element('-DESTINATIONS-', silent_on_error=True)
+        # protocols_element = window.find_element('-PROTOCOLS-', silent_on_error=True)
+        # sources_element.update(values=filters[0])
+        # destinations_element.update(values=filters[1])
+        # protocols_element.update(values=filters[2])
 
         #print(dict_values)
         #print(datetime_test)
-        print("\n \n")
-        print(dict_values_timed)
+        # print("\n \n")
+        # print(dict_values_timed)
 
-        print('qpasó 0'+str(filters))
-        print('qpasó 1'+str(filters[0]))
-        print('qpasó 2'+str(filters[1]))
-        print('qpasó 3'+str(filters[2]))
+        # print('qpasó 0'+str(filters))
+        # print('qpasó 1'+str(filters[0]))
+        # print('qpasó 2'+str(filters[1]))
+        # print('qpasó 3'+str(filters[2]))
 
 
         col2.update(visible=True)
         col1.update(visible=False)
 
     elif event == 'Filter' :
-        #col3.update(visible=True)
-        print("esta entrando")
-        col3_layout = []
-        for i in dict_values_timed:
-            if i['protocol']==protocols_element.get():
-                col3_layout.append([sg.Text("From "+ i['source']+ " to "+i['destination']+" at "+i['time']+" : "+i['description'])])
-        print(str(col3_layout))
-        col3 = sg.Column(col3_layout, key='COL3', scrollable=True, size=(1200, 800),background_color='#FFFFFF')
-        window.extend_layout(window, [[col3]])  # Add the new column
+        print("que buena crack")
+        # #col3.update(visible=True)
+        # print("esta entrando")
+        # col3_layout = []
+        # for i in dict_values_timed:
+        #     if i['protocol']==protocols_element.get():
+        #         col3_layout.append([sg.Text("From "+ i['source']+ " to "+i['destination']+" at "+i['time']+" : "+i['description'])])
+        # print(str(col3_layout))
+        # col3 = sg.Column(col3_layout, key='COL3', scrollable=True, size=(1200, 800),background_color='#FFFFFF')
+        # window.extend_layout(window, [[col3]])  # Add the new column
         # col3.update(visible=False)
         # col3.layout([[sg.Text("holabuenas")]])
         # col3.update(size=(20,3))
