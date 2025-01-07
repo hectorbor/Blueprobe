@@ -10,7 +10,6 @@ import PySimpleGUI as sg
 import csv, os, json
 import array
 from datetime import datetime
-import webbrowser
 
 #Constants
 
@@ -147,10 +146,6 @@ def present_packets(protocol_list,protocol,column,LE):
                 for i in protocol_list:
                     column.append([sg.Text("From "+ i['source']+ " to "+i['destination']+" at "+i['time']+" : doing "+i['Operation']+" with handle "+i['Handle'],key="box"+str(counter))])
                     counter+=1
-            case _:
-                for i in protocol_list:
-                    column.append([sg.Text("From "+ i['source']+ " to "+i['destination']+" at "+i['time']+" : doing "+i['info'],key="box"+str(counter))])
-                    counter+=1
 
     
 
@@ -161,29 +156,11 @@ layout1 = [ [sg.Text('Introduce the .csv file to be analyzed', background_color=
             [sg.Radio('Bluetooth Classic', group_id=1, default=True, key="Classic"), sg.Radio('Bluetooth Low Energy', group_id=1,key="BLE"),sg.Radio('Not implemented', group_id=1, key="NotImp")],            
             [sg.Button('Analyze'), sg.Button('Clear')] ]
 
-layout2 = [ [sg.Text('Successful analysis.',key='AnalysisSuccess')],
+layout2 = [ [sg.Text('Successful analysis.')],
             [sg.Text('Sources', background_color='#0082FC'),sg.Combo([''], key='-SOURCES-',size=((20,3)))],
             [sg.Text('Destinations', background_color='#0082FC'),sg.Combo([''], key='-DESTINATIONS-',size=((20,3)))],
             [sg.Text('Protocols', background_color='#0082FC'),sg.Combo([''], key='-PROTOCOLS-',size=((20,3)))],
-            [sg.Button('Filter'),sg.Button('?',key='Help')]]
-
-tab1_layout = [[sg.Text("Contenido de la Pestaña 1")]]
-tabs= [sg.Tab("Pestaña 1", tab1_layout, key="Tab1")]
-
-sec_layout_BLE=[[sg.Text('References to understand actions that have taken place for every protocol involved with BLE: ')],
-                [sg.Button('HCI_CMD & HCI_EVT')],
-                [sg.Button('L2CAP')],
-                [sg.Button('ATT')]]
-
-sec_layout_Classic=[[sg.Text('References to understand actions that have taken place for every protocol involved with Bluetooth Classic: ')],
-                [sg.Button('HCI_CMD & HCI_EVT')],
-                [sg.Button('L2CAP')],
-                [sg.Button('RFCOMM'),sg.Text('Check section 4',font=('Helvetica', 12, 'bold italic'))],
-                [sg.Button('AVCTP'), sg.Text('Check section 6',font=('Helvetica', 12, 'bold italic'))],
-                [sg.Button('AVRCP'),sg.Text('PDF with specifications can be downloaded. Check section 6.',font=('Helvetica', 12, 'bold italic'))],
-                [sg.Button('AVDTP'), sg.Text('PDF with specifications can be downloaded. Check section 6.',font=('Helvetica', 12, 'bold italic'))],
-                [sg.Button('A2DP'), sg.Text('PDF with specifications can be downloaded. Check section 2.',font=('Helvetica', 12, 'bold italic'))]
-            ]
+            [sg.Button('Filter')]]
 
 #layout3 = []
 
@@ -191,14 +168,13 @@ sec_layout_Classic=[[sg.Text('References to understand actions that have taken p
 
 # Organizing all the layouts
 layout = [  [sg.Column(layout1, key='COL1', background_color='#0082FC'),
-            sg.Column(layout2, key='COL2', background_color='#0082FC',visible=False),sg.Sizegrip(background_color='#0082FC')],
-            [sg.TabGroup([], key="TabGroup", visible=True, enable_events=True)]
+            sg.Column(layout2, key='COL2', background_color='#0082FC',visible=False),sg.Sizegrip(background_color='#0082FC')]
         ]
 
 # Create the Window
 window = sg.Window('Window Title', layout, resizable=True, background_color='#0082FC')
 
-col1, col2, tabsGroup= window['COL1'], window['COL2'], window['TabGroup']
+col1, col2= window['COL1'], window['COL2']
 #col1, col2, col3 = window['COL1'], window['COL2'], window['COL3']
 
 # Event Loop to process "events" and get the "values" of the inputs
@@ -237,9 +213,28 @@ while True:
 
     elif event == 'Filter' :
         #col3.update(visible=True)
-        window['AnalysisSuccess'].update(visible=False)
-        selected_protocol=protocols_element.get()
-        selected_protocol_list=protocols_list[selected_protocol]
+        if(filterIter!=0):
+            if filterIter==1:
+                protocols_elementAux = window.find_element('-PROTOCOLS-')
+                selected_protocol=protocols_element.get()
+                selected_protocol_list=protocols_list[selected_protocol]
+            else:
+                protocols_elementAux = window.find_element('-PROTOCOLS-'+str(filterIter-1)+'-')
+                selected_protocol=protocols_element.get()
+                selected_protocol_list=protocols_list[selected_protocol]
+            window.close()
+            layoutAux = [   [sg.Text('Sources', background_color='#0082FC'),sg.Combo([''], key='-SOURCES'+str(filterIter)+'-',size=((20,3)))],
+                            [sg.Text('Destinations', background_color='#0082FC'),sg.Combo([''], key='-DESTINATIONS'+str(filterIter)+'-',size=((20,3)))],
+                            [sg.Text('Protocols', background_color='#0082FC'),sg.Combo([''], key='-PROTOCOLS-'+str(filterIter)+'-',size=((20,3)))],
+                            [sg.Button('Filter')]]
+            window = sg.Window('Window Title', layoutAux, resizable=True, background_color='#0082FC')
+            event, values =window.read()
+            protocols_elementAux = window.find_element('-PROTOCOLS-'+str(filterIter)+'-')
+            protocols_elementAux.update(values=protocols)
+            window.refresh()
+        else:
+            selected_protocol=protocols_element.get()
+            selected_protocol_list=protocols_list[selected_protocol]
         col3_layout = []
         #selected_protocol_list=protocols_list[selected_protocol]
         if values['BLE']:
@@ -249,56 +244,9 @@ while True:
         
         #print(str(col3_layout))
         col3 = sg.Column(col3_layout, key='COL3'+str(filterIter)+'-', scrollable=True, size=(1200, 800),background_color='#FFFFFF')
-        # if(filterIter==0):
-        #     window.extend_layout(window, [[col3]])  # Add the new column
-        #     col3.update(visible=False)
-        #     col3.update(visible=True)
-        #     window.refresh()
-        # else:
-        newTab=sg.Tab("Filtering number "+ str(filterIter+1), [[col3]], key='TAB'+str(filterIter))
-        tabs.append(newTab)
-        tabsGroup.add_tab(newTab)
-        tabsGroup.update(visible=True)
+        window.extend_layout(window, [[col3]])  # Add the new column
+        col3.update(visible=False)
+        col3.update(visible=True)
         window.refresh()
         filterIter+=1
-
-    elif event == 'Help':
-        if values['BLE']:
-            window_secundaria = sg.Window("Ventana Secundaria", sec_layout_BLE, modal=True)
-
-            # Mantener la ventana secundaria abierta hasta que se cierre
-            while True:
-                event_secundaria, values_secundaria = window_secundaria.read()
-                if event_secundaria == sg.WINDOW_CLOSED or event_secundaria == "Cerrar Ventana Secundaria":
-                    break
-                elif event_secundaria=='HCI_CMD & HCI_EVT':
-                    webbrowser.open("https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/Core-54/out/en/host-controller-interface/host-controller-interface-functional-specification.html#UUID-5ab4cace-d0bc-38ea-2675-598d57905d3d")
-                elif event_secundaria=='L2CAP':
-                    webbrowser.open("https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/Core-54/out/en/host/logical-link-control-and-adaptation-protocol-specification.html#UUID-32a25a06-4aa4-c6c7-77c5-dcfe3682355d")
-                elif event_secundaria=='ATT':
-                    webbrowser.open("https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/Core-54/out/en/host/attribute-protocol--att-.html#UUID-44501232-7370-3ff0-be57-3d458b542a5b")
-            window_secundaria.close()
-        else:
-            window_secundaria = sg.Window("Ventana Secundaria", sec_layout_Classic, modal=True)
-
-            # Mantener la ventana secundaria abierta hasta que se cierre
-            while True:
-                event_secundaria, values_secundaria = window_secundaria.read()
-                if event_secundaria == sg.WINDOW_CLOSED or event_secundaria == "Cerrar Ventana Secundaria":
-                    break
-                elif event_secundaria=='HCI_CMD & HCI_EVT':
-                    webbrowser.open("https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/Core-54/out/en/host-controller-interface/host-controller-interface-functional-specification.html#UUID-5ab4cace-d0bc-38ea-2675-598d57905d3d")
-                elif event_secundaria=='L2CAP':
-                    webbrowser.open("https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/Core-54/out/en/host/logical-link-control-and-adaptation-protocol-specification.html#UUID-32a25a06-4aa4-c6c7-77c5-dcfe3682355d")
-                elif event_secundaria=='RFCOMM':
-                    webbrowser.open("https://www.bluetooth.com/specifications/specs/rfcomm-1-1-html/")
-                elif event_secundaria=='AVCTP':
-                    webbrowser.open("https://www.bluetooth.com/specifications/specs/avctp-1-4/")
-                elif event_secundaria=='AVRCP':
-                    webbrowser.open("https://www.bluetooth.com/specifications/specs/a-v-remote-control-profile-1-6-2/")
-                elif event_secundaria=='AVDTP':
-                    webbrowser.open("https://www.bluetooth.com/specifications/specs/a-v-distribution-transport-protocol-1-3/")
-                elif event_secundaria=='A2DP':
-                    webbrowser.open("https://www.bluetooth.com/specifications/specs/advanced-audio-distribution-profile-1-4/")
-            window_secundaria.close()
 window.close()
