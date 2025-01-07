@@ -11,6 +11,12 @@ import csv, os, json
 import array
 from datetime import datetime
 
+#Constants
+
+Classic_BLE_Common_Comm=[0x0009,0x0011, 0x0013, 0x0001, 0x0003, 0x0001, 0x001A, 0x0006, 0x002A, 0x0005, 0x0002, 0x0026, 0x0024, 0x0023, 0x0025, 0x000C, 0x0022, 0x0021, 0x0030, 0x0005, 0x0019, 0x000D, 0x0030, 0x0029, 0x0027, 0x0023, 0x0024, 0x0031, 0x0032, 0x0033, 0x0034, 0x0035]
+Classic_BLE_Common_Ev=[0x0E, 0x0F, 0x1D, 0x05, 0x08, 0x30, 0x13, 0x1A, 0x03]
+Supported_Protocols=["HCI_CMD", "HCI_EVT", "L2CAP", "RFCOMM", "AVCTP", "AVRCP","AVDTP","SBC", "ATT"]
+
 #Auxiliary functions
 
 #To create a dictionary from a file address
@@ -44,45 +50,93 @@ def find_protocols(values_timed):
             res[i[4]]=[]
     return res
 
-def format_packets(values_timed,protocols_list):
+def format_packets_Classic(values_timed,protocols_list):
     for i in values_timed:
         current_protocol=i[4]
         match current_protocol:
             case 'HCI_CMD':
-                protocols_list[i[4]].append({"order":i[0],"time":i[1], "OGF":i[7],"OCF":i[8],"Bytes":i[9]})
+                if not i[7]=="LE Controller Commands":
+                    protocols_list[i[4]].append({"order":i[0],"time":i[1], "OGF":i[7],"OCF":i[8],"Bytes":i[9]})
             case 'HCI_EVT':
-                protocols_list[i[4]].append({"order":i[0],"time":i[1], "Code":i[10], "Command_Opcode":i[11]})
+                if not "LE" in i[10]:
+                    protocols_list[i[4]].append({"order":i[0],"time":i[1], "Code":i[10], "Command_Opcode":i[11]})
             case 'L2CAP':
-                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3], "CID":i[12], "Opcode":i[13]})
+                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3], "CID":i[13], "Opcode":i[14]})
             case 'RFCOMM':
-                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3], "CID":i[12], "DLCI":i[14], "Frame_Type":i[15],"Opcode_MCC":i[16]})
+                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3], "CID":i[13], "DLCI":i[15], "Frame_Type":i[16],"Opcode_MCC":i[17]})
             case 'AVCTP':
-                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3], "CID":i[12], "Transaction":i[17],"C/R":i[18]})
+                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3], "CID":i[13], "Transaction":i[18],"C/R":i[19]})
             case 'AVRCP':
-                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3], "CID":i[12], "Transaction":i[17],"C/R":i[18], "CType":i[19], "Opcode":i[20], "PUD_ID":i[21], "OpID":i[22]})
+                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3], "info":i[6],"CID":i[13], "Transaction":i[18],"C/R":i[19], "CType":i[20], "Opcode":i[21], "PUD_ID":i[22], "OpID":i[23]})
             case 'AVDTP':
-                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3], "CID":i[12], "Transaction":i[23], "MessageType":i[24], "Signal":i[25]})
+                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3], "info":i[6],"CID":i[13], "Transaction":i[24], "MessageType":i[25], "Signal":i[26]})
             case 'SBC':
-                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3], "CID":i[12], "ACP_SEID":i[26],"INT_SEID":i[27], "DataSpeed":i[28]})
-            case 'ATT':
-                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3],"Operation":i[29],"Handle":i[30],"Value":i[31]})
-            case _:
-                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3],"protocol":i[4],"info":i[6]})
+                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3], "CID":i[13], "ACP_SEID":i[27],"INT_SEID":i[28], "DataSpeed":i[29]})
 
-
-
-def find_filters(values_timed):
-    res=[[],[], []]
+def format_packets_LE(values_timed,protocols_list):
     for i in values_timed:
-        #print('importante '+i['source'])
-        #print('importante '+i['destination'])
-        if not i['source'] in res[0]:
-            res[0].append(i['source'])
-        if not  i['destination'] in res[1]:
-            res[1].append(i['destination'])
-        if not  i['protocol'] in res[2]:
-            res[2].append(i['protocol'])
-    return res
+        current_protocol=i[4]
+        match current_protocol:
+            case 'HCI_CMD':
+                #"Bytes":i[9]
+                hexCodeCMD=int(i[9][3:] + i[9][:2],16)&1023
+                if hexCodeCMD in Classic_BLE_Common_Comm or i[7]=="LE Controller Commands":
+                    protocols_list[i[4]].append({"order":i[0],"time":i[1], "OGF":i[7],"OCF":i[8]})
+            case 'HCI_EVT':
+                hexCodeEVT=int(i[12],16)
+                if hexCodeEVT in Classic_BLE_Common_Ev or ("LE" in i[10]):
+                    protocols_list[i[4]].append({"order":i[0],"time":i[1], "Code":i[10], "Command_Opcode":i[11]})
+            case 'ATT':
+                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3],"Operation":i[30],"Handle":i[31],"Value":i[32]})
+
+def format_packets_Not_Implemented(values_timed, protocols_list):
+    for i in values_timed:
+        current_protocol=i[4]
+        if current_protocol not in Supported_Protocols:
+            protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3],"protocol":current_protocol,"info":i[6]})
+        
+def present_packets(protocol_list,protocol,column):
+    counter=0
+    match protocol:
+            case 'HCI_CMD':
+                for i in protocol_list:
+                    column.append([sg.Text("Command from group  "+ i['OGF']+ " doing "+i['OCF']+" at "+i['time']+"\n",key="box"+str(counter))])
+                    counter+=1  
+            case 'HCI_EVT':
+                for i in protocol_list:
+                    column.append([sg.Text("Event "+i['Code']+" performed at "+i['time'],key="box"+str(counter))])
+                    counter+=1
+            case 'L2CAP':
+                for i in protocol_list:
+                    if i['CID']=='01:00':
+                        column.append([sg.Text("Signalingchannel"+ i['CID']+ " used at "+i['time']+" to execute command "+i['Opcode'],key="box"+str(counter))])
+                    else:
+                        column.append([sg.Text("Channel"+ i['CID']+ " used at"+i['time'],key="box"+str(counter))])
+                    counter+=1
+            case 'RFCOMM':
+                for i in protocol_list:
+                    column.append([sg.Text("Using L2CAP channel "+ i['CID']+ " and logical channel "+i['DLCI']+" with type frame "+i['Frame_Type']+" at "+i['time'],key="box"+str(counter))])
+                    counter+=1
+            case 'AVCTP':
+                for i in protocol_list:
+                    column.append([sg.Text("Using L2CAP channel "+ i['CID']+" in transaction "+i['Transaction']+" as "+i["C/R"]+" at "+i['time'],key="box"+str(counter))])
+                    counter+=1
+            case 'AVRCP':
+                for i in protocol_list:
+                    column.append([sg.Text("Using L2CAP channel "+ i['CID']+" in transaction "+i['Transaction']+" as "+i["C/R"]+" it happened "+i['info']+" at "+i['time'],key="box"+str(counter))])
+                    counter+=1
+            case 'AVDTP':
+                for i in protocol_list:
+                    column.append([sg.Text("Using L2CAP channel "+ i['CID']+" in transaction "+i['Transaction']+" as "+i["MessageType"]+" it happened "+i['info']+" at "+i['time'],key="box"+str(counter))])
+                    counter+=1
+            case 'SBC':
+                for i in protocol_list:
+                    column.append([sg.Text("Using L2CAP channel "+ i['CID']+" using ACP SEID "+i['ACP_SEID']+" and INT SEID "+i["INT_SEID"]+" at bit rate "+i['DataSpeed'],key="box"+str(counter))])
+                    counter+=1
+            case 'ATT':
+                for i in protocol_list:
+                    column.append([sg.Text("From "+ i['source']+ " to "+i['destination']+" at "+i['time']+" : doing "+i['Operation']+" with handle "+i['Handle'],key="box"+str(counter))])
+                    counter+=1
 
     
 
@@ -90,7 +144,7 @@ def find_filters(values_timed):
 layout1 = [ [sg.Text('Introduce the .csv file to be analyzed', background_color='#0082FC'), sg.FileBrowse(key='-FILE_PATH-',button_color=('#FFFFFF','#0A3C91'))],
             [sg.CalendarButton("From", close_when_date_chosen=True,  target='-FROM-', location=(0,0), no_titlebar=False ), sg.Input(key='-FROM-', size=(20,1))],
             [sg.CalendarButton("To", close_when_date_chosen=True,  target='-TO-', location=(0,0), no_titlebar=False ), sg.Input(key='-TO-', size=(20,1))],
-            [sg.Radio('Bluetooth Classic', group_id=1, default=True), sg.Radio('Bluetooth Low Energy', group_id=1)],            
+            [sg.Radio('Bluetooth Classic', group_id=1, default=True, key="Classic"), sg.Radio('Bluetooth Low Energy', group_id=1,key="BLE"),sg.Radio('Not implemented', group_id=1, key="NotImp")],            
             [sg.Button('Analyze'), sg.Button('Clear')] ]
 
 layout2 = [ [sg.Text('Successful analysis.')],
@@ -129,44 +183,36 @@ while True:
         datetime_to = datetime.strptime(values["-TO-"], '%Y-%m-%d %H:%M:%S')
         values_timed=filter_by_time(datetime_from,datetime_to,csv_values)
         protocols_list=find_protocols(values_timed)
-        format_packets(values_timed,protocols_list)
-        print(protocols_list)
+        print("aqui entra la primera vez: "+str(protocols_list))
+        if values["Classic"]:
+            format_packets_Classic(values_timed,protocols_list)
+        elif values["BLE"]:
+            format_packets_LE(values_timed,protocols_list)
+        else:
+            format_packets_Not_Implemented(values_timed,protocols_list)
+        for key in protocols_list.copy():
+            print(key)
+            if not protocols_list[key]:
+                del protocols_list[key]
         protocols = list(protocols_list.keys())
-        # sources_element = window.find_element('-SOURCES-', silent_on_error=True)
-        # destinations_element = window.find_element('-DESTINATIONS-', silent_on_error=True)
-        # protocols_element = window.find_element('-PROTOCOLS-', silent_on_error=True)
-        # sources_element.update(values=filters[0])
-        # destinations_element.update(values=filters[1])
-        # protocols_element.update(values=filters[2])
-
-        #print(dict_values)
-        #print(datetime_test)
-        # print("\n \n")
-        # print(dict_values_timed)
-
-        # print('qpasó 0'+str(filters))
-        # print('qpasó 1'+str(filters[0]))
-        # print('qpasó 2'+str(filters[1]))
-        # print('qpasó 3'+str(filters[2]))
-
-
+        print(protocols)
+        protocols_element = window.find_element('-PROTOCOLS-', silent_on_error=True)
+        protocols_element.update(values=protocols)
         col2.update(visible=True)
         col1.update(visible=False)
 
     elif event == 'Filter' :
-        print("que buena crack")
-        # #col3.update(visible=True)
-        # print("esta entrando")
-        # col3_layout = []
-        # for i in dict_values_timed:
-        #     if i['protocol']==protocols_element.get():
-        #         col3_layout.append([sg.Text("From "+ i['source']+ " to "+i['destination']+" at "+i['time']+" : "+i['description'])])
-        # print(str(col3_layout))
-        # col3 = sg.Column(col3_layout, key='COL3', scrollable=True, size=(1200, 800),background_color='#FFFFFF')
-        # window.extend_layout(window, [[col3]])  # Add the new column
-        # col3.update(visible=False)
-        # col3.layout([[sg.Text("holabuenas")]])
-        # col3.update(size=(20,3))
-        # col3.update(visible=True)
-        #window.refresh()
+        #col3.update(visible=True)
+        print("esta entrando")
+        col3_layout = []
+        selected_protocol=protocols_element.get()
+        selected_protocol_list=protocols_list[selected_protocol]
+        #selected_protocol_list=protocols_list[selected_protocol]
+        present_packets(selected_protocol_list,selected_protocol,col3_layout)
+        #print(str(col3_layout))
+        col3 = sg.Column(col3_layout, key='COL3', scrollable=True, size=(1200, 800),background_color='#FFFFFF')
+        window.extend_layout(window, [[col3]])  # Add the new column
+        col3.update(visible=False)
+        col3.update(visible=True)
+        window.refresh()
 window.close()
