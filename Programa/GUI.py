@@ -7,8 +7,8 @@
 #     print ('You have not imported the' +modulename+ 'module')
 
 import PySimpleGUI as sg
-import csv, os, json
-import array
+import csv
+import os
 from datetime import datetime
 import webbrowser
 
@@ -22,7 +22,7 @@ Supported_Protocols=["HCI_CMD", "HCI_EVT", "L2CAP", "RFCOMM", "AVCTP", "AVRCP","
 
 #To create a dictionary from a file address
 def convert_csv_array(csv_address):
-    file = open(csv_address)
+    file = open(csv_address,encoding='unicode_escape')
     csv_reader = csv.reader(file)
     header = next(csv_reader)
     rows = []
@@ -60,19 +60,19 @@ def format_packets_Classic(values_timed,protocols_list):
                     protocols_list[i[4]].append({"order":i[0],"time":i[1], "OGF":i[7],"OCF":i[8],"Bytes":i[9]})
             case 'HCI_EVT':
                 if not "LE" in i[10]:
-                    protocols_list[i[4]].append({"order":i[0],"time":i[1], "Code":i[10], "Command_Opcode":i[11]})
+                    protocols_list[i[4]].append({"order":i[0],"time":i[1], "Code":i[10], "Sub Event":i[11],"Command_Opcode":i[12]})
             case 'L2CAP':
-                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3], "CID":i[13], "Opcode":i[14]})
+                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3], "CID":i[14], "Opcode":i[15]})
             case 'RFCOMM':
-                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3], "CID":i[13], "DLCI":i[15], "Frame_Type":i[16],"Opcode_MCC":i[17]})
+                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3], "CID":i[14], "DLCI":i[16], "Frame_Type":i[17],"Opcode_MCC":i[18]})
             case 'AVCTP':
-                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3], "CID":i[13], "Transaction":i[18],"C/R":i[19]})
+                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3], "CID":i[14], "Transaction":i[19],"C/R":i[20]})
             case 'AVRCP':
-                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3], "info":i[6],"CID":i[13], "Transaction":i[18],"C/R":i[19], "CType":i[20], "Opcode":i[21], "PUD_ID":i[22], "OpID":i[23]})
+                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3], "info":i[6],"CID":i[14], "Transaction":i[19],"C/R":i[20], "CType":i[21], "Opcode":i[22], "PUD_ID":i[23], "OpID":i[24]})
             case 'AVDTP':
-                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3], "info":i[6],"CID":i[13], "Transaction":i[24], "MessageType":i[25], "Signal":i[26]})
+                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3], "info":i[6],"CID":i[14], "Transaction":i[25], "MessageType":i[26], "Signal":i[27]})
             case 'SBC':
-                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3], "CID":i[13], "ACP_SEID":i[27],"INT_SEID":i[28], "DataSpeed":i[29]})
+                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3], "CID":i[14], "ACP_SEID":i[28],"INT_SEID":i[29], "DataSpeed":i[30]})
 
 def format_packets_LE(values_timed,protocols_list):
     for i in values_timed:
@@ -84,13 +84,13 @@ def format_packets_LE(values_timed,protocols_list):
                 if hexCodeCMD in Classic_BLE_Common_Comm or i[7]=="LE Controller Commands":
                     protocols_list[i[4]].append({"order":i[0],"time":i[1], "OGF":i[7],"OCF":i[8]})
             case 'HCI_EVT':
-                hexCodeEVT=int(i[12],16)
+                hexCodeEVT=int(i[13],16)
                 if hexCodeEVT in Classic_BLE_Common_Ev or ("LE" in i[10]):
-                    protocols_list[i[4]].append({"order":i[0],"time":i[1], "Code":i[10], "Command_Opcode":i[11]})
+                    protocols_list[i[4]].append({"order":i[0],"time":i[1], "Code":i[10], "Sub Event":i[11],"Command_Opcode":i[12]})
             case 'L2CAP':
-                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3], "CID":i[13], "Opcode":i[14]})
+                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3], "CID":i[14], "Opcode":i[15]})
             case 'ATT':
-                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3],"Operation":i[30],"Handle":i[31],"Value":i[32]})
+                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3],"Operation":i[31],"Handle":i[32],"Value":i[33]})
 
 def format_packets_Not_Implemented(values_timed, protocols_list):
     for i in values_timed:
@@ -107,25 +107,45 @@ def present_packets(protocol_list,protocol,column,LE):
                     counter+=1  
             case 'HCI_EVT':
                 for i in protocol_list:
-                    column.append([sg.Text("Event "+i['Code']+" performed at "+i['time'],key="box"+str(counter))])
+                    if i['Sub Event']:
+                        if "Connection Complete" in i['Sub Event']:
+                            column.append([sg.Text("Event "+i['Code']+" with sub event "+i['Sub Event']+" took place at "+i['time'],text_color='#000000',background_color='#00FF00',key="box"+str(counter))])
+                        if "Advertising Report" in i['Sub Event']:
+                            column.append([sg.Text("Event "+i['Code']+" with sub event "+i['Sub Event']+" took place at "+i['time'],text_color='#000000',background_color='#FFDE21',key="box"+str(counter))])
+                        else:
+                            column.append([sg.Text("Event "+i['Code']+" with sub event "+i['Sub Event']+" took place at "+i['time'],key="box"+str(counter))])
+                    else:
+                        if "Connect Complete" in i['Code']:
+                            column.append([sg.Text("Event "+i['Code']+" took place at "+i['time'],text_color='#000000',background_color='#00FF00',key="box"+str(counter))])
+                        elif "Disconnect Complete" in i['Code']:
+                            column.append([sg.Text("Event "+i['Code']+" took place at "+i['time'],text_color='#000000',background_color='#FF0000',key="box"+str(counter))])
+                        elif "Inquiry Result" in i['Code']:
+                            column.append([sg.Text("Event "+i['Code']+" took place at "+i['time'],text_color='#000000',background_color='#FFDE21',key="box"+str(counter))])
+                        else:
+                            column.append([sg.Text("Event "+i['Code']+" took place at "+i['time'],key="box"+str(counter))])
                     counter+=1
             case 'L2CAP':
                 for i in protocol_list:
                     if not LE:
                         if i['CID']=='01:00':
-                            column.append([sg.Text("Signaling channel "+ i['CID']+ " used at "+i['time']+" to execute command "+i['Opcode'],key="box"+str(counter))])
+                            column.append([sg.Text("Signaling channel "+ i['CID']+ " used at "+i['time']+" to execute command "+i['Opcode'],text_color="#00F900",background_color='#000000',key="box"+str(counter))])
                         else:
                             column.append([sg.Text("Channel "+ i['CID']+ " used at "+i['time'],key="box"+str(counter))])
                         counter+=1
                     else:
                         if i['CID']=='05:00':
-                            column.append([sg.Text("Signaling channel "+ i['CID']+ " used at "+i['time']+" to execute command "+i['Opcode'],key="box"+str(counter))])
+                            column.append([sg.Text("Signaling channel "+ i['CID']+ " used at "+i['time']+" to execute command "+i['Opcode'],text_color="#00F900",background_color='#000000',key="box"+str(counter))])
                         else:
                             column.append([sg.Text("Channel "+ i['CID']+ " used at "+i['time'],key="box"+str(counter))])
                         counter+=1
             case 'RFCOMM':
                 for i in protocol_list:
-                    column.append([sg.Text("Using L2CAP channel "+ i['CID']+ " and logical channel "+i['DLCI']+" with type frame "+i['Frame_Type']+" at "+i['time'],key="box"+str(counter))])
+                    if i['DLCI']=='0x00' and i['Opcode_MCC']:
+                        column.append([sg.Text("Using L2CAP channel "+ i['CID']+ " and control channel "+i['DLCI']+" with type frame "+i['Frame_Type']+" at "+i['time']+" to execute command "+i['Opcode_MCC'],text_color="#00F900",background_color='#000000',key="box"+str(counter))])
+                    elif i['DLCI']=='0x00':
+                        column.append([sg.Text("Using L2CAP channel "+ i['CID']+ " and control channel "+i['DLCI']+" with type frame "+i['Frame_Type']+" at "+i['time'],background_color='#000000',key="box"+str(counter))])
+                    else:
+                        column.append([sg.Text("Using L2CAP channel "+ i['CID']+ " and logical channel "+i['DLCI']+" with type frame "+i['Frame_Type']+" at "+i['time'],text_color="#0082fc",background_color='#FFFFFF',key="box"+str(counter))])
                     counter+=1
             case 'AVCTP':
                 for i in protocol_list:
@@ -141,7 +161,7 @@ def present_packets(protocol_list,protocol,column,LE):
                     counter+=1
             case 'SBC':
                 for i in protocol_list:
-                    column.append([sg.Text("Using L2CAP channel "+ i['CID']+" using ACP SEID "+i['ACP_SEID']+" and INT SEID "+i["INT_SEID"]+" at bit rate "+i['DataSpeed'],key="box"+str(counter))])
+                    column.append([sg.Text("Using L2CAP channel "+ i['CID']+" , ACP SEID "+i['ACP_SEID']+" and INT SEID "+i["INT_SEID"]+" at bit rate "+i['DataSpeed']+" at time "+i['time'],key="box"+str(counter))])
                     counter+=1
             case 'ATT':
                 for i in protocol_list:
@@ -158,10 +178,10 @@ def present_packets(protocol_list,protocol,column,LE):
 layout1 = [ [sg.Text('Introduce the .csv file to be analyzed', background_color='#0082FC'), sg.FileBrowse(key='-FILE_PATH-',button_color=('#FFFFFF','#0A3C91'))],
             [sg.CalendarButton("From", close_when_date_chosen=True,  target='-FROM-', location=(0,0), no_titlebar=False ), sg.Input(key='-FROM-', size=(20,1))],
             [sg.CalendarButton("To", close_when_date_chosen=True,  target='-TO-', location=(0,0), no_titlebar=False ), sg.Input(key='-TO-', size=(20,1))],
-            [sg.Radio('Bluetooth Classic', group_id=1, default=True, key="Classic"), sg.Radio('Bluetooth Low Energy', group_id=1,key="BLE"),sg.Radio('Not implemented', group_id=1, key="NotImp")],            
+            [sg.Radio('Bluetooth Classic', background_color='#0082FC',group_id=1, default=True, key="Classic"), sg.Radio('Bluetooth Low Energy', background_color='#0082FC',group_id=1,key="BLE"),sg.Radio('Not implemented', background_color='#0082FC',group_id=1, key="NotImp")],            
             [sg.Button('Analyze'), sg.Button('Clear')] ]
 
-layout2 = [ [sg.Text('Successful analysis.',key='AnalysisSuccess')],
+layout2 = [ [sg.Text('Successful analysis.', background_color='#0082FC',key='AnalysisSuccess')],
             [sg.Text('Sources', background_color='#0082FC'),sg.Combo([''], key='-SOURCES-',size=((20,3)))],
             [sg.Text('Destinations', background_color='#0082FC'),sg.Combo([''], key='-DESTINATIONS-',size=((20,3)))],
             [sg.Text('Protocols', background_color='#0082FC'),sg.Combo([''], key='-PROTOCOLS-',size=((20,3)))],
@@ -170,19 +190,19 @@ layout2 = [ [sg.Text('Successful analysis.',key='AnalysisSuccess')],
 tab1_layout = [[sg.Text("Contenido de la Pestaña 1")]]
 tabs= [sg.Tab("Pestaña 1", tab1_layout, key="Tab1")]
 
-sec_layout_BLE=[[sg.Text('References to understand actions that have taken place for every protocol involved with BLE: ')],
+sec_layout_BLE=[[sg.Text('References to understand actions that have taken place for every protocol involved with BLE: ',background_color='#0082FC')],
                 [sg.Button('HCI_CMD & HCI_EVT')],
                 [sg.Button('L2CAP')],
                 [sg.Button('ATT')]]
 
-sec_layout_Classic=[[sg.Text('References to understand actions that have taken place for every protocol involved with Bluetooth Classic: ')],
+sec_layout_Classic=[[sg.Text('References to understand actions that have taken place for every protocol involved with Bluetooth Classic: ',background_color='#0082FC')],
                 [sg.Button('HCI_CMD & HCI_EVT')],
                 [sg.Button('L2CAP')],
-                [sg.Button('RFCOMM'),sg.Text('Check section 4',font=('Helvetica', 12, 'bold italic'))],
-                [sg.Button('AVCTP'), sg.Text('Check section 6',font=('Helvetica', 12, 'bold italic'))],
-                [sg.Button('AVRCP'),sg.Text('PDF with specifications can be downloaded. Check section 6.',font=('Helvetica', 12, 'bold italic'))],
-                [sg.Button('AVDTP'), sg.Text('PDF with specifications can be downloaded. Check section 6.',font=('Helvetica', 12, 'bold italic'))],
-                [sg.Button('A2DP'), sg.Text('PDF with specifications can be downloaded. Check section 2.',font=('Helvetica', 12, 'bold italic'))]
+                [sg.Button('RFCOMM'),sg.Text('Check section 4',font=('Helvetica', 12, 'bold italic'),background_color='#0082FC')],
+                [sg.Button('AVCTP'), sg.Text('Check section 6',font=('Helvetica', 12, 'bold italic'),background_color='#0082FC')],
+                [sg.Button('AVRCP'),sg.Text('PDF with specifications can be downloaded. Check section 6.',font=('Helvetica', 12, 'bold italic'),background_color='#0082FC')],
+                [sg.Button('AVDTP'), sg.Text('PDF with specifications can be downloaded. Check section 6.',font=('Helvetica', 12, 'bold italic'),background_color='#0082FC')],
+                [sg.Button('A2DP'), sg.Text('PDF with specifications can be downloaded. Check section 2.',font=('Helvetica', 12, 'bold italic'),background_color='#0082FC')]
             ]
 
 #layout3 = []
@@ -192,7 +212,7 @@ sec_layout_Classic=[[sg.Text('References to understand actions that have taken p
 # Organizing all the layouts
 layout = [  [sg.Column(layout1, key='COL1', background_color='#0082FC'),
             sg.Column(layout2, key='COL2', background_color='#0082FC',visible=False),sg.Sizegrip(background_color='#0082FC')],
-            [sg.TabGroup([], key="TabGroup", visible=True, enable_events=True)]
+            [sg.TabGroup([], key="TabGroup", title_color="#0082FC",selected_background_color="#283B5B", background_color='#0082FC',visible=True, enable_events=True)]
         ]
 
 # Create the Window
@@ -234,6 +254,7 @@ while True:
         col2.update(visible=True)
         col1.update(visible=False)
         filterIter=0
+        secondaryWindowCounter=0
 
     elif event == 'Filter' :
         #col3.update(visible=True)
@@ -255,7 +276,7 @@ while True:
         #     col3.update(visible=True)
         #     window.refresh()
         # else:
-        newTab=sg.Tab("Filtering number "+ str(filterIter+1), [[col3]], key='TAB'+str(filterIter))
+        newTab=sg.Tab("Filtering "+ str(filterIter+1), [[col3]], key='TAB'+str(filterIter))
         tabs.append(newTab)
         tabsGroup.add_tab(newTab)
         tabsGroup.update(visible=True)
@@ -264,41 +285,60 @@ while True:
 
     elif event == 'Help':
         if values['BLE']:
-            window_secundaria = sg.Window("Ventana Secundaria", sec_layout_BLE, modal=True)
+            if secondaryWindowCounter>0:
+                sec_layout_BLE=[[sg.Text('References to understand actions that have taken place for every protocol involved with BLE: ',background_color='#0082FC',key="helpTextBLE"+str(secondaryWindowCounter))],
+                                [sg.Button('HCI_CMD & HCI_EVT',key='HCI_CMD & HCI_EVT'+str(secondaryWindowCounter))],
+                                [sg.Button('L2CAP',key='L2CAP'+str(secondaryWindowCounter))],
+                                [sg.Button('ATT',key='ATT'+str(secondaryWindowCounter))]]
+
+            window_secundaria = sg.Window("Ventana Secundaria", sec_layout_BLE,background_color='#0082FC', modal=True)
 
             # Mantener la ventana secundaria abierta hasta que se cierre
             while True:
                 event_secundaria, values_secundaria = window_secundaria.read()
                 if event_secundaria == sg.WINDOW_CLOSED or event_secundaria == "Cerrar Ventana Secundaria":
                     break
-                elif event_secundaria=='HCI_CMD & HCI_EVT':
+                elif 'HCI_CMD & HCI_EVT' in event_secundaria:
                     webbrowser.open("https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/Core-54/out/en/host-controller-interface/host-controller-interface-functional-specification.html#UUID-5ab4cace-d0bc-38ea-2675-598d57905d3d")
-                elif event_secundaria=='L2CAP':
+                elif 'L2CAP' in event_secundaria:
                     webbrowser.open("https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/Core-54/out/en/host/logical-link-control-and-adaptation-protocol-specification.html#UUID-32a25a06-4aa4-c6c7-77c5-dcfe3682355d")
-                elif event_secundaria=='ATT':
+                elif 'ATT' in event_secundaria:
                     webbrowser.open("https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/Core-54/out/en/host/attribute-protocol--att-.html#UUID-44501232-7370-3ff0-be57-3d458b542a5b")
             window_secundaria.close()
+            secondaryWindowCounter+=1
         else:
-            window_secundaria = sg.Window("Ventana Secundaria", sec_layout_Classic, modal=True)
+            if secondaryWindowCounter>0:
+                sec_layout_Classic=[[sg.Text('References to understand actions that have taken place for every protocol involved with Bluetooth Classic: ', background_color='#0082FC',key="helpTextClassic"+str(secondaryWindowCounter))],
+                                [sg.Button('HCI_CMD & HCI_EVT',key='HCI_CMD & HCI_EVT'+str(secondaryWindowCounter))],
+                                [sg.Button('L2CAP',key='L2CAP'+str(secondaryWindowCounter))],
+                                [sg.Button('RFCOMM',key='RFCOMM'+str(secondaryWindowCounter)),sg.Text('Check section 4',font=('Helvetica', 12, 'bold italic'),background_color='#0082FC', key="helpTextRFCOMM"+str(secondaryWindowCounter))],
+                                [sg.Button('AVCTP',key='AVCTP'+str(secondaryWindowCounter)), sg.Text('Check section 6',font=('Helvetica', 12, 'bold italic'),background_color='#0082FC',key="helpTextAVCTP"+str(secondaryWindowCounter))],
+                                [sg.Button('AVRCP',key='AVRCP'+str(secondaryWindowCounter)),sg.Text('PDF with specifications can be downloaded. Check section 6.',font=('Helvetica', 12, 'bold italic'),background_color='#0082FC',key="helpTextAVRCP"+str(secondaryWindowCounter))],
+                                [sg.Button('AVDTP',key='AVDTP'+str(secondaryWindowCounter)), sg.Text('PDF with specifications can be downloaded. Check section 6.',font=('Helvetica', 12, 'bold italic'),background_color='#0082FC',key="helpTextAVDTP"+str(secondaryWindowCounter))],
+                                [sg.Button('A2DP',key='A2DP'+str(secondaryWindowCounter)), sg.Text('PDF with specifications can be downloaded. Check section 2.',font=('Helvetica', 12, 'bold italic'),background_color='#0082FC',key="helpTextA2DP"+str(secondaryWindowCounter))]
+                            ]
+
+            window_secundaria = sg.Window("Ventana Secundaria", sec_layout_Classic,background_color='#0082FC', modal=True)
 
             # Mantener la ventana secundaria abierta hasta que se cierre
             while True:
                 event_secundaria, values_secundaria = window_secundaria.read()
                 if event_secundaria == sg.WINDOW_CLOSED or event_secundaria == "Cerrar Ventana Secundaria":
                     break
-                elif event_secundaria=='HCI_CMD & HCI_EVT':
+                elif 'HCI_CMD & HCI_EVT' in event_secundaria:
                     webbrowser.open("https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/Core-54/out/en/host-controller-interface/host-controller-interface-functional-specification.html#UUID-5ab4cace-d0bc-38ea-2675-598d57905d3d")
-                elif event_secundaria=='L2CAP':
+                elif 'L2CAP' in event_secundaria:
                     webbrowser.open("https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/Core-54/out/en/host/logical-link-control-and-adaptation-protocol-specification.html#UUID-32a25a06-4aa4-c6c7-77c5-dcfe3682355d")
-                elif event_secundaria=='RFCOMM':
+                elif 'RFCOMM' in event_secundaria:
                     webbrowser.open("https://www.bluetooth.com/specifications/specs/rfcomm-1-1-html/")
-                elif event_secundaria=='AVCTP':
+                elif 'AVCTP' in event_secundaria:
                     webbrowser.open("https://www.bluetooth.com/specifications/specs/avctp-1-4/")
-                elif event_secundaria=='AVRCP':
+                elif 'AVRCP' in event_secundaria:
                     webbrowser.open("https://www.bluetooth.com/specifications/specs/a-v-remote-control-profile-1-6-2/")
-                elif event_secundaria=='AVDTP':
+                elif 'AVDTP' in event_secundaria:
                     webbrowser.open("https://www.bluetooth.com/specifications/specs/a-v-distribution-transport-protocol-1-3/")
-                elif event_secundaria=='A2DP':
+                elif 'A2DP' in event_secundaria:
                     webbrowser.open("https://www.bluetooth.com/specifications/specs/advanced-audio-distribution-profile-1-4/")
             window_secundaria.close()
+            secondaryWindowCounter+=1
 window.close()

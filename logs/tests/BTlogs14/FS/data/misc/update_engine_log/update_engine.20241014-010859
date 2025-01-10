@@ -1,0 +1,77 @@
+[1014/010859.219216] [INFO:main.cc(54)] A/B Update Engine starting
+[1014/010859.232040] [INFO:BootControlClient.cpp(341)] AIDL IBootControl not available, falling back to HIDL.
+[1014/010859.236492] [INFO:BootControlClient.cpp(354)] Using HIDL version 1.2 of IBootControl
+[1014/010859.237253] [INFO:boot_control_android.cc(64)] Loaded boot control hal.
+[1014/010859.251769] [INFO:vendor_update_engine_utils.cpp(590)] createUnisocSplUpdateHelperFactory!
+[1014/010859.252489] createSplUpdateHelperFactory uni_ext: 0xb4000077be2ce460
+[1014/010859.252798] ISplUpdateHelper spl_ext 0xb4000077be2ce460
+[1014/010859.261091] [INFO:update_attempter_android.cc(955)] Detected a slot switch, OTA succeeded, device updated from 8c2d0f48 to 35493abf, previous slot: 1 current slot: 0
+[1014/010859.261896] [INFO:update_attempter_android.cc(202)] OTAResult::OTA_SUCCESSFUL
+[1014/010859.264553] [INFO:update_attempter_android.cc(842)] Clearing update complete marker.
+[1014/010859.267990] [WARNING:metrics_utils.cc(369)] time_to_reboot is negative - system_updated_at: 1/4/1970 14:51:35 GMT current time: 1/1/1970 0:01:34 GMT
+[1014/010859.279366] [INFO:delta_performer.cc(1412)] Resetting recorded hash for prepared partitions.
+[1014/010859.280453] [INFO:update_attempter_android.cc(1293)] Scheduling CleanupPreviousUpdateAction.
+[1014/010859.281183] ISplUpdateHelper spl_ext 0xb4000077be2ce460
+[1014/010859.282595] [INFO:action_processor.cc(51)] ActionProcessor: starting CleanupPreviousUpdateAction
+[1014/010859.283307] [INFO:cleanup_previous_update_action.cc(152)] Starting/resuming CleanupPreviousUpdateAction
+[1014/010859.285695] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 1 for WaitBootCompleted
+[1014/010901.287986] [INFO:cleanup_previous_update_action.cc(115)] Executing task 1
+[1014/010901.288559] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 3 for WaitBootCompleted
+[1014/010903.291376] [INFO:cleanup_previous_update_action.cc(115)] Executing task 3
+[1014/010903.301160] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 4 for WaitBootCompleted
+[1014/010905.304147] [INFO:cleanup_previous_update_action.cc(115)] Executing task 4
+[1014/010905.307295] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 5 for WaitBootCompleted
+[1014/010907.309786] [INFO:cleanup_previous_update_action.cc(115)] Executing task 5
+[1014/010907.328847] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 6 for WaitBootCompleted
+[1014/010909.330983] [INFO:cleanup_previous_update_action.cc(115)] Executing task 6
+[1014/010909.505086] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 7 for WaitBootCompleted
+[1014/010911.506025] [INFO:cleanup_previous_update_action.cc(115)] Executing task 7
+[1014/010911.507441] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 8 for WaitBootCompleted
+[1014/010913.510759] [INFO:cleanup_previous_update_action.cc(115)] Executing task 8
+[1014/010913.511921] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 9 for WaitBootCompleted
+[1014/010915.514967] [INFO:cleanup_previous_update_action.cc(115)] Executing task 9
+[1014/010915.945865] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 10 for WaitBootCompleted
+[1014/010917.948130] [INFO:cleanup_previous_update_action.cc(115)] Executing task 10
+[1014/010917.949009] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 11 for WaitBootCompleted
+[1014/010919.951835] [INFO:cleanup_previous_update_action.cc(115)] Executing task 11
+[1014/010919.954066] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 12 for WaitBootCompleted
+[1014/010921.957153] [INFO:cleanup_previous_update_action.cc(115)] Executing task 12
+[1014/010921.957895] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 13 for WaitBootCompleted
+[1014/010923.960744] [INFO:cleanup_previous_update_action.cc(115)] Executing task 13
+[1014/010924.083533] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 14 for WaitBootCompleted
+[1014/010926.086483] [INFO:cleanup_previous_update_action.cc(115)] Executing task 14
+[1014/010926.091215] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 15 for WaitBootCompleted
+[1014/010928.092296] [INFO:cleanup_previous_update_action.cc(115)] Executing task 15
+[1014/010928.648278] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 16 for WaitBootCompleted
+[1014/010930.651082] [INFO:cleanup_previous_update_action.cc(115)] Executing task 16
+[1014/010930.676837] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 17 for WaitBootCompleted
+[1014/010932.680303] [INFO:cleanup_previous_update_action.cc(115)] Executing task 17
+[1014/010932.685765] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 18 for WaitBootCompleted
+[1014/010934.688948] [INFO:cleanup_previous_update_action.cc(115)] Executing task 18
+[1014/010934.691348] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 19 for WaitBootCompleted
+[1014/010936.693269] [INFO:cleanup_previous_update_action.cc(115)] Executing task 19
+[1014/010936.694864] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 20 for WaitBootCompleted
+[1014/010938.698529] [INFO:cleanup_previous_update_action.cc(115)] Executing task 20
+[1014/010938.700059] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 21 for WaitBootCompleted
+[1014/010940.703032] [INFO:cleanup_previous_update_action.cc(115)] Executing task 21
+[1014/010940.728985] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 22 for WaitBootCompleted
+[1014/010942.731490] [INFO:cleanup_previous_update_action.cc(115)] Executing task 22
+[1014/010942.740468] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 23 for WaitBootCompleted
+[1014/010944.742777] [INFO:cleanup_previous_update_action.cc(115)] Executing task 23
+[1014/010944.743996] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 24 for WaitBootCompleted
+[1014/010946.744382] [INFO:cleanup_previous_update_action.cc(115)] Executing task 24
+[1014/010946.768560] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 25 for WaitBootCompleted
+[1014/010948.772918] [INFO:cleanup_previous_update_action.cc(115)] Executing task 25
+[1014/010948.774307] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 26 for WaitBootCompleted
+[1014/010950.776959] [INFO:cleanup_previous_update_action.cc(115)] Executing task 26
+[1014/010950.779725] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 27 for WaitBootCompleted
+[1014/010952.780213] [INFO:cleanup_previous_update_action.cc(115)] Executing task 27
+[1014/010952.793530] [INFO:cleanup_previous_update_action.cc(192)] Boot completed, waiting on markBootSuccessful()
+[1014/010952.812228] [INFO:snapshot.cpp(3836)] EnsureMetadataMounted does nothing in Android mode.
+[1014/010952.815066] [INFO:snapshot_stats.cpp(37)] Read merge statistics file failed: No such file or directory
+[1014/010952.826220] [INFO:cleanup_previous_update_action.cc(264)] Waiting for any previous merge request to complete. This can take up to several minutes.
+[1014/010952.848914] [INFO:snapshot.cpp(1680)] Update state is being processed while booting at target slot, taking no action.
+[1014/010952.857212] [INFO:snapshot.cpp(1077)] CheckMergeState for snapshots returned: Unverified
+[1014/010952.858687] [INFO:snapshot.cpp(1049)] ProcessUpdateState handling state: Unverified
+[1014/010952.859804] SaveLog2Cache flag:1
+[1014/010952.861223] cachesavelog log_to_cache:1

@@ -1,0 +1,258 @@
+[0904/082015.604041] [INFO:main.cc(54)] A/B Update Engine starting
+[0904/082015.622676] [INFO:BootControlClient.cpp(341)] AIDL IBootControl not available, falling back to HIDL.
+[0904/082015.644945] [INFO:BootControlClient.cpp(354)] Using HIDL version 1.2 of IBootControl
+[0904/082015.646633] [INFO:boot_control_android.cc(64)] Loaded boot control hal.
+[0904/082015.653122] [INFO:vendor_update_engine_utils.cpp(590)] createUnisocSplUpdateHelperFactory!
+[0904/082015.654910] createSplUpdateHelperFactory uni_ext: 0xb4000070e464f940
+[0904/082015.656010] ISplUpdateHelper spl_ext 0xb4000070e464f940
+[0904/082015.664728] [ERROR:update_attempter_android.cc(950)] prefs_->GetInt64(kPrefsPreviousSlot, &previous_slot) failed.
+[0904/082015.667358] [INFO:update_attempter_android.cc(202)] OTAResult::NOT_ATTEMPTED
+[0904/082015.673174] [INFO:update_attempter_android.cc(842)] Clearing update complete marker.
+[0904/082015.676375] [INFO:update_attempter_android.cc(1293)] Scheduling CleanupPreviousUpdateAction.
+[0904/082015.677994] ISplUpdateHelper spl_ext 0xb4000070e464f940
+[0904/082015.684530] [INFO:action_processor.cc(51)] ActionProcessor: starting CleanupPreviousUpdateAction
+[0904/082015.687588] [INFO:cleanup_previous_update_action.cc(152)] Starting/resuming CleanupPreviousUpdateAction
+[0904/082015.690658] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 1 for WaitBootCompleted
+[0904/082017.692676] [INFO:cleanup_previous_update_action.cc(115)] Executing task 1
+[0904/082017.721553] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 3 for WaitBootCompleted
+[0904/082019.723846] [INFO:cleanup_previous_update_action.cc(115)] Executing task 3
+[0904/082019.756252] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 4 for WaitBootCompleted
+[0904/082021.758583] [INFO:cleanup_previous_update_action.cc(115)] Executing task 4
+[0904/082021.760089] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 5 for WaitBootCompleted
+[0904/082023.763157] [INFO:cleanup_previous_update_action.cc(115)] Executing task 5
+[0904/082023.764793] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 6 for WaitBootCompleted
+[0904/082025.769000] [INFO:cleanup_previous_update_action.cc(115)] Executing task 6
+[0904/082025.773380] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 7 for WaitBootCompleted
+[0904/082027.775453] [INFO:cleanup_previous_update_action.cc(115)] Executing task 7
+[0904/082027.776950] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 8 for WaitBootCompleted
+[0904/082029.779937] [INFO:cleanup_previous_update_action.cc(115)] Executing task 8
+[0904/082029.785948] [INFO:cleanup_previous_update_action.cc(192)] Boot completed, waiting on markBootSuccessful()
+[0904/082029.806110] [INFO:snapshot.cpp(3836)] EnsureMetadataMounted does nothing in Android mode.
+[0904/082029.810284] [INFO:snapshot_stats.cpp(37)] Read merge statistics file failed: No such file or directory
+[0904/082029.835534] [INFO:cleanup_previous_update_action.cc(264)] Waiting for any previous merge request to complete. This can take up to several minutes.
+[0904/082029.837225] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0904/082029.840469] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0904/082029.843724] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0904/082029.845192] [INFO:snapshot.cpp(1077)] CheckMergeState for snapshots returned: None
+[0904/082029.846274] [INFO:snapshot.cpp(1049)] ProcessUpdateState handling state: None
+[0904/082029.847563] [INFO:cleanup_previous_update_action.cc(300)] Can't find any snapshot to merge.
+[0904/082029.849561] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0904/082029.852897] [INFO:cleanup_previous_update_action.cc(133)] Stopping/suspending/completing CleanupPreviousUpdateAction
+[0904/082029.856773] [INFO:cleanup_previous_update_action.cc(490)] Not reporting merge stats because state is None
+[0904/082029.858960] [INFO:cleanup_previous_update_action.cc(133)] Stopping/suspending/completing CleanupPreviousUpdateAction
+[0904/082029.864067] [INFO:action_processor.cc(116)] ActionProcessor: finished last action CleanupPreviousUpdateAction with code ErrorCode::kSuccess
+[0904/082029.865912] [INFO:update_attempter_android.cc(589)] Processing Done.
+[0904/082029.877664] [INFO:update_attempter_android.cc(842)] Clearing update complete marker.
+[0904/082029.879336] [INFO:update_attempter_android.cc(737)] Terminating cleanup previous update.
+[0904/092929.537060] [INFO:binder_service_android.cc(182)] Received a request of verifying payload metadata in /data/misc_ne/payload_metadata.bin.
+[0904/092929.687728] [INFO:payload_verifier.cc(101)] signature blob size = 267
+[0904/092929.708475] [INFO:payload_verifier.cc(117)] Truncating the signature to its unpadded size: 256.
+[0904/092929.730459] [INFO:payload_verifier.cc(128)] Verified correct signature 1 out of 1 signatures.
+[0904/092929.732578] [INFO:payload_metadata.cc(221)] Metadata hash signature matches value in Omaha response.
+[0904/092930.233363] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0904/092930.259209] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/092930.262086] [INFO:dynamic_partition_control_android.cc(1267)] boot_a is not in super partition metadata.
+[0904/092930.267284] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/092930.724936] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0904/092930.728907] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/092930.731133] [INFO:dynamic_partition_control_android.cc(1267)] dtbo_a is not in super partition metadata.
+[0904/092930.740928] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/092930.994696] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0904/092930.998239] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/092930.999860] [INFO:dynamic_partition_control_android.cc(1267)] init_boot_a is not in super partition metadata.
+[0904/092931.001764] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/092931.042939] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0904/092931.060445] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/092931.063856] [INFO:dynamic_partition_control_android.cc(1267)] l_agdsp_a is not in super partition metadata.
+[0904/092931.066235] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/092931.199227] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0904/092931.202102] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/092931.203364] [INFO:dynamic_partition_control_android.cc(1267)] l_deltanv_a is not in super partition metadata.
+[0904/092931.205365] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/092931.218860] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0904/092931.221325] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/092931.222718] [INFO:dynamic_partition_control_android.cc(1267)] l_gdsp_a is not in super partition metadata.
+[0904/092931.224981] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/092931.445258] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0904/092931.449704] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/092931.452730] [INFO:dynamic_partition_control_android.cc(1267)] l_ldsp_a is not in super partition metadata.
+[0904/092931.457030] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/092931.698094] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0904/092931.700707] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/092931.702410] [INFO:dynamic_partition_control_android.cc(1267)] l_modem_a is not in super partition metadata.
+[0904/092931.704470] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/092931.940353] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0904/092931.943623] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/092931.945165] [INFO:dynamic_partition_control_android.cc(1286)] odm_a is mapped on device mapper: /dev/block/dm-4
+[0904/092932.559507] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0904/092932.562633] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/092932.564481] [INFO:dynamic_partition_control_android.cc(1267)] pm_sys_a is not in super partition metadata.
+[0904/092932.567297] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/092932.586120] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0904/092932.589164] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/092932.591481] [INFO:dynamic_partition_control_android.cc(1286)] product_a is mapped on device mapper: /dev/block/dm-3
+[0904/092949.035072] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0904/092949.041085] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/092949.042842] [INFO:dynamic_partition_control_android.cc(1267)] sml_a is not in super partition metadata.
+[0904/092949.045478] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/092949.065724] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0904/092949.073723] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/092949.083415] [INFO:dynamic_partition_control_android.cc(1286)] system_a is mapped on device mapper: /dev/block/dm-0
+[0904/092957.695506] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0904/092957.769006] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/092957.826978] [INFO:dynamic_partition_control_android.cc(1286)] system_dlkm_a is mapped on device mapper: /dev/block/dm-6
+[0904/092957.931006] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0904/092957.972225] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/092957.990902] [INFO:dynamic_partition_control_android.cc(1286)] system_ext_a is mapped on device mapper: /dev/block/dm-1
+[0904/093001.486901] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0904/093001.489558] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/093001.491521] [INFO:dynamic_partition_control_android.cc(1267)] teecfg_a is not in super partition metadata.
+[0904/093001.494376] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/093001.507946] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0904/093001.510447] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/093001.511844] [INFO:dynamic_partition_control_android.cc(1267)] trustos_a is not in super partition metadata.
+[0904/093001.514393] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/093001.569738] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0904/093001.572174] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/093001.573320] [INFO:dynamic_partition_control_android.cc(1267)] uboot_a is not in super partition metadata.
+[0904/093001.575277] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/093001.729121] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0904/093001.731989] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/093001.733485] [INFO:dynamic_partition_control_android.cc(1267)] vbmeta_a is not in super partition metadata.
+[0904/093001.736249] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/093001.754078] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0904/093001.757367] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/093001.759136] [INFO:dynamic_partition_control_android.cc(1267)] vbmeta_odm_a is not in super partition metadata.
+[0904/093001.761355] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/093001.769989] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0904/093001.772199] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/093001.773374] [INFO:dynamic_partition_control_android.cc(1267)] vbmeta_product_a is not in super partition metadata.
+[0904/093001.775330] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/093001.783211] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0904/093001.785689] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/093001.787159] [INFO:dynamic_partition_control_android.cc(1267)] vbmeta_system_a is not in super partition metadata.
+[0904/093001.789008] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/093001.805302] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0904/093001.807467] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/093001.809198] [INFO:dynamic_partition_control_android.cc(1267)] vbmeta_system_ext_a is not in super partition metadata.
+[0904/093001.811191] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/093001.818749] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0904/093001.821409] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/093001.823126] [INFO:dynamic_partition_control_android.cc(1267)] vbmeta_vendor_a is not in super partition metadata.
+[0904/093001.826025] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/093001.837139] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0904/093001.840191] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/093001.841267] [INFO:dynamic_partition_control_android.cc(1286)] vendor_a is mapped on device mapper: /dev/block/dm-2
+[0904/093012.093160] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0904/093012.096822] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/093012.098687] [INFO:dynamic_partition_control_android.cc(1267)] vendor_boot_a is not in super partition metadata.
+[0904/093012.100859] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/093012.579891] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0904/093012.582059] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/093012.584231] [INFO:dynamic_partition_control_android.cc(1286)] vendor_dlkm_a is mapped on device mapper: /dev/block/dm-5
+[0904/093014.577037] [INFO:binder_service_android.cc(214)] Received a request of allocating space for /data/misc_ne/payload_metadata.bin.
+[0904/093014.636266] [INFO:payload_verifier.cc(101)] signature blob size = 267
+[0904/093014.641340] [INFO:payload_verifier.cc(117)] Truncating the signature to its unpadded size: 256.
+[0904/093014.646679] [INFO:payload_verifier.cc(128)] Verified correct signature 1 out of 1 signatures.
+[0904/093014.648036] [INFO:payload_metadata.cc(221)] Metadata hash signature matches value in Omaha response.
+[0904/093015.993847] Waited one second for apexservice (is service started? Number of threads started in the threadpool: 1. Are binder threads started and available?)
+[0904/093016.015428] [INFO:delta_performer.cc(843)] Preparing partitions for new update. last hash = , new hash = MaZoFguq8szL0M1tnkyYFRZLJuz3Y6cFPc7yrEPNlW8=is1JmlqIhHBuRzRqrFtxGYmxGOEMHTnewDa2Mw9HGxM=
+[0904/093016.043065] [INFO:delta_performer.cc(1412)] Resetting recorded hash for prepared partitions.
+[0904/093016.044772] [INFO:snapshot.cpp(3836)] EnsureMetadataMounted does nothing in Android mode.
+[0904/093016.045841] [INFO:dynamic_partition_control_android.cc(799)] Erasing AVB footer of system_other partition before update.
+[0904/093016.051329] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/093016.052628] [INFO:dynamic_partition_control_android.cc(771)] system_b has length 0( < AVB_FOOTER_SIZE 64), skip erasing.
+[0904/093016.055780] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot A in /dev/block/by-name/super
+[0904/093016.057156] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0904/093017.060716] Waited one second for gsiservice (is service started? Number of threads started in the threadpool: 1. Are binder threads started and available?)
+[0904/093017.085994] [ERROR:snapshot.cpp(2930)] Read state file failed: No such file or directory
+[0904/093017.248003] [INFO:BootControlClient.cpp(341)] AIDL IBootControl not available, falling back to HIDL.
+[0904/093017.309797] [INFO:BootControlClient.cpp(354)] Using HIDL version 1.2 of IBootControl
+[0904/093017.394772] [INFO:builder.cpp(1093)] [liblp] Partition vendor_b will resize from 897568768 bytes to 897409024 bytes
+[0904/093017.408081] [INFO:builder.cpp(1093)] [liblp] Partition vendor_dlkm_b will resize from 10080256 bytes to 10076160 bytes
+[0904/093017.422501] [INFO:builder.cpp(1093)] [liblp] Partition product_b will resize from 1787518976 bytes to 1787699200 bytes
+[0904/093017.423775] [INFO:builder.cpp(1093)] [liblp] Partition system_b will resize from 960237568 bytes to 960245760 bytes
+[0904/093017.424841] [INFO:builder.cpp(1093)] [liblp] Partition system_ext_b will resize from 428998656 bytes to 429137920 bytes
+[0904/093017.430200] [INFO:snapshot.cpp(3220)]  dap_metadata.cow_version(): 2 writer.GetCowVersion(): 2
+[0904/093017.436818] [INFO:partition_cow_creator.cpp(252)] Remaining free space for COW: 1696071680 bytes
+[0904/093017.438533] [INFO:snapshot.cpp(3422)] For partition system_b, device size = 960245760, snapshot size = 960245760, cow partition size = 123150336, cow file size = 0
+[0904/093017.444204] [INFO:builder.cpp(1093)] [liblp] Partition system_b-cow will resize from 0 bytes to 123150336 bytes
+[0904/093017.446015] [INFO:snapshot.cpp(3491)] Successfully created snapshot partition for system_b
+[0904/093017.460805] [INFO:partition_cow_creator.cpp(252)] Remaining free space for COW: 1572864000 bytes
+[0904/093017.476140] [INFO:snapshot.cpp(3422)] For partition system_ext_b, device size = 429137920, snapshot size = 429137920, cow partition size = 67559424, cow file size = 0
+[0904/093017.508216] [INFO:builder.cpp(1093)] [liblp] Partition system_ext_b-cow will resize from 0 bytes to 67559424 bytes
+[0904/093017.509809] [INFO:snapshot.cpp(3491)] Successfully created snapshot partition for system_ext_b
+[0904/093017.511293] [INFO:partition_cow_creator.cpp(252)] Remaining free space for COW: 1505230848 bytes
+[0904/093017.512671] [INFO:snapshot.cpp(3422)] For partition vendor_b, device size = 897409024, snapshot size = 897409024, cow partition size = 41463808, cow file size = 0
+[0904/093017.517127] [INFO:builder.cpp(1093)] [liblp] Partition vendor_b-cow will resize from 0 bytes to 41463808 bytes
+[0904/093017.518776] [INFO:snapshot.cpp(3491)] Successfully created snapshot partition for vendor_b
+[0904/093017.527622] [INFO:partition_cow_creator.cpp(252)] Remaining free space for COW: 1463287808 bytes
+[0904/093017.529037] [INFO:snapshot.cpp(3422)] For partition product_b, device size = 1787699200, snapshot size = 1787699200, cow partition size = 56365056, cow file size = 0
+[0904/093017.535358] [INFO:builder.cpp(1093)] [liblp] Partition product_b-cow will resize from 0 bytes to 56365056 bytes
+[0904/093017.537484] [INFO:snapshot.cpp(3491)] Successfully created snapshot partition for product_b
+[0904/093017.539128] [INFO:partition_cow_creator.cpp(252)] Remaining free space for COW: 1406664704 bytes
+[0904/093017.540721] [INFO:snapshot.cpp(3422)] For partition odm_b, device size = 88244224, snapshot size = 88244224, cow partition size = 6049792, cow file size = 0
+[0904/093017.546214] [INFO:builder.cpp(1093)] [liblp] Partition odm_b-cow will resize from 0 bytes to 6049792 bytes
+[0904/093017.548134] [INFO:snapshot.cpp(3491)] Successfully created snapshot partition for odm_b
+[0904/093017.550379] [INFO:partition_cow_creator.cpp(252)] Remaining free space for COW: 1400373248 bytes
+[0904/093017.551769] [INFO:snapshot.cpp(3422)] For partition vendor_dlkm_b, device size = 10076160, snapshot size = 10076160, cow partition size = 6365184, cow file size = 0
+[0904/093017.558306] [INFO:builder.cpp(1093)] [liblp] Partition vendor_dlkm_b-cow will resize from 0 bytes to 6365184 bytes
+[0904/093017.568135] [INFO:snapshot.cpp(3491)] Successfully created snapshot partition for vendor_dlkm_b
+[0904/093017.569622] [INFO:partition_cow_creator.cpp(252)] Remaining free space for COW: 1393557504 bytes
+[0904/093017.571244] [INFO:snapshot.cpp(3422)] For partition system_dlkm_b, device size = 348160, snapshot size = 348160, cow partition size = 4227072, cow file size = 0
+[0904/093017.577274] [INFO:builder.cpp(1093)] [liblp] Partition system_dlkm_b-cow will resize from 0 bytes to 4227072 bytes
+[0904/093017.579530] [INFO:snapshot.cpp(3491)] Successfully created snapshot partition for system_dlkm_b
+[0904/093017.580677] [INFO:snapshot.cpp(3494)] Allocating CoW images.
+[0904/093017.581982] [INFO:snapshot.cpp(3503)] Successfully created snapshot for odm_b
+[0904/093017.583119] [INFO:snapshot.cpp(3503)] Successfully created snapshot for product_b
+[0904/093017.584109] [INFO:snapshot.cpp(3503)] Successfully created snapshot for system_b
+[0904/093017.585697] [INFO:snapshot.cpp(3503)] Successfully created snapshot for system_dlkm_b
+[0904/093017.587098] [INFO:snapshot.cpp(3503)] Successfully created snapshot for system_ext_b
+[0904/093017.588468] [INFO:snapshot.cpp(3503)] Successfully created snapshot for vendor_b
+[0904/093017.590996] [INFO:snapshot.cpp(3503)] Successfully created snapshot for vendor_dlkm_b
+[0904/093017.593135] [INFO:builder.cpp(1271)] [liblp] Partition group group_unisoc_b remaining size : 1694670848
+[0904/093017.596577] [INFO:snapshot.cpp(2558)] Successfully unmapped snapshot system_b
+[0904/093017.643077] [INFO:snapshot.cpp(2629)] Mapped COW device for system_b at /dev/block/dm-14
+[0904/093017.645822] [INFO:cow_writer.cpp(242)] COW image /dev/block/dm-14 has size 123150336
+[0904/093017.666509] [INFO:cow_writer.cpp(274)] Batch writes: enabled
+[0904/093017.668720] [INFO:cow_writer.cpp(288)] 2 thread used for compression
+[0904/093017.712128] [INFO:snapshot.cpp(2558)] Successfully unmapped snapshot system_ext_b
+[0904/093017.744262] [INFO:snapshot.cpp(2629)] Mapped COW device for system_ext_b at /dev/block/dm-14
+[0904/093017.746902] [INFO:cow_writer.cpp(242)] COW image /dev/block/dm-14 has size 67559424
+[0904/093017.763268] [INFO:cow_writer.cpp(274)] Batch writes: enabled
+[0904/093017.765290] [INFO:cow_writer.cpp(288)] 2 thread used for compression
+[0904/093017.799846] [INFO:snapshot.cpp(2558)] Successfully unmapped snapshot vendor_b
+[0904/093017.824366] [INFO:snapshot.cpp(2629)] Mapped COW device for vendor_b at /dev/block/dm-14
+[0904/093017.826274] [INFO:cow_writer.cpp(242)] COW image /dev/block/dm-14 has size 41463808
+[0904/093017.841435] [INFO:cow_writer.cpp(274)] Batch writes: enabled
+[0904/093017.843636] [INFO:cow_writer.cpp(288)] 2 thread used for compression
+[0904/093017.883379] [INFO:snapshot.cpp(2558)] Successfully unmapped snapshot product_b
+[0904/093017.913093] [INFO:snapshot.cpp(2629)] Mapped COW device for product_b at /dev/block/dm-14
+[0904/093017.931331] [INFO:cow_writer.cpp(242)] COW image /dev/block/dm-14 has size 56365056
+[0904/093017.984283] [INFO:cow_writer.cpp(274)] Batch writes: enabled
+[0904/093018.003862] [INFO:cow_writer.cpp(288)] 2 thread used for compression
+[0904/093018.083913] [INFO:snapshot.cpp(2558)] Successfully unmapped snapshot odm_b
+[0904/093018.119249] [INFO:snapshot.cpp(2629)] Mapped COW device for odm_b at /dev/block/dm-14
+[0904/093018.126497] [INFO:cow_writer.cpp(242)] COW image /dev/block/dm-14 has size 6049792
+[0904/093018.150000] [INFO:cow_writer.cpp(274)] Batch writes: enabled
+[0904/093018.161149] [INFO:cow_writer.cpp(288)] 2 thread used for compression
+[0904/093018.203649] [INFO:snapshot.cpp(2558)] Successfully unmapped snapshot vendor_dlkm_b
+[0904/093018.280049] [INFO:snapshot.cpp(2629)] Mapped COW device for vendor_dlkm_b at /dev/block/dm-14
+[0904/093018.287384] [INFO:cow_writer.cpp(242)] COW image /dev/block/dm-14 has size 6365184
+[0904/093018.313318] [INFO:cow_writer.cpp(274)] Batch writes: enabled
+[0904/093018.318066] [INFO:cow_writer.cpp(288)] 2 thread used for compression
+[0904/093018.350224] [INFO:snapshot.cpp(2558)] Successfully unmapped snapshot system_dlkm_b
+[0904/093018.378695] [INFO:snapshot.cpp(2629)] Mapped COW device for system_dlkm_b at /dev/block/dm-14
+[0904/093018.392897] [INFO:cow_writer.cpp(242)] COW image /dev/block/dm-14 has size 4227072
+[0904/093018.417337] [INFO:cow_writer.cpp(274)] Batch writes: enabled
+[0904/093018.424046] [INFO:cow_writer.cpp(288)] 2 thread used for compression
+[0904/093018.493206] [INFO:writer.cpp(397)] [liblp] Updated logical partition table at slot 1 on device super
+[0904/093018.497386] [INFO:builder.cpp(1271)] [liblp] Partition group group_unisoc_a remaining size : 1694834688
+[0904/093018.503629] [INFO:snapshot.cpp(3326)] Virtual A/B using userspace snapshots
+[0904/093018.506112] [INFO:snapshot.cpp(3330)] io_uring for snapshots enabled
+[0904/093023.541179] [ERROR:snapuserd_client.cpp(83)] Timed out connecting to snapuserd socket: snapuserd
+[0904/093023.555903] [INFO:snapshot.cpp(3358)] Successfully created all snapshots for target slot _b
+[0904/093023.564491] [INFO:delta_performer.cc(861)] PreparePartitionsForUpdate done.
+[0904/093023.566512] [INFO:update_attempter_android.cc(1155)] Successfully allocated space for payload.
+[0904/164250.408638] SaveLog2Cache flag:1
+[0904/164250.417974] cachesavelog log_to_cache:1

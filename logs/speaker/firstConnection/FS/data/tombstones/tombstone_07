@@ -1,0 +1,1900 @@
+*** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
+Build fingerprint: 'motorola/lion_gq/lion:14/ULA34.89-164-4/f37c63eb:user/release-keys'
+Revision: '0'
+ABI: 'arm'
+Timestamp: 2025-01-07 13:42:19.792306216-0300
+Process uptime: 207438s
+Cmdline: media.unisoc.codec2 id.hardware.media.c2@1.1-unisoc-service
+pid: 598, tid: 11219, name: soc.avc.decoder  >>> media.unisoc.codec2 <<<
+uid: 1046
+signal 0 (SIGSEGV), code 1 (SEGV_MAPERR), fault addr --------
+Cause: null pointer dereference
+    r0  00000000  r1  f0e1ae10  r2  0000000c  r3  00000001
+    r4  00000000  r5  ebc7ae98  r6  00000040  r7  ee1c150c
+    r8  00000000  r9  eb5ba1c0  r10 ec67a9f0  r11 00000000
+    ip  ed0fb508  sp  eb5ba048  lr  ed0eacfc  pc  ed0eccc0
+
+14 total frames
+backtrace:
+      #00 pc 0000ccc0  /vendor/lib/libcodec2_unisoc_avcdec.so (android::C2UnisocAvcDec::VSP_unbind_cb(void*)+24) (BuildId: c678e8f38fd875357ba6240aeba0ff36)
+      #01 pc 0000acf8  /vendor/lib/libcodec2_unisoc_avcdec.so (android::C2UnisocAvcDec::UnbindFrameWrapper(void*, void*)+4) (BuildId: c678e8f38fd875357ba6240aeba0ff36)
+      #02 pc 00007498  /vendor/lib/libomx_avcdec_hw_sprd.so (H264Dec_clear_delayed_buffer+100) (BuildId: 17405981d85d08b8ca41da5d942ea622)
+      #03 pc 0000da9c  /vendor/lib/libomx_avcdec_hw_sprd.so (H264Dec_ReleaseRefBuffers+68) (BuildId: 17405981d85d08b8ca41da5d942ea622)
+      #04 pc 0000eae8  /vendor/lib/libomx_avcdec_hw_sprd.so (H264DecRelease+8) (BuildId: 17405981d85d08b8ca41da5d942ea622)
+      #05 pc 0000ab34  /vendor/lib/libcodec2_unisoc_avcdec.so (android::C2UnisocAvcDec::releaseDecoder()+292) (BuildId: c678e8f38fd875357ba6240aeba0ff36)
+      #06 pc 0000d724  /vendor/lib/libcodec2_unisoc_avcdec.so (android::C2UnisocAvcDec::onRelease()+120) (BuildId: c678e8f38fd875357ba6240aeba0ff36)
+      #07 pc 0001bbc3  /vendor/lib/libcodec2_unisoc_common.so (android::SimpleUnisocC2Component::WorkHandler::onMessageReceived(android::sp<android::AMessage> const&)+322) (BuildId: fdee27b21fa0b5efe1bb5be688f1a856)
+      #08 pc 000107b5  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (android::AHandler::deliverMessage(android::sp<android::AMessage> const&)+24) (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa)
+      #09 pc 00012e73  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (android::AMessage::deliver()+82) (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa)
+      #10 pc 00010f83  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (android::ALooper::loop()+510) (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa)
+      #11 pc 0000d789  /apex/com.android.vndk.v33/lib/libutils.so (android::Thread::_threadLoop(void*)+264) (BuildId: 612ae32fde5fc8cc3e1e84d39261d021)
+      #12 pc 00094c5f  /apex/com.android.runtime/lib/bionic/libc.so (__pthread_start(void*)+40) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #13 pc 0004b653  /apex/com.android.runtime/lib/bionic/libc.so (__start_thread+30) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+
+memory near r1 ([anon:scudo:primary]):
+    f0e1adf0 00000000 00000004 00000000 00000000  ................
+    f0e1ae00 0002c103 1fdd0000 00000000 00000000  ................
+    f0e1ae10 ef5edc44 e5b12050 00000000 00000d11  D.^.P ..........
+    f0e1ae20 f0e58de0 e5b209f0 f0e5b5e0 e5b1d0f0  ................
+    f0e1ae30 00000000 00000000 00000000 00000000  ................
+    f0e1ae40 00028103 66fb0000 00000000 00000000  .......f........
+    f0e1ae50 abb54463 0000001a 00000001 00000000  cD..............
+    f0e1ae60 677a2f30 0000113e 00000003 f0fdca50  0/zg>.......P...
+    f0e1ae70 f0ebd450 f0fe67d0 00000000 00000000  P....g..........
+    f0e1ae80 00028003 2f0d0000 00000000 00000000  ......./........
+    f0e1ae90 00000000 00000000 f0e59a8c 00000001  ................
+    f0e1aea0 00000099 00000000 f0eb5110 f0eb5110  .........Q...Q..
+    f0e1aeb0 f0eb5114 00000000 00000000 00000000  .Q..............
+    f0e1aec0 00030003 54550000 00000000 00000000  ......UT........
+    f0e1aed0 00000028 00000001 00000002 00000000  (...............
+    f0e1aee0 00000000 00000000 00000010 00000001  ................
+
+memory near r5 ([anon:scudo:secondary]):
+    ebc7ae70 00000000 00000000 00000000 00000000  ................
+    ebc7ae80 00000000 00000000 00000000 00000000  ................
+    ebc7ae90 00000000 00000000 ebc7ba38 00000013  ........8.......
+    ebc7aea0 00000013 ebc7ba88 00000003 ebc7bad8  ................
+    ebc7aeb0 00000000 00000000 00000004 ebc7bb28  ............(...
+    ebc7aec0 000001ff ebc7c458 ebc7c518 ebc7c5d8  ....X...........
+    ebc7aed0 ebc7c5d8 00000000 00000000 00000000  ................
+    ebc7aee0 00000000 00000000 00000000 00000000  ................
+    ebc7aef0 ebc7c158 00000003 00000000 00000000  X...............
+    ebc7af00 ebc7c970 00000013 00000000 ebc7c9c0  p...............
+    ebc7af10 00000000 ebc7ca10 00000000 00000000  ................
+    ebc7af20 00000004 ebc7ca60 000001ff 00000000  ....`...........
+    ebc7af30 00000000 00000000 00000000 00000000  ................
+    ebc7af40 00000000 00000000 00000000 00000000  ................
+    ebc7af50 00000000 00000000 00000000 00000000  ................
+    ebc7af60 00000000 00000000 00000000 00000000  ................
+
+memory near r7 ([anon:scudo:primary]):
+    ee1c14e0 00000000 00000000 00000000 00000000  ................
+    ee1c14f0 00000000 f0e1545c f0e15450 00000000  ....\T..PT......
+    ee1c1500 00000001 00000001 00000000 00000000  ................
+    ee1c1510 00000000 00000000 56107c72 00000001  ........r|.V....
+    ee1c1520 00000006 00000006 00000000 00000438  ............8...
+    ee1c1530 00000780 00000440 00000780 002fd000  ....@........./.
+    ee1c1540 00000000 00000000 00000000 00000000  ................
+    ee1c1550 00000000 00000000 00000000 00000000  ................
+    ee1c1560 f0ff7c9c f0ff7c90 f0e08ddc f0e08dd0  .|...|..........
+    ee1c1570 00000000 00000002 f0ff93dc f0ff93d0  ................
+    ee1c1580 f0e5e880 f0e60540 00000000 00000000  ....@...........
+    ee1c1590 00000001 00000000 00000001 00000000  ................
+    ee1c15a0 00000000 ee1c15a4 ee1c15a4 00000000  ................
+    ee1c15b0 e4e01720 00000005 00000000 00000000   ...............
+    ee1c15c0 3f800000 00000000 f0e16ed0 eed39dc4  ...?.....n......
+    ee1c15d0 e5b2e830 00000008 00000000 00000000  0...............
+
+memory near r9 ([anon:stack_and_tls:11219]):
+    eb5ba1a0 eb5ba1c0 eef6cc61 eef6cc37 eef23655  ..[.a...7...U6..
+    eb5ba1b0 eb5ba1c8 eef6cc37 eb5ba1c0 00000000  ..[.7.....[.....
+    eb5ba1c0 ed0dc1c0 eb1a41c0 00002bd3 00000256  .....A...+..V...
+    eb5ba1d0 00000001 eb4bd000 000fd1c0 00001000  ......K.........
+    eb5ba1e0 00000000 00000000 00000003 00000000  ................
+    eb5ba1f0 f05de33d e5b1e1b0 00000000 80000000  =.].............
+    eb5ba200 00000000 f0d47000 00000000 eb5ba1c0  .....p........[.
+    eb5ba210 00000000 00000001 00000000 eb4bd000  ..............K.
+    eb5ba220 00101000 eb4be000 000ff000 63617473  ......K.....stac
+    eb5ba230 6e615f6b 6c745f64 31313a73 00393132  k_and_tls:11219.
+    eb5ba240 00000000 00000000 00000000 00000000  ................
+    eb5ba250 00000000 00000000 00000000 00000000  ................
+    eb5ba260 00000000 00000000 00000000 00000000  ................
+    eb5ba270 00000000 00000000 00000000 00000000  ................
+    eb5ba280 00000000 00000000 00000000 00000000  ................
+    eb5ba290 00000000 00000000 00000000 00000000  ................
+
+memory near r10 ([anon:stack_and_tls:1071]):
+    ec67a9d0 00000000 00000000 00000000 00000000  ................
+    ec67a9e0 00000000 00000000 00000000 00000000  ................
+    ec67a9f0 00000000 00000000 00000000 00000000  ................
+    ec67aa00 00000000 00000000 00000000 00000000  ................
+    ec67aa10 00000000 00000000 00000000 00000000  ................
+    ec67aa20 00000000 00000000 00000000 00000000  ................
+    ec67aa30 00000000 00000000 00000000 00000000  ................
+    ec67aa40 00000000 00000000 00000000 00000000  ................
+    ec67aa50 00000000 00000000 00000000 00000000  ................
+    ec67aa60 00000000 00000000 00000000 00000000  ................
+    ec67aa70 00000000 00000000 00000000 00000000  ................
+    ec67aa80 00000000 00000000 00000000 00000000  ................
+    ec67aa90 00000000 00000000 00000000 00000000  ................
+    ec67aaa0 00000000 00000000 00000000 00000000  ................
+    ec67aab0 00000000 00000000 00000000 00000000  ................
+    ec67aac0 00000000 00000000 00000000 00000000  ................
+
+memory near ip (/vendor/lib/libcodec2_unisoc_avcdec.so):
+    ed0fb4e0 f0a2d6f9 ed179a8b ed135640 eed23bd9  ........@V...;..
+    ed0fb4f0 ed0ef554 ed0f0ca0 ed0ef6d0 efe78f9b  T...............
+    ed0fb500 eed182b9 ed0ecd0c ed0ecca8 ed0ef198  ................
+    ed0fb510 ed0f8e20 ed135d78 ed0f1020 ed0ef33c   ...x].. ...<...
+    ed0fb520 ed0f0958 ed0f09c4 ed0f045c ed0eedb4  X.......\.......
+    ed0fb530 eed20827 eed20669 ed0f0a18 ed0f0178  '...i.......x...
+    ed0fb540 eed23fdd ed0f0b58 ed0efe20 ed135148  .?..X... ...HQ..
+    ed0fb550 ed135cb4 ed0efbbc ef5e5e59 f03f9075  .\......Y^^.u.?.
+    ed0fb560 f03f9065 f03f907d f03f9091 eed2099b  e.?.}.?...?.....
+    ed0fb570 ed0ecc2c efe7e5d5 efe7de1f efe79245  ,...........E...
+    ed0fb580 efe78fb3 efe78d09 efe7d0c1 efe7c465  ............e...
+    ed0fb590 efe7c125 f05de9b9 eed182f5 eed23d99  %.....]......=..
+    ed0fb5a0 eef6d5b5 eef6c14f eef6c181 eef6c1a3  ....O...........
+    ed0fb5b0 eef6c195 eef6c1b5 eef6e07d eef68861  ........}...a...
+    ed0fb5c0 efeb65a5 eef6d79d eef6c209 eef6db35  .e..........5...
+    ed0fb5d0 eef6c24d f0a342b9 eef225cd f0a2c553  M....B...%..S...
+
+memory near sp ([anon:stack_and_tls:11219]):
+    eb5ba020 00000018 f0fe0f80 00000000 eef9c2c0  ................
+    eb5ba030 ebc3f000 61200004 00000004 883c8f7d  ...... a....}.<.
+    eb5ba040 ebc3f000 00000000 ee1c14d0 f0e1ae10  ................
+    eb5ba050 ed0eacf4 00000001 ebc3f000 ed0eacfc  ................
+    eb5ba060 00000000 ebf0949c 883c8f7d ebc3f000  ........}.<.....
+    eb5ba070 ebc7ae98 00000040 ee1c150c 00000000  ....@...........
+    eb5ba080 eb5ba1c0 ec67a9f0 00000000 ebf0faa0  ..[...g.........
+    eb5ba090 ebc3f000 ebf1056c 00000040 ee1c150c  ....l...@.......
+    eb5ba0a0 00000000 ebf10aec ee1c14d0 ed0eab38  ............8...
+    eb5ba0b0 ee1c14d0 ee1c1670 ee1c14d0 00000000  ....p...........
+    eb5ba0c0 eb5ba158 ed0ed728 eb5ba128 f0e60540  X.[.(...(.[.@...
+    eb5ba0d0 00000000 eed15bc5 0000002c f0e1c050  .....[..,...P...
+    eb5ba0e0 eb5ba458 00000000 ee1c14d0 f0e175d0  X.[..........u..
+    eb5ba0f0 883c8f7d f0e60540 eb5ba128 eb5ba128  }.<.@...(.[.(.[.
+    eb5ba100 eb5ba140 ef5df7b7 02000000 eef165eb  @.[...]......e..
+    eb5ba110 00000018 883c8f7d f0e0aa90 f0e60540  ....}.<.....@...
+
+memory near lr (/vendor/lib/libcodec2_unisoc_avcdec.so):
+    ed0eacd0 0a000000 eb003c1d e3a00000 e5840000  .....<..........
+    ed0eace0 e8bd8830 e92d4800 eb003a1c e3a00000  0....H-..:......
+    ed0eacf0 e8bd8800 e92d4800 eb003a1c e3a00000  .....H-..:......
+    ed0ead00 e8bd8800 ea00395d ea003960 ea003963  ....]9..`9..c9..
+    ed0ead10 e92d4070 e24dd020 e1a04000 e59f01ac  p@-. .M..@......
+    ed0ead20 e1a05001 e3a06000 e08f0000 e5900000  .P...`..........
+    ed0ead30 e5900000 e58d001c e58d6018 e58d6014  .........`...`..
+    ed0ead40 e5d40172 e3500000 0a000012 e1a00005  r.....P.........
+    ed0ead50 eb003912 e58401d0 e58461d4 e58451d8  .9.......a...Q..
+    ed0ead60 e3a01001 e98d0021 e58d6000 e58d100c  ....!....`......
+    ed0ead70 e3a00004 e59f1168 e59f2168 e59f3168  ....h...h!..h1..
+    ed0ead80 e08f1001 e08f2002 e08f3003 eb0038bf  ..... ...0...8..
+    ed0ead90 e3a00000 ea000044 e3a0001c eb0038b3  ....D........8..
+    ed0eada0 e5d43171 e1a01005 e3a02000 e1a06000  q1....... ...`..
+    ed0eadb0 eb00391a e2845f73 e1a01006 e1a00005  .9..s_..........
+    ed0eadc0 ebffff71 e59401cc eb003918 e3700001  q........9....p.
+
+memory near pc (/vendor/lib/libcodec2_unisoc_avcdec.so):
+    ed0ecca0 1afffffb e12fff1e e92d401f e59004e4  ....../..@-.....
+    ed0eccb0 e3a02004 e3500000 0300200c e7914002  . ....P.. ...@..
+    ed0eccc0 e5940000 e5943008 e88d0012 e58d0008  .....0..........
+    ed0eccd0 e3a00002 e59f1028 e59f2028 e08f1001  ....(...( ......
+    ed0ecce0 e08f2002 eb0030e9 e5940000 e3500000  . ...0........P.
+    ed0eccf0 12400001 15840000 e3a00000 e28dd010  ..@.............
+    ed0ecd00 e8bd8010 ffffa0fd ffffb195 e92d401f  .............@-.
+    ed0ecd10 e59004e4 e3a02004 e3500000 0300200c  ..... ....P.. ..
+    ed0ecd20 e7914002 e5940000 e5943008 e88d0012  .@.......0......
+    ed0ecd30 e58d0008 e3a00002 e59f1024 e59f2024  ........$...$ ..
+    ed0ecd40 e08f1001 e08f2002 eb0030d0 e5940000  ..... ...0......
+    ed0ecd50 e2800001 e5840000 e3a00000 e28dd010  ................
+    ed0ecd60 e8bd8010 ffffa099 ffff95e0 e92d4ff0  .............O-.
+    ed0ecd70 e24dd024 e1a04000 e59f01d8 e1a07001  $.M..@.......p..
+    ed0ecd80 e1a06002 e1a01004 e08f0000 e5900000  .`..............
+    ed0ecd90 e5900000 e58d0020 e3a00000 e58d000c  .... ...........
+
+memory map (1208 entries):
+    049ae000-049aefff r--         0      1000  /vendor/bin/hw/android.hardware.media.c2@1.1-unisoc-service (BuildId: 9d4f487cd84e0ae13137a870c5e85380) (load bias 0x1000)
+    049af000-049b0fff r-x         0      2000  /vendor/bin/hw/android.hardware.media.c2@1.1-unisoc-service (BuildId: 9d4f487cd84e0ae13137a870c5e85380) (load bias 0x1000)
+    049b1000-049b1fff r--      1000      1000  /vendor/bin/hw/android.hardware.media.c2@1.1-unisoc-service (BuildId: 9d4f487cd84e0ae13137a870c5e85380) (load bias 0x1000)
+    e46f7000-e46f7fff ---         0      1000
+    e46f8000-e47f8fff rw-         0    101000  [anon:scudo:secondary]
+    e47f9000-e47f9fff ---         0      1000
+    e4cfd000-e4cfdfff ---         0      1000
+    e4cfe000-e4dfefff rw-         0    101000  [anon:scudo:secondary]
+    e4dff000-e4dfffff ---         0      1000
+    e4e00000-e4e3ffff rw-         0     40000  [anon:scudo:primary]
+    e52af000-e52affff ---         0      1000
+    e52b0000-e53b0fff rw-         0    101000  [anon:scudo:secondary]
+    e53b1000-e53b1fff ---         0      1000
+    e57f9000-e57f9fff ---         0      1000
+    e57fa000-e58fafff rw-         0    101000  [anon:scudo:secondary]
+    e58fb000-e58fbfff ---         0      1000
+    e59fd000-e59fdfff ---         0      1000
+    e59fe000-e5afefff rw-         0    101000  [anon:scudo:secondary]
+    e5aff000-e5afffff ---         0      1000
+    e5b00000-e5b3ffff rw-         0     40000  [anon:scudo:primary]
+    e5f92000-e6032fff rw-         0     a1000  /dev/ashmem/MessageQueue (deleted)
+    e6033000-e6184fff rw-         0    152000  /dmabuf:
+    e6185000-e6185fff ---         0      1000
+    e6186000-e6286fff rw-         0    101000  [anon:scudo:secondary]
+    e6287000-e6287fff ---         0      1000
+    e628a000-e6489fff rw-         0    200000  /dmabuf:
+    e648a000-e652afff rw-         0     a1000  /dev/ashmem/MessageQueue (deleted)
+    e652b000-e652bfff ---         0      1000
+    e652c000-e662afff rw-         0     ff000  [anon:stack_and_tls:11780]
+    e662b000-e662cfff ---         0      2000
+    e662d000-e672dfff rw-         0    101000  [anon:scudo:secondary]
+    e672e000-e672efff ---         0      1000
+    e6758000-e6758fff ---         0      1000
+    e6759000-e6857fff rw-         0     ff000  [anon:stack_and_tls:11779]
+    e6858000-e6858fff ---         0      1000
+    e6cb9000-e6cfffff rw-         0     47000  /dmabuf:
+    e6da0000-e6de6fff rw-         0     47000  /dmabuf:
+    e6e87000-e6ecdfff rw-         0     47000  /dmabuf:
+    e7055000-e709bfff rw-         0     47000  /dmabuf:
+    e727c000-e72c2fff rw-         0     47000  /dmabuf:
+    e72c3000-e736bfff rw-         0     a9000  /dmabuf:
+    e736c000-e73b2fff rw-         0     47000  /dmabuf:
+    e73b3000-e7504fff rw-         0    152000  /dmabuf:
+    e7813000-e7813fff ---         0      1000
+    e7814000-e7914fff rw-         0    101000  [anon:scudo:secondary]
+    e7915000-e7915fff ---         0      1000
+    e7a12000-e7ab2fff rw-         0     a1000  /dev/ashmem/MessageQueue (deleted)
+    e7ab3000-e7b53fff rw-         0     a1000  /dev/ashmem/MessageQueue (deleted)
+    e8214000-e82b4fff rw-         0     a1000  /dev/ashmem/MessageQueue (deleted)
+    e82b5000-e84b4fff rw-         0    200000  /dmabuf:
+    e84fc000-e84fcfff ---         0      1000
+    e84fd000-e85fbfff rw-         0     ff000  [anon:stack_and_tls:11307]
+    e85fc000-e85fdfff ---         0      2000
+    e85fe000-e86fcfff rw-         0     ff000  [anon:stack_and_tls:11306]
+    e86fd000-e86fefff ---         0      2000
+    e86ff000-e87fdfff rw-         0     ff000  [anon:stack_and_tls:11305]
+    e87fe000-e87fefff ---         0      1000
+    e87ff000-e89fefff rw-         0    200000  /dmabuf:
+    e89ff000-e89fffff ---         0      1000
+    e8a00000-e8afefff rw-         0     ff000  [anon:stack_and_tls:11296]
+    e8aff000-e8b00fff ---         0      2000
+    e8b01000-e8bfffff rw-         0     ff000  [anon:stack_and_tls:11295]
+    e8c00000-e8c01fff ---         0      2000
+    e8c02000-e8d00fff rw-         0     ff000  [anon:stack_and_tls:11294]
+    e8d01000-e8d01fff ---         0      1000
+    e9200000-e923ffff rw-         0     40000  [anon:scudo:primary]
+    e95eb000-e9631fff rw-         0     47000  /dmabuf:
+    e9632000-e9678fff rw-         0     47000  /dmabuf:
+    e9679000-e96bffff rw-         0     47000  /dmabuf:
+    e96c0000-e96fffff rw-         0     40000  [anon:scudo:primary]
+    e9740000-e977ffff rw-         0     40000  [anon:scudo:primary]
+    e9ac0000-e9afffff rw-         0     40000  [anon:scudo:primary]
+    e9b40000-e9b7ffff rw-         0     40000  [anon:scudo:primary]
+    e9cf9000-e9cf9fff ---         0      1000
+    e9cfa000-e9d54fff rw-         0     5b000  [anon:scudo:secondary]
+    e9d55000-e9d55fff ---         0      1000
+    e9d72000-e9db8fff rw-         0     47000  /dmabuf:
+    e9db9000-e9dfffff rw-         0     47000  /dmabuf:
+    e9e00000-e9f3ffff rw-         0    140000  [anon:scudo:primary]
+    ea080000-ea23ffff rw-         0    1c0000  [anon:scudo:primary]
+    ea284000-ea2cafff rw-         0     47000  /dmabuf:
+    ea2cb000-ea2cbfff ---         0      1000
+    ea2cc000-ea326fff rw-         0     5b000  [anon:scudo:secondary]
+    ea327000-ea327fff ---         0      1000
+    ea47d000-ea47dfff ---         0      1000
+    ea47e000-ea57efff rw-         0    101000  [anon:scudo:secondary]
+    ea57f000-ea57ffff ---         0      1000
+    ea580000-ea5bffff rw-         0     40000  [anon:scudo:primary]
+    ea5f9000-ea63ffff rw-         0     47000  /dmabuf:
+    ea640000-ea67ffff rw-         0     40000  [anon:scudo:primary]
+    ea693000-ea693fff ---         0      1000
+    ea694000-ea6eefff rw-         0     5b000  [anon:scudo:secondary]
+    ea6ef000-ea6effff ---         0      1000
+    ea6f2000-ea738fff rw-         0     47000  /dmabuf:
+    ea739000-ea77ffff rw-         0     47000  /dmabuf:
+    ea780000-ea7bffff rw-         0     40000  [anon:scudo:primary]
+    ea7c0000-ea860fff rw-         0     a1000  /dev/ashmem/MessageQueue (deleted)
+    ea861000-ea861fff ---         0      1000
+    ea862000-ea962fff rw-         0    101000  [anon:scudo:secondary]
+    ea963000-ea964fff ---         0      2000
+    ea965000-ea9bffff rw-         0     5b000  [anon:scudo:secondary]
+    ea9c0000-ea9c0fff ---         0      1000
+    ea9cf000-eaa15fff rw-         0     47000  /dmabuf:
+    eaa16000-eaa16fff ---         0      1000
+    eaa17000-eab15fff rw-         0     ff000  [anon:stack_and_tls:31765]
+    eab16000-eab16fff ---         0      1000
+    eab4d000-eab93fff rw-         0     47000  /dmabuf:
+    eab94000-eab94fff ---         0      1000
+    eab95000-eabeffff rw-         0     5b000  [anon:scudo:secondary]
+    eabf0000-eabf0fff ---         0      1000
+    eabff000-eac45fff rw-         0     47000  /dmabuf:
+    eac46000-eac46fff ---         0      1000
+    eac47000-eaca1fff rw-         0     5b000  [anon:scudo:secondary]
+    eaca2000-eaca3fff ---         0      2000
+    eaca4000-eacfefff rw-         0     5b000  [anon:scudo:secondary]
+    eacff000-eacfffff ---         0      1000
+    ead00000-eadbffff rw-         0     c0000  [anon:scudo:primary]
+    eadc0000-eadfffff rw-         0     40000  [anon:scudo:primary]
+    eae3f000-eae3ffff ---         0      1000
+    eae40000-eaf3efff rw-         0     ff000  [anon:stack_and_tls:11221]
+    eaf3f000-eaf3ffff ---         0      1000
+    eaf40000-eaf7ffff rw-         0     40000  [anon:scudo:primary]
+    eafa3000-eafa3fff ---         0      1000
+    eafa4000-eaffefff rw-         0     5b000  [anon:scudo:secondary]
+    eafff000-eaffffff ---         0      1000
+    eb000000-eb03ffff rw-         0     40000  [anon:scudo:primary]
+    eb060000-eb0a6fff rw-         0     47000  /dmabuf:
+    eb0a7000-eb0a7fff ---         0      1000
+    eb0a8000-eb1a6fff rw-         0     ff000  [anon:stack_and_tls:11220]
+    eb1a7000-eb1a8fff ---         0      2000
+    eb1a9000-eb203fff rw-         0     5b000  [anon:scudo:secondary]
+    eb204000-eb204fff ---         0      1000
+    eb239000-eb27ffff rw-         0     47000  /dmabuf:
+    eb280000-eb2bffff rw-         0     40000  [anon:scudo:primary]
+    eb380000-eb3bffff rw-         0     40000  [anon:scudo:primary]
+    eb3e1000-eb3e1fff ---         0      1000
+    eb3e2000-eb43cfff rw-         0     5b000  [anon:scudo:secondary]
+    eb43d000-eb43dfff ---         0      1000
+    eb476000-eb4bcfff rw-         0     47000  /dmabuf:
+    eb4bd000-eb4bdfff ---         0      1000
+    eb4be000-eb5bcfff rw-         0     ff000  [anon:stack_and_tls:11219]
+    eb5bd000-eb5bdfff ---         0      1000
+    eb6a1000-eb77afff r--         0     da000  /apex/com.android.runtime/lib/bionic/libc.so (BuildId: 9559d8975108e367c7e229de57df0a3b) (load bias 0x10000)
+    eb77b000-eb7bffff r--         0     45000  /vendor/lib/libcodec2_unisoc_common.so (BuildId: fdee27b21fa0b5efe1bb5be688f1a856) (load bias 0x1000)
+    eb7c0000-eb9bffff rw-         0    200000  /dmabuf:
+    eb9c0000-eb9fffff rw-         0     40000  [anon:scudo:primary]
+    eba40000-eba7ffff rw-         0     40000  [anon:scudo:primary]
+    eba9b000-ebb3bfff rw-         0     a1000  /dev/ashmem/MessageQueue (deleted)
+    ebb3c000-ebb3cfff ---         0      1000
+    ebb3d000-ebc3bfff rw-         0     ff000  [anon:stack_and_tls:11778]
+    ebc3c000-ebc3dfff ---         0      2000
+    ebc3e000-ebd3efff rw-         0    101000  [anon:scudo:secondary]
+    ebd3f000-ebd3ffff ---         0      1000
+    ebd40000-ebe7ffff rw-         0    140000  [anon:scudo:primary]
+    ebec0000-ebefffff rw-         0     40000  [anon:scudo:primary]
+    ebf02000-ebf07fff r--         0      6000  /vendor/lib/libomx_avcdec_hw_sprd.so (BuildId: 17405981d85d08b8ca41da5d942ea622) (load bias 0x1000)
+    ebf08000-ebf18fff r-x      5000     11000  /vendor/lib/libomx_avcdec_hw_sprd.so (BuildId: 17405981d85d08b8ca41da5d942ea622) (load bias 0x1000)
+    ebf19000-ebf1afff r--     15000      2000  /vendor/lib/libomx_avcdec_hw_sprd.so (BuildId: 17405981d85d08b8ca41da5d942ea622) (load bias 0x1000)
+    ebf1b000-ebf21fff rw-     16000      7000  /vendor/lib/libomx_avcdec_hw_sprd.so (BuildId: 17405981d85d08b8ca41da5d942ea622) (load bias 0x1000)
+    ebf38000-ebf7efff rw-         0     47000  /dmabuf:
+    ebf7f000-ebf7ffff ---         0      1000
+    ebf80000-ec07efff rw-         0     ff000  [anon:stack_and_tls:11706]
+    ec07f000-ec07ffff ---         0      1000
+    ec080000-ec0bffff rw-         0     40000  [anon:scudo:primary]
+    ec0fe000-ec0fefff ---         0      1000
+    ec0ff000-ec1fdfff rw-         0     ff000  [anon:stack_and_tls:3142]
+    ec1fe000-ec1fffff ---         0      2000
+    ec200000-ec2fefff rw-         0     ff000  [anon:stack_and_tls:11705]
+    ec2ff000-ec2fffff ---         0      1000
+    ec300000-ec33ffff rw-         0     40000  [anon:scudo:primary]
+    ec37c000-ec37cfff ---         0      1000
+    ec37d000-ec47bfff rw-         0     ff000  [anon:stack_and_tls:11704]
+    ec47c000-ec47dfff ---         0      2000
+    ec47e000-ec57cfff rw-         0     ff000  [anon:stack_and_tls:13435]
+    ec57d000-ec57efff ---         0      2000
+    ec57f000-ec67dfff rw-         0     ff000  [anon:stack_and_tls:1071]
+    ec67e000-ec67ffff ---         0      2000
+    ec680000-ec77efff rw-         0     ff000  [anon:stack_and_tls:1070]
+    ec77f000-ec77ffff ---         0      1000
+    ec780000-ec83ffff rw-         0     c0000  [anon:scudo:primary]
+    ec84f000-ec855fff r--         0      7000  /odm/lib/libcodec2_unisoc_vp9dec_secure.so (BuildId: 3c9bd52294a00d409d700ab9f684c31b) (load bias 0x1000)
+    ec856000-ec866fff r-x      6000     11000  /odm/lib/libcodec2_unisoc_vp9dec_secure.so (BuildId: 3c9bd52294a00d409d700ab9f684c31b) (load bias 0x1000)
+    ec867000-ec867fff r--     16000      1000  /odm/lib/libcodec2_unisoc_vp9dec_secure.so (BuildId: 3c9bd52294a00d409d700ab9f684c31b) (load bias 0x1000)
+    ec868000-ec868fff rw-     16000      1000  /odm/lib/libcodec2_unisoc_vp9dec_secure.so (BuildId: 3c9bd52294a00d409d700ab9f684c31b) (load bias 0x1000)
+    ec88d000-ec893fff r--         0      7000  /vendor/lib/libcodec2_unisoc_vp9dec.so (BuildId: c533fd1feb58fea78031ef50562bf2bd) (load bias 0x1000)
+    ec894000-ec8a3fff r-x      6000     10000  /vendor/lib/libcodec2_unisoc_vp9dec.so (BuildId: c533fd1feb58fea78031ef50562bf2bd) (load bias 0x1000)
+    ec8a4000-ec8a5fff r--     15000      2000  /vendor/lib/libcodec2_unisoc_vp9dec.so (BuildId: c533fd1feb58fea78031ef50562bf2bd) (load bias 0x1000)
+    ec8a6000-ec8a6fff rw-     16000      1000  /vendor/lib/libcodec2_unisoc_vp9dec.so (BuildId: c533fd1feb58fea78031ef50562bf2bd) (load bias 0x1000)
+    ec8d3000-ec8f0fff r--         0     1e000  /vendor/lib/libvpx.so (BuildId: 8b5937eb6652b4ea9d474511e1c693d1) (load bias 0x1000)
+    ec8f1000-ec8f1fff ---         0      1000
+    ec8f2000-eca94fff r-x     1e000    1a3000  /vendor/lib/libvpx.so (BuildId: 8b5937eb6652b4ea9d474511e1c693d1) (load bias 0x1000)
+    eca95000-eca96fff r--    1c0000      2000  /vendor/lib/libvpx.so (BuildId: 8b5937eb6652b4ea9d474511e1c693d1) (load bias 0x1000)
+    eca97000-eca97fff rw-    1c1000      1000  /vendor/lib/libvpx.so (BuildId: 8b5937eb6652b4ea9d474511e1c693d1) (load bias 0x1000)
+    eca98000-eca9dfff rw-         0      6000  [anon:.bss]
+    ecac2000-ecac7fff r--         0      6000  /vendor/lib/libcodec2_unisoc_vp8dec.so (BuildId: 5f04c91f3f0257154c08bbb2bff21bae) (load bias 0x1000)
+    ecac8000-ecad3fff r-x      5000      c000  /vendor/lib/libcodec2_unisoc_vp8dec.so (BuildId: 5f04c91f3f0257154c08bbb2bff21bae) (load bias 0x1000)
+    ecad4000-ecad4fff r--     10000      1000  /vendor/lib/libcodec2_unisoc_vp8dec.so (BuildId: 5f04c91f3f0257154c08bbb2bff21bae) (load bias 0x1000)
+    ecad5000-ecad5fff rw-     10000      1000  /vendor/lib/libcodec2_unisoc_vp8dec.so (BuildId: 5f04c91f3f0257154c08bbb2bff21bae) (load bias 0x1000)
+    ecb05000-ecb0afff r--         0      6000  /vendor/lib/libcodec2_unisoc_mpeg4dec.so (BuildId: de01b1698006e39c7110f28a01498bdc) (load bias 0x1000)
+    ecb0b000-ecb16fff r-x      5000      c000  /vendor/lib/libcodec2_unisoc_mpeg4dec.so (BuildId: de01b1698006e39c7110f28a01498bdc) (load bias 0x1000)
+    ecb17000-ecb17fff r--     10000      1000  /vendor/lib/libcodec2_unisoc_mpeg4dec.so (BuildId: de01b1698006e39c7110f28a01498bdc) (load bias 0x1000)
+    ecb18000-ecb18fff rw-     10000      1000  /vendor/lib/libcodec2_unisoc_mpeg4dec.so (BuildId: de01b1698006e39c7110f28a01498bdc) (load bias 0x1000)
+    ecb1d000-ecb63fff rw-         0     47000  /dmabuf:
+    ecb64000-ecb67fff r--         0      4000  /vendor/lib/libcodec2_unisoc_mp3enc.so (BuildId: 19a6e2f127d6bfb54aca2e9fdcb86cf8) (load bias 0x1000)
+    ecb68000-ecb73fff r-x      3000      c000  /vendor/lib/libcodec2_unisoc_mp3enc.so (BuildId: 19a6e2f127d6bfb54aca2e9fdcb86cf8) (load bias 0x1000)
+    ecb74000-ecb74fff r--      e000      1000  /vendor/lib/libcodec2_unisoc_mp3enc.so (BuildId: 19a6e2f127d6bfb54aca2e9fdcb86cf8) (load bias 0x1000)
+    ecba1000-ecba4fff r--         0      4000  /vendor/lib/libcodec2_unisoc_mp3dec_L2.so (BuildId: 695cb468397aadae7b74652e01490eb7) (load bias 0x1000)
+    ecba5000-ecbaffff r-x      3000      b000  /vendor/lib/libcodec2_unisoc_mp3dec_L2.so (BuildId: 695cb468397aadae7b74652e01490eb7) (load bias 0x1000)
+    ecbb0000-ecbb0fff r--      d000      1000  /vendor/lib/libcodec2_unisoc_mp3dec_L2.so (BuildId: 695cb468397aadae7b74652e01490eb7) (load bias 0x1000)
+    ecbd8000-ecbdbfff r--         0      4000  /vendor/lib/libcodec2_unisoc_mp3dec_L1.so (BuildId: c55e9e4a354d80342034051bd2705c98) (load bias 0x1000)
+    ecbdc000-ecbe6fff r-x      3000      b000  /vendor/lib/libcodec2_unisoc_mp3dec_L1.so (BuildId: c55e9e4a354d80342034051bd2705c98) (load bias 0x1000)
+    ecbe7000-ecbe7fff r--      d000      1000  /vendor/lib/libcodec2_unisoc_mp3dec_L1.so (BuildId: c55e9e4a354d80342034051bd2705c98) (load bias 0x1000)
+    ecc15000-ecc18fff r--         0      4000  /vendor/lib/libcodec2_unisoc_mp3dec.so (BuildId: 58d761e1c92f541d8e81c4df24160a8d) (load bias 0x1000)
+    ecc19000-ecc23fff r-x      3000      b000  /vendor/lib/libcodec2_unisoc_mp3dec.so (BuildId: 58d761e1c92f541d8e81c4df24160a8d) (load bias 0x1000)
+    ecc24000-ecc24fff r--      d000      1000  /vendor/lib/libcodec2_unisoc_mp3dec.so (BuildId: 58d761e1c92f541d8e81c4df24160a8d) (load bias 0x1000)
+    ecc41000-ecc45fff r--         0      5000  /vendor/lib/libcodec2_unisoc_jpegenc.so (BuildId: 7a4735ede3446d7808d7385c811845e3) (load bias 0x1000)
+    ecc46000-ecc50fff r-x      4000      b000  /vendor/lib/libcodec2_unisoc_jpegenc.so (BuildId: 7a4735ede3446d7808d7385c811845e3) (load bias 0x1000)
+    ecc51000-ecc51fff r--      e000      1000  /vendor/lib/libcodec2_unisoc_jpegenc.so (BuildId: 7a4735ede3446d7808d7385c811845e3) (load bias 0x1000)
+    ecc52000-ecc52fff rw-      e000      1000  /vendor/lib/libcodec2_unisoc_jpegenc.so (BuildId: 7a4735ede3446d7808d7385c811845e3) (load bias 0x1000)
+    ecc66000-eccacfff rw-         0     47000  /dmabuf:
+    eccad000-eccaefff r--         0      2000  /vendor/lib/libjpegenc_sw_sprd.so (BuildId: 41c9a82e937260bea96a8b87994be7a3) (load bias 0x1000)
+    eccaf000-eccb1fff r-x      1000      3000  /vendor/lib/libjpegenc_sw_sprd.so (BuildId: 41c9a82e937260bea96a8b87994be7a3) (load bias 0x1000)
+    eccb2000-eccb3fff r--      3000      2000  /vendor/lib/libjpegenc_sw_sprd.so (BuildId: 41c9a82e937260bea96a8b87994be7a3) (load bias 0x1000)
+    eccb4000-eccb5fff rw-      4000      2000  /vendor/lib/libjpegenc_sw_sprd.so (BuildId: 41c9a82e937260bea96a8b87994be7a3) (load bias 0x1000)
+    eccdf000-ecd25fff rw-         0     47000  /dmabuf:
+    ecd26000-ecd2bfff r--         0      6000  /vendor/lib/libcodec2_unisoc_jpegdec.so (BuildId: 781a51248b9d851844860f4cdf9ac798) (load bias 0x1000)
+    ecd2c000-ecd36fff r-x      5000      b000  /vendor/lib/libcodec2_unisoc_jpegdec.so (BuildId: 781a51248b9d851844860f4cdf9ac798) (load bias 0x1000)
+    ecd37000-ecd37fff r--      f000      1000  /vendor/lib/libcodec2_unisoc_jpegdec.so (BuildId: 781a51248b9d851844860f4cdf9ac798) (load bias 0x1000)
+    ecd38000-ecd38fff rw-      f000      1000  /vendor/lib/libcodec2_unisoc_jpegdec.so (BuildId: 781a51248b9d851844860f4cdf9ac798) (load bias 0x1000)
+    ecd62000-ecda8fff rw-         0     47000  /dmabuf:
+    ecda9000-ecdacfff r--         0      4000  /vendor/lib/libcodec2_unisoc_imaadpcm.so (BuildId: 7518375f87edf8bef1aeed03e4ae5022) (load bias 0x1000)
+    ecdad000-ecdb2fff r-x      3000      6000  /vendor/lib/libcodec2_unisoc_imaadpcm.so (BuildId: 7518375f87edf8bef1aeed03e4ae5022) (load bias 0x1000)
+    ecdb3000-ecdb4fff r--      8000      2000  /vendor/lib/libcodec2_unisoc_imaadpcm.so (BuildId: 7518375f87edf8bef1aeed03e4ae5022) (load bias 0x1000)
+    ecdd1000-ecdd7fff r--         0      7000  /vendor/lib/libcodec2_unisoc_hevcenc.so (BuildId: 0e26f591a4c9e60b2e23bdb2f64b6752) (load bias 0x1000)
+    ecdd8000-ecde6fff r-x      6000      f000  /vendor/lib/libcodec2_unisoc_hevcenc.so (BuildId: 0e26f591a4c9e60b2e23bdb2f64b6752) (load bias 0x1000)
+    ecde7000-ecde8fff r--     14000      2000  /vendor/lib/libcodec2_unisoc_hevcenc.so (BuildId: 0e26f591a4c9e60b2e23bdb2f64b6752) (load bias 0x1000)
+    ecde9000-ecde9fff rw-     15000      1000  /vendor/lib/libcodec2_unisoc_hevcenc.so (BuildId: 0e26f591a4c9e60b2e23bdb2f64b6752) (load bias 0x1000)
+    ecdea000-ecdebfff rw-         0      2000  [anon:.bss]
+    ece09000-ece10fff r--         0      8000  /odm/lib/libcodec2_unisoc_hevcdec_secure.so (BuildId: e19fc753b7a4157f0599ea317ba2af36) (load bias 0x1000)
+    ece11000-ece21fff r-x      7000     11000  /odm/lib/libcodec2_unisoc_hevcdec_secure.so (BuildId: e19fc753b7a4157f0599ea317ba2af36) (load bias 0x1000)
+    ece22000-ece23fff r--     17000      2000  /odm/lib/libcodec2_unisoc_hevcdec_secure.so (BuildId: e19fc753b7a4157f0599ea317ba2af36) (load bias 0x1000)
+    ece24000-ece24fff rw-     18000      1000  /odm/lib/libcodec2_unisoc_hevcdec_secure.so (BuildId: e19fc753b7a4157f0599ea317ba2af36) (load bias 0x1000)
+    ece47000-ece4efff r--         0      8000  /vendor/lib/libcodec2_unisoc_hevcdec.so (BuildId: cdbcfeefc8b7c6c9f23aa5a6fc4d8ca0) (load bias 0x1000)
+    ece4f000-ece5ffff r-x      7000     11000  /vendor/lib/libcodec2_unisoc_hevcdec.so (BuildId: cdbcfeefc8b7c6c9f23aa5a6fc4d8ca0) (load bias 0x1000)
+    ece60000-ece60fff r--     17000      1000  /vendor/lib/libcodec2_unisoc_hevcdec.so (BuildId: cdbcfeefc8b7c6c9f23aa5a6fc4d8ca0) (load bias 0x1000)
+    ece61000-ece61fff rw-     17000      1000  /vendor/lib/libcodec2_unisoc_hevcdec.so (BuildId: cdbcfeefc8b7c6c9f23aa5a6fc4d8ca0) (load bias 0x1000)
+    ece9b000-ecea0fff r--         0      6000  /vendor/lib/libcodec2_unisoc_h263dec.so (BuildId: a41303761dd4341df218376b2b3e25f1) (load bias 0x1000)
+    ecea1000-eceacfff r-x      5000      c000  /vendor/lib/libcodec2_unisoc_h263dec.so (BuildId: a41303761dd4341df218376b2b3e25f1) (load bias 0x1000)
+    ecead000-eceadfff r--     10000      1000  /vendor/lib/libcodec2_unisoc_h263dec.so (BuildId: a41303761dd4341df218376b2b3e25f1) (load bias 0x1000)
+    eceae000-eceaefff rw-     10000      1000  /vendor/lib/libcodec2_unisoc_h263dec.so (BuildId: a41303761dd4341df218376b2b3e25f1) (load bias 0x1000)
+    ececc000-eced3fff r--         0      8000  /odm/lib/libcodec2_unisoc_avcenc_secure.so (BuildId: 45ed52116f1b5528e4d1175d966933a8) (load bias 0x1000)
+    eced4000-ecee4fff r-x      7000     11000  /odm/lib/libcodec2_unisoc_avcenc_secure.so (BuildId: 45ed52116f1b5528e4d1175d966933a8) (load bias 0x1000)
+    ecee5000-ecee6fff r--     17000      2000  /odm/lib/libcodec2_unisoc_avcenc_secure.so (BuildId: 45ed52116f1b5528e4d1175d966933a8) (load bias 0x1000)
+    ecee7000-ecee7fff rw-     18000      1000  /odm/lib/libcodec2_unisoc_avcenc_secure.so (BuildId: 45ed52116f1b5528e4d1175d966933a8) (load bias 0x1000)
+    ecee8000-ecee9fff rw-         0      2000  [anon:.bss]
+    ecf07000-ecf0efff r--         0      8000  /vendor/lib/libcodec2_unisoc_avcenc.so (BuildId: 024054ad7d63d232b5a7eb6a293f20cd) (load bias 0x1000)
+    ecf0f000-ecf1ffff r-x      7000     11000  /vendor/lib/libcodec2_unisoc_avcenc.so (BuildId: 024054ad7d63d232b5a7eb6a293f20cd) (load bias 0x1000)
+    ecf20000-ecf20fff r--     17000      1000  /vendor/lib/libcodec2_unisoc_avcenc.so (BuildId: 024054ad7d63d232b5a7eb6a293f20cd) (load bias 0x1000)
+    ecf21000-ecf21fff rw-     17000      1000  /vendor/lib/libcodec2_unisoc_avcenc.so (BuildId: 024054ad7d63d232b5a7eb6a293f20cd) (load bias 0x1000)
+    ecf22000-ecf23fff rw-         0      2000  [anon:.bss]
+    ecf5d000-ecf65fff r--         0      9000  /odm/lib/libcodec2_unisoc_avcdec_secure.so (BuildId: 56f6977bc1ce2ad4d93462faca5aa5cb) (load bias 0x1000)
+    ecf66000-ecf77fff r-x      8000     12000  /odm/lib/libcodec2_unisoc_avcdec_secure.so (BuildId: 56f6977bc1ce2ad4d93462faca5aa5cb) (load bias 0x1000)
+    ecf78000-ecf78fff r--     19000      1000  /odm/lib/libcodec2_unisoc_avcdec_secure.so (BuildId: 56f6977bc1ce2ad4d93462faca5aa5cb) (load bias 0x1000)
+    ecf79000-ecf79fff rw-     19000      1000  /odm/lib/libcodec2_unisoc_avcdec_secure.so (BuildId: 56f6977bc1ce2ad4d93462faca5aa5cb) (load bias 0x1000)
+    ecf98000-ecfdefff rw-         0     47000  /dmabuf:
+    ecfdf000-ecfdffff ---         0      1000
+    ecfe0000-ed0defff rw-         0     ff000  [anon:stack_and_tls:8063]
+    ed0df000-ed0dffff ---         0      1000
+    ed0e0000-ed0e8fff r--         0      9000  /vendor/lib/libcodec2_unisoc_avcdec.so (BuildId: c678e8f38fd875357ba6240aeba0ff36) (load bias 0x1000)
+    ed0e9000-ed0f9fff r-x      8000     11000  /vendor/lib/libcodec2_unisoc_avcdec.so (BuildId: c678e8f38fd875357ba6240aeba0ff36) (load bias 0x1000)
+    ed0fa000-ed0fbfff r--     18000      2000  /vendor/lib/libcodec2_unisoc_avcdec.so (BuildId: c678e8f38fd875357ba6240aeba0ff36) (load bias 0x1000)
+    ed0fc000-ed0fcfff rw-     19000      1000  /vendor/lib/libcodec2_unisoc_avcdec.so (BuildId: c678e8f38fd875357ba6240aeba0ff36) (load bias 0x1000)
+    ed133000-ed134fff r--         0      2000  /vendor/lib/libcodec2_unisoc_deintl.so (BuildId: 35ec5367d2b9282d5b8974b0278ffdbd) (load bias 0x1000)
+    ed135000-ed136fff r-x      1000      2000  /vendor/lib/libcodec2_unisoc_deintl.so (BuildId: 35ec5367d2b9282d5b8974b0278ffdbd) (load bias 0x1000)
+    ed137000-ed137fff r--      2000      1000  /vendor/lib/libcodec2_unisoc_deintl.so (BuildId: 35ec5367d2b9282d5b8974b0278ffdbd) (load bias 0x1000)
+    ed177000-ed178fff r--         0      2000  /vendor/lib/libvideo_share_memory.so (BuildId: 5d135b27a03978dba974c7968e061ac0) (load bias 0x1000)
+    ed179000-ed179fff r-x      1000      1000  /vendor/lib/libvideo_share_memory.so (BuildId: 5d135b27a03978dba974c7968e061ac0) (load bias 0x1000)
+    ed17a000-ed17bfff r--      1000      2000  /vendor/lib/libvideo_share_memory.so (BuildId: 5d135b27a03978dba974c7968e061ac0) (load bias 0x1000)
+    ed199000-ed199fff r--         0      1000  /vendor/lib/arm.graphics-V3-ndk.so (BuildId: e59910ee6c77535c5f948a87c2a6a279) (load bias 0x1000)
+    ed19a000-ed19afff r-x         0      1000  /vendor/lib/arm.graphics-V3-ndk.so (BuildId: e59910ee6c77535c5f948a87c2a6a279) (load bias 0x1000)
+    ed19b000-ed19bfff r--         0      1000  /vendor/lib/arm.graphics-V3-ndk.so (BuildId: e59910ee6c77535c5f948a87c2a6a279) (load bias 0x1000)
+    ed1a0000-ed1e6fff rw-         0     47000  /dmabuf:
+    ed1e7000-ed205fff r--         0     1f000  /vendor/lib/hw/android.hardware.graphics.mapper@4.0-impl-arm.so (BuildId: 44dceaaaed31ad082dc3530260f2b796) (load bias 0x1000)
+    ed206000-ed264fff r-x     1e000     5f000  /vendor/lib/hw/android.hardware.graphics.mapper@4.0-impl-arm.so (BuildId: 44dceaaaed31ad082dc3530260f2b796) (load bias 0x1000)
+    ed265000-ed267fff r--     7c000      3000  /vendor/lib/hw/android.hardware.graphics.mapper@4.0-impl-arm.so (BuildId: 44dceaaaed31ad082dc3530260f2b796) (load bias 0x1000)
+    ed268000-ed268fff rw-     7e000      1000  /vendor/lib/hw/android.hardware.graphics.mapper@4.0-impl-arm.so (BuildId: 44dceaaaed31ad082dc3530260f2b796) (load bias 0x1000)
+    ed269000-ed26afff rw-         0      2000  [anon:.bss]
+    ed28a000-ed28dfff r--         0      4000  /vendor/lib/libdrm.so (BuildId: c6b5673c1299f45f215b58a3f0bb3801) (load bias 0x1000)
+    ed28e000-ed298fff r-x      3000      b000  /vendor/lib/libdrm.so (BuildId: c6b5673c1299f45f215b58a3f0bb3801) (load bias 0x1000)
+    ed299000-ed299fff r--      d000      1000  /vendor/lib/libdrm.so (BuildId: c6b5673c1299f45f215b58a3f0bb3801) (load bias 0x1000)
+    ed29a000-ed29afff rw-      d000      1000  /vendor/lib/libdrm.so (BuildId: c6b5673c1299f45f215b58a3f0bb3801) (load bias 0x1000)
+    ed2c0000-ed37ffff rw-         0     c0000  [anon:scudo:primary]
+    ed382000-ed47ffff r--         0     fe000  /dev/binderfs/hwbinder
+    ed485000-ed4cbfff rw-         0     47000  /dmabuf:
+    ed4cc000-ed56cfff rw-         0     a1000  /dev/ashmem/MessageQueue (deleted)
+    ed56d000-ed56dfff ---         0      1000
+    ed56e000-ed5c8fff rw-         0     5b000  [anon:scudo:secondary]
+    ed5c9000-ed5c9fff ---         0      1000
+    ed5ca000-ed6c7fff r--         0     fe000  /dev/binderfs/binder
+    ed6c8000-ed6cefff r--         0      7000  /vendor/lib/libcodec2_unisoc_av1dec.so (BuildId: 53125c59e88cb4115b35a97003d2839b) (load bias 0x1000)
+    ed6cf000-ed6ddfff r-x      6000      f000  /vendor/lib/libcodec2_unisoc_av1dec.so (BuildId: 53125c59e88cb4115b35a97003d2839b) (load bias 0x1000)
+    ed6de000-ed6defff r--     14000      1000  /vendor/lib/libcodec2_unisoc_av1dec.so (BuildId: 53125c59e88cb4115b35a97003d2839b) (load bias 0x1000)
+    ed6df000-ed6dffff rw-     14000      1000  /vendor/lib/libcodec2_unisoc_av1dec.so (BuildId: 53125c59e88cb4115b35a97003d2839b) (load bias 0x1000)
+    ed70b000-ed70bfff r--         0      1000  /vendor/lib/libmemion.so (BuildId: aea5bb2f56522fb62be56e840fe251bd) (load bias 0x1000)
+    ed70c000-ed70dfff r-x         0      2000  /vendor/lib/libmemion.so (BuildId: aea5bb2f56522fb62be56e840fe251bd) (load bias 0x1000)
+    ed70e000-ed70efff r--      1000      1000  /vendor/lib/libmemion.so (BuildId: aea5bb2f56522fb62be56e840fe251bd) (load bias 0x1000)
+    ed740000-ed77ffff rw-         0     40000  [anon:scudo:primary]
+    ed7bc000-ed7bcfff ---         0      1000
+    ed7bd000-ed8bbfff rw-         0     ff000  [anon:stack_and_tls:1053]
+    ed8bc000-ed8bdfff ---         0      2000
+    ed8be000-ed9bcfff rw-         0     ff000  [anon:stack_and_tls:1052]
+    ed9bd000-ed9befff ---         0      2000
+    ed9bf000-edabdfff rw-         0     ff000  [anon:stack_and_tls:684]
+    edabe000-edabffff ---         0      2000
+    edac0000-edbbefff rw-         0     ff000  [anon:stack_and_tls:683]
+    edbbf000-edbbffff ---         0      1000
+    edbc0000-edc7ffff rw-         0     c0000  [anon:scudo:primary]
+    edcbf000-edcbffff ---         0      1000
+    edcc0000-eddbefff rw-         0     ff000  [anon:stack_and_tls:678]
+    eddbf000-eddbffff ---         0      1000
+    eddc0000-eddfffff rw-         0     40000  [anon:scudo:primary]
+    ede03000-edf00fff r--         0     fe000  /dev/binderfs/hwbinder
+    edf01000-edf01fff ---         0      1000
+    edf02000-ee000fff rw-         0     ff000  [anon:stack_and_tls:677]
+    ee001000-ee001fff ---         0      1000
+    ee002000-ee0fffff r--         0     fe000  /dev/binderfs/vndbinder
+    ee100000-ee73ffff rw-         0    640000  [anon:scudo:primary]
+    ee775000-ee7d8fff rw-         0     64000  [anon:linker_alloc]
+    ee7d9000-ee7e1fff r--         0      9000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.mapper@2.1.so (BuildId: d0fc1dab2f961fa474a4570e7f846088) (load bias 0x1000)
+    ee7e2000-ee7e7fff r-x      8000      6000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.mapper@2.1.so (BuildId: d0fc1dab2f961fa474a4570e7f846088) (load bias 0x1000)
+    ee7e8000-ee7e9fff r--      d000      2000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.mapper@2.1.so (BuildId: d0fc1dab2f961fa474a4570e7f846088) (load bias 0x1000)
+    ee7ea000-ee7eafff rw-      e000      1000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.mapper@2.1.so (BuildId: d0fc1dab2f961fa474a4570e7f846088) (load bias 0x1000)
+    ee804000-ee841fff r--         0     3e000  /system/lib/libbinder.so (BuildId: 8d89394cbdc500a21b1ae65586ccb530) (load bias 0x10000)
+    ee842000-ee850fff ---         0      f000
+    ee851000-ee894fff r-x     3d000     44000  /system/lib/libbinder.so (BuildId: 8d89394cbdc500a21b1ae65586ccb530) (load bias 0x10000)
+    ee895000-ee8a3fff ---         0      f000
+    ee8a4000-ee8abfff r--     80000      8000  /system/lib/libbinder.so (BuildId: 8d89394cbdc500a21b1ae65586ccb530) (load bias 0x10000)
+    ee8ac000-ee8bafff ---         0      f000
+    ee8bb000-ee8bbfff rw-     87000      1000  /system/lib/libbinder.so (BuildId: 8d89394cbdc500a21b1ae65586ccb530) (load bias 0x10000)
+    ee8eb000-ee8ebfff r--         0      1000  /apex/com.android.vndk.v33/lib/android.hidl.safe_union@1.0.so (BuildId: 9d38bfb817b8e26c4826f04612f4164a) (load bias 0x1000)
+    ee8ec000-ee8ecfff r-x         0      1000  /apex/com.android.vndk.v33/lib/android.hidl.safe_union@1.0.so (BuildId: 9d38bfb817b8e26c4826f04612f4164a) (load bias 0x1000)
+    ee8ed000-ee8edfff r--         0      1000  /apex/com.android.vndk.v33/lib/android.hidl.safe_union@1.0.so (BuildId: 9d38bfb817b8e26c4826f04612f4164a) (load bias 0x1000)
+    ee908000-ee913fff r--         0      c000  /vendor/lib/libstagefright_bufferpool@2.0.1.so (BuildId: 19cc9cda7a10ea6d90c2282e9ec34666) (load bias 0x1000)
+    ee914000-ee914fff ---         0      1000
+    ee915000-ee926fff r-x      c000     12000  /vendor/lib/libstagefright_bufferpool@2.0.1.so (BuildId: 19cc9cda7a10ea6d90c2282e9ec34666) (load bias 0x1000)
+    ee927000-ee928fff r--     1d000      2000  /vendor/lib/libstagefright_bufferpool@2.0.1.so (BuildId: 19cc9cda7a10ea6d90c2282e9ec34666) (load bias 0x1000)
+    ee929000-ee929fff rw-     1e000      1000  /vendor/lib/libstagefright_bufferpool@2.0.1.so (BuildId: 19cc9cda7a10ea6d90c2282e9ec34666) (load bias 0x1000)
+    ee944000-ee944fff r--         0      1000  /system/lib/libvndksupport.so (BuildId: d7cf248657e45eec1e71d49ec2bd738d) (load bias 0x10000)
+    ee945000-ee953fff ---         0      f000
+    ee954000-ee954fff r-x         0      1000  /system/lib/libvndksupport.so (BuildId: d7cf248657e45eec1e71d49ec2bd738d) (load bias 0x10000)
+    ee955000-ee963fff ---         0      f000
+    ee964000-ee964fff r--         0      1000  /system/lib/libvndksupport.so (BuildId: d7cf248657e45eec1e71d49ec2bd738d) (load bias 0x10000)
+    ee965000-ee973fff ---         0      f000
+    ee974000-ee974fff rw-         0      1000  /system/lib/libvndksupport.so (BuildId: d7cf248657e45eec1e71d49ec2bd738d) (load bias 0x10000)
+    ee999000-ee999fff r--         0      1000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.common@1.2.so (BuildId: c43a07968606f330273f659b1fcf58c6) (load bias 0x1000)
+    ee99a000-ee99afff r-x         0      1000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.common@1.2.so (BuildId: c43a07968606f330273f659b1fcf58c6) (load bias 0x1000)
+    ee99b000-ee99bfff r--         0      1000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.common@1.2.so (BuildId: c43a07968606f330273f659b1fcf58c6) (load bias 0x1000)
+    ee9cf000-ee9d6fff r--         0      8000  /vendor/lib/android.hardware.cas.native@1.0.so (BuildId: 22000da0f1f4be062c22a7234680e7ae) (load bias 0x1000)
+    ee9d7000-ee9dcfff r-x      7000      6000  /vendor/lib/android.hardware.cas.native@1.0.so (BuildId: 22000da0f1f4be062c22a7234680e7ae) (load bias 0x1000)
+    ee9dd000-ee9defff r--      c000      2000  /vendor/lib/android.hardware.cas.native@1.0.so (BuildId: 22000da0f1f4be062c22a7234680e7ae) (load bias 0x1000)
+    ee9df000-ee9dffff rw-      d000      1000  /vendor/lib/android.hardware.cas.native@1.0.so (BuildId: 22000da0f1f4be062c22a7234680e7ae) (load bias 0x1000)
+    eea02000-eea16fff r--         0     15000  /apex/com.android.vndk.v33/lib/libprocessgroup.so (BuildId: a0d2d4deb5cde42cdebc184f8ab8a48a) (load bias 0x1000)
+    eea17000-eea3bfff r-x     14000     25000  /apex/com.android.vndk.v33/lib/libprocessgroup.so (BuildId: a0d2d4deb5cde42cdebc184f8ab8a48a) (load bias 0x1000)
+    eea3c000-eea3dfff r--     38000      2000  /apex/com.android.vndk.v33/lib/libprocessgroup.so (BuildId: a0d2d4deb5cde42cdebc184f8ab8a48a) (load bias 0x1000)
+    eea3e000-eea3efff rw-     39000      1000  /apex/com.android.vndk.v33/lib/libprocessgroup.so (BuildId: a0d2d4deb5cde42cdebc184f8ab8a48a) (load bias 0x1000)
+    eea4e000-eea54fff r--         0      7000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.allocator@3.0.so (BuildId: 2bfba8bab1bda9143da21d03c155dd2d) (load bias 0x1000)
+    eea55000-eea5afff r-x      6000      6000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.allocator@3.0.so (BuildId: 2bfba8bab1bda9143da21d03c155dd2d) (load bias 0x1000)
+    eea5b000-eea5cfff r--      b000      2000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.allocator@3.0.so (BuildId: 2bfba8bab1bda9143da21d03c155dd2d) (load bias 0x1000)
+    eea5d000-eea5dfff rw-      c000      1000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.allocator@3.0.so (BuildId: 2bfba8bab1bda9143da21d03c155dd2d) (load bias 0x1000)
+    eea98000-eeacafff r--         0     33000  /system/lib/libc++.so (BuildId: e9a2b4e94b2ae6d177f46d6cdb0e7ba2) (load bias 0x10000)
+    eeacb000-eead9fff ---         0      f000
+    eeada000-eeb19fff r-x     32000     40000  /system/lib/libc++.so (BuildId: e9a2b4e94b2ae6d177f46d6cdb0e7ba2) (load bias 0x10000)
+    eeb1a000-eeb28fff ---         0      f000
+    eeb29000-eeb2cfff r--     71000      4000  /system/lib/libc++.so (BuildId: e9a2b4e94b2ae6d177f46d6cdb0e7ba2) (load bias 0x10000)
+    eeb2d000-eeb3bfff ---         0      f000
+    eeb3c000-eeb3cfff rw-     74000      1000  /system/lib/libc++.so (BuildId: e9a2b4e94b2ae6d177f46d6cdb0e7ba2) (load bias 0x10000)
+    eeb3d000-eeb3efff rw-         0      2000  [anon:.bss]
+    eeb43000-eeb49fff r--         0      7000  /apex/com.android.vndk.v33/lib/android.hidl.token@1.0.so (BuildId: 1be53556e543a6612e489841afc87173) (load bias 0x1000)
+    eeb4a000-eeb50fff r-x      6000      7000  /apex/com.android.vndk.v33/lib/android.hidl.token@1.0.so (BuildId: 1be53556e543a6612e489841afc87173) (load bias 0x1000)
+    eeb51000-eeb52fff r--      c000      2000  /apex/com.android.vndk.v33/lib/android.hidl.token@1.0.so (BuildId: 1be53556e543a6612e489841afc87173) (load bias 0x1000)
+    eeb53000-eeb53fff rw-      d000      1000  /apex/com.android.vndk.v33/lib/android.hidl.token@1.0.so (BuildId: 1be53556e543a6612e489841afc87173) (load bias 0x1000)
+    eeb8d000-eeb98fff r--         0      c000  /system/lib/libbase.so (BuildId: b58b0be8952a6de4f9ba0ab480ca6aff) (load bias 0x10000)
+    eeb99000-eeba7fff ---         0      f000
+    eeba8000-eebc5fff r-x      b000     1e000  /system/lib/libbase.so (BuildId: b58b0be8952a6de4f9ba0ab480ca6aff) (load bias 0x10000)
+    eebc6000-eebd4fff ---         0      f000
+    eebd5000-eebd5fff r--     28000      1000  /system/lib/libbase.so (BuildId: b58b0be8952a6de4f9ba0ab480ca6aff) (load bias 0x10000)
+    eebd6000-eebe4fff ---         0      f000
+    eebe5000-eebe5fff rw-     28000      1000  /system/lib/libbase.so (BuildId: b58b0be8952a6de4f9ba0ab480ca6aff) (load bias 0x10000)
+    eec04000-eec12fff r--         0      f000  /apex/com.android.vndk.v33/lib/libminijail.so (BuildId: 49968fc7d87462eef0ecbc150801b471) (load bias 0x1000)
+    eec13000-eec1afff r-x      e000      8000  /apex/com.android.vndk.v33/lib/libminijail.so (BuildId: 49968fc7d87462eef0ecbc150801b471) (load bias 0x1000)
+    eec1b000-eec21fff r--     15000      7000  /apex/com.android.vndk.v33/lib/libminijail.so (BuildId: 49968fc7d87462eef0ecbc150801b471) (load bias 0x1000)
+    eec22000-eec22fff rw-     1b000      1000  /apex/com.android.vndk.v33/lib/libminijail.so (BuildId: 49968fc7d87462eef0ecbc150801b471) (load bias 0x1000)
+    eec24000-eec6afff rw-         0     47000  /dmabuf:
+    eec6b000-eec71fff r--         0      7000  /system/lib/libbinder_ndk.so (BuildId: 26ab1c54084ab0a002c41153771c19d1) (load bias 0x10000)
+    eec72000-eec80fff ---         0      f000
+    eec81000-eec8afff r-x      6000      a000  /system/lib/libbinder_ndk.so (BuildId: 26ab1c54084ab0a002c41153771c19d1) (load bias 0x10000)
+    eec8b000-eec99fff ---         0      f000
+    eec9a000-eec9bfff r--      f000      2000  /system/lib/libbinder_ndk.so (BuildId: 26ab1c54084ab0a002c41153771c19d1) (load bias 0x10000)
+    eec9c000-eecaafff ---         0      f000
+    eecab000-eecabfff rw-     10000      1000  /system/lib/libbinder_ndk.so (BuildId: 26ab1c54084ab0a002c41153771c19d1) (load bias 0x10000)
+    eecb3000-eecf9fff rw-         0     47000  /dmabuf:
+    eecfa000-eed10fff r--         0     17000  /vendor/lib/libcodec2_unisoc_common.so (BuildId: fdee27b21fa0b5efe1bb5be688f1a856) (load bias 0x1000)
+    eed11000-eed38fff r-x     16000     28000  /vendor/lib/libcodec2_unisoc_common.so (BuildId: fdee27b21fa0b5efe1bb5be688f1a856) (load bias 0x1000)
+    eed39000-eed3afff r--     3d000      2000  /vendor/lib/libcodec2_unisoc_common.so (BuildId: fdee27b21fa0b5efe1bb5be688f1a856) (load bias 0x1000)
+    eed3b000-eed3bfff rw-     3e000      1000  /vendor/lib/libcodec2_unisoc_common.so (BuildId: fdee27b21fa0b5efe1bb5be688f1a856) (load bias 0x1000)
+    eed3c000-eed3cfff rw-         0      1000  [anon:.bss]
+    eed49000-eed6cfff rw-         0     24000  /dmabuf:
+    eed6d000-eed6efff r--         0      2000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.common-V3-ndk.so (BuildId: bebe7a6bacd4f2224145831d8b741ec2) (load bias 0x1000)
+    eed6f000-eed71fff r-x      1000      3000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.common-V3-ndk.so (BuildId: bebe7a6bacd4f2224145831d8b741ec2) (load bias 0x1000)
+    eed72000-eed72fff r--      3000      1000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.common-V3-ndk.so (BuildId: bebe7a6bacd4f2224145831d8b741ec2) (load bias 0x1000)
+    eed73000-eed73fff rw-      3000      1000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.common-V3-ndk.so (BuildId: bebe7a6bacd4f2224145831d8b741ec2) (load bias 0x1000)
+    eed87000-eed95fff r--         0      f000  /vendor/lib/android.hardware.media.c2@1.1.so (BuildId: ce1d51eaa9c7114c0bf88b07b4db91d0) (load bias 0x1000)
+    eed96000-eeda3fff r-x      e000      e000  /vendor/lib/android.hardware.media.c2@1.1.so (BuildId: ce1d51eaa9c7114c0bf88b07b4db91d0) (load bias 0x1000)
+    eeda4000-eeda5fff r--     1b000      2000  /vendor/lib/android.hardware.media.c2@1.1.so (BuildId: ce1d51eaa9c7114c0bf88b07b4db91d0) (load bias 0x1000)
+    eeda6000-eeda6fff rw-     1c000      1000  /vendor/lib/android.hardware.media.c2@1.1.so (BuildId: ce1d51eaa9c7114c0bf88b07b4db91d0) (load bias 0x1000)
+    eeda9000-eedecfff rw-         0     44000  /dmabuf:
+    eeded000-eedeffff r--         0      3000  /apex/com.android.vndk.v33/lib/libhidlmemory.so (BuildId: ae286047bdc18331caae2611949ba5b9) (load bias 0x1000)
+    eedf0000-eedf0fff r-x      2000      1000  /apex/com.android.vndk.v33/lib/libhidlmemory.so (BuildId: ae286047bdc18331caae2611949ba5b9) (load bias 0x1000)
+    eedf1000-eedf2fff r--      2000      2000  /apex/com.android.vndk.v33/lib/libhidlmemory.so (BuildId: ae286047bdc18331caae2611949ba5b9) (load bias 0x1000)
+    eedf3000-eedf3fff rw-      3000      1000  /apex/com.android.vndk.v33/lib/libhidlmemory.so (BuildId: ae286047bdc18331caae2611949ba5b9) (load bias 0x1000)
+    eee0b000-eee0bfff r--         0      1000  /system/lib/android.hardware.common-V2-ndk.so (BuildId: 76a12b8e20ac0c839ff7caa9377f63c4) (load bias 0x10000)
+    eee0c000-eee1afff ---         0      f000
+    eee1b000-eee1cfff r-x         0      2000  /system/lib/android.hardware.common-V2-ndk.so (BuildId: 76a12b8e20ac0c839ff7caa9377f63c4) (load bias 0x10000)
+    eee1d000-eee2bfff ---         0      f000
+    eee2c000-eee2cfff r--      1000      1000  /system/lib/android.hardware.common-V2-ndk.so (BuildId: 76a12b8e20ac0c839ff7caa9377f63c4) (load bias 0x10000)
+    eee2d000-eee3bfff ---         0      f000
+    eee3c000-eee3cfff rw-      1000      1000  /system/lib/android.hardware.common-V2-ndk.so (BuildId: 76a12b8e20ac0c839ff7caa9377f63c4) (load bias 0x10000)
+    eee43000-eee66fff rw-         0     24000  /dmabuf:
+    eee67000-eee67fff r--         0      1000  /vendor/lib/libavservices_minijail.so (BuildId: 7f3cc852b0f3d16f8dc0716725b9ef4b) (load bias 0x1000)
+    eee68000-eee68fff ---         0      1000
+    eee69000-eee6afff r-x      1000      2000  /vendor/lib/libavservices_minijail.so (BuildId: 7f3cc852b0f3d16f8dc0716725b9ef4b) (load bias 0x1000)
+    eee6b000-eee6bfff r--      2000      1000  /vendor/lib/libavservices_minijail.so (BuildId: 7f3cc852b0f3d16f8dc0716725b9ef4b) (load bias 0x1000)
+    eee80000-eee80fff r--         0      1000  /apex/com.android.runtime/lib/bionic/libdl_android.so (BuildId: 6cefc4e20ce53f56bba8afd686584f98) (load bias 0x10000)
+    eee81000-eee8ffff ---         0      f000
+    eee90000-eee90fff r-x         0      1000  /apex/com.android.runtime/lib/bionic/libdl_android.so (BuildId: 6cefc4e20ce53f56bba8afd686584f98) (load bias 0x10000)
+    eee91000-eee9ffff ---         0      f000
+    eeea0000-eeea0fff r--         0      1000  /apex/com.android.runtime/lib/bionic/libdl_android.so (BuildId: 6cefc4e20ce53f56bba8afd686584f98) (load bias 0x10000)
+    eeea7000-eeed7fff rw-         0     31000  /dev/ashmem/MessageQueue (deleted)
+    eeed8000-eef00fff r--         0     29000  /apex/com.android.runtime/lib/bionic/libc.so (BuildId: 9559d8975108e367c7e229de57df0a3b) (load bias 0x10000)
+    eef01000-eef0ffff ---         0      f000
+    eef10000-eef78fff r-x     28000     69000  /apex/com.android.runtime/lib/bionic/libc.so (BuildId: 9559d8975108e367c7e229de57df0a3b) (load bias 0x10000)
+    eef79000-eef87fff ---         0      f000
+    eef88000-eef8afff r--     90000      3000  /apex/com.android.runtime/lib/bionic/libc.so (BuildId: 9559d8975108e367c7e229de57df0a3b) (load bias 0x10000)
+    eef8b000-eef99fff ---         0      f000
+    eef9a000-eef9afff rw-     92000      1000  /apex/com.android.runtime/lib/bionic/libc.so (BuildId: 9559d8975108e367c7e229de57df0a3b) (load bias 0x10000)
+    eef9b000-ef3f5fff rw-         0    45b000  [anon:.bss]
+    ef3f6000-ef3f6fff r--         0      1000  [anon:.bss]
+    ef3f7000-ef3fcfff rw-         0      6000  [anon:.bss]
+    ef403000-ef409fff r--         0      7000  /system/lib/android.hardware.graphics.allocator@2.0.so (BuildId: 54ba6b658f3d7122a5df437dd7684614) (load bias 0x10000)
+    ef40a000-ef418fff ---         0      f000
+    ef419000-ef41efff r-x      6000      6000  /system/lib/android.hardware.graphics.allocator@2.0.so (BuildId: 54ba6b658f3d7122a5df437dd7684614) (load bias 0x10000)
+    ef41f000-ef42dfff ---         0      f000
+    ef42e000-ef42ffff r--      b000      2000  /system/lib/android.hardware.graphics.allocator@2.0.so (BuildId: 54ba6b658f3d7122a5df437dd7684614) (load bias 0x10000)
+    ef430000-ef43efff ---         0      f000
+    ef43f000-ef43ffff rw-      c000      1000  /system/lib/android.hardware.graphics.allocator@2.0.so (BuildId: 54ba6b658f3d7122a5df437dd7684614) (load bias 0x10000)
+    ef453000-ef453fff r--         0      1000  /apex/com.android.vndk.v33/lib/android.hardware.common-V2-ndk.so (BuildId: 0c9ab54d39d8191c21d5cd11966dd350) (load bias 0x1000)
+    ef454000-ef455fff r-x         0      2000  /apex/com.android.vndk.v33/lib/android.hardware.common-V2-ndk.so (BuildId: 0c9ab54d39d8191c21d5cd11966dd350) (load bias 0x1000)
+    ef456000-ef456fff r--      1000      1000  /apex/com.android.vndk.v33/lib/android.hardware.common-V2-ndk.so (BuildId: 0c9ab54d39d8191c21d5cd11966dd350) (load bias 0x1000)
+    ef457000-ef457fff rw-      1000      1000  /apex/com.android.vndk.v33/lib/android.hardware.common-V2-ndk.so (BuildId: 0c9ab54d39d8191c21d5cd11966dd350) (load bias 0x1000)
+    ef460000-ef483fff rw-         0     24000  /dmabuf:
+    ef484000-ef4b0fff r--         0     2d000  /system/lib/libhidlbase.so (BuildId: a58bfc4935972a2ce04ad0781fec1c67) (load bias 0x10000)
+    ef4b1000-ef4bffff ---         0      f000
+    ef4c0000-ef4fcfff r-x     2c000     3d000  /system/lib/libhidlbase.so (BuildId: a58bfc4935972a2ce04ad0781fec1c67) (load bias 0x10000)
+    ef4fd000-ef50bfff ---         0      f000
+    ef50c000-ef511fff r--     68000      6000  /system/lib/libhidlbase.so (BuildId: a58bfc4935972a2ce04ad0781fec1c67) (load bias 0x10000)
+    ef512000-ef520fff ---         0      f000
+    ef521000-ef521fff rw-     6d000      1000  /system/lib/libhidlbase.so (BuildId: a58bfc4935972a2ce04ad0781fec1c67) (load bias 0x10000)
+    ef522000-ef522fff rw-         0      1000  [anon:.bss]
+    ef532000-ef562fff rw-         0     31000  /dev/ashmem/MessageQueue (deleted)
+    ef563000-ef563fff r--         0      1000  /apex/com.android.vndk.v33/lib/libfmq.so (BuildId: 5cd6a75ced2d6b51d65729dd64084f11) (load bias 0x1000)
+    ef564000-ef565fff r-x         0      2000  /apex/com.android.vndk.v33/lib/libfmq.so (BuildId: 5cd6a75ced2d6b51d65729dd64084f11) (load bias 0x1000)
+    ef566000-ef566fff r--      1000      1000  /apex/com.android.vndk.v33/lib/libfmq.so (BuildId: 5cd6a75ced2d6b51d65729dd64084f11) (load bias 0x1000)
+    ef568000-ef58bfff rw-         0     24000  /dmabuf:
+    ef58c000-ef58cfff r--         0      1000  /apex/com.android.vndk.v33/lib/android.hidl.token@1.0-utils.so (BuildId: 3895996b7c42080799aaac5a5ef4135e) (load bias 0x1000)
+    ef58d000-ef58efff r-x         0      2000  /apex/com.android.vndk.v33/lib/android.hidl.token@1.0-utils.so (BuildId: 3895996b7c42080799aaac5a5ef4135e) (load bias 0x1000)
+    ef58f000-ef58ffff r--      1000      1000  /apex/com.android.vndk.v33/lib/android.hidl.token@1.0-utils.so (BuildId: 3895996b7c42080799aaac5a5ef4135e) (load bias 0x1000)
+    ef590000-ef590fff rw-      1000      1000  /apex/com.android.vndk.v33/lib/android.hidl.token@1.0-utils.so (BuildId: 3895996b7c42080799aaac5a5ef4135e) (load bias 0x1000)
+    ef5a5000-ef5a5fff ---         0      1000
+    ef5a6000-ef5cdfff rw-         0     28000  [anon:scudo:secondary]
+    ef5ce000-ef5cefff ---         0      1000
+    ef5cf000-ef5ddfff r--         0      f000  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa) (load bias 0x1000)
+    ef5de000-ef5ecfff r-x      e000      f000  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa) (load bias 0x1000)
+    ef5ed000-ef5eefff r--     1c000      2000  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa) (load bias 0x1000)
+    ef5ef000-ef5effff rw-     1d000      1000  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa) (load bias 0x1000)
+    ef602000-ef625fff rw-         0     24000  /dmabuf:
+    ef626000-ef626fff r--         0      1000  /apex/com.android.vndk.v33/lib/libhardware.so (BuildId: 6f4c46ec66ed8244a9bf006a87e413a9) (load bias 0x1000)
+    ef627000-ef627fff r-x         0      1000  /apex/com.android.vndk.v33/lib/libhardware.so (BuildId: 6f4c46ec66ed8244a9bf006a87e413a9) (load bias 0x1000)
+    ef628000-ef628fff r--         0      1000  /apex/com.android.vndk.v33/lib/libhardware.so (BuildId: 6f4c46ec66ed8244a9bf006a87e413a9) (load bias 0x1000)
+    ef64a000-ef653fff r--         0      a000  /system/lib/android.hardware.configstore@1.0.so (BuildId: b9e2137c50476d9a2596a9d62b297220) (load bias 0x10000)
+    ef654000-ef662fff ---         0      f000
+    ef663000-ef66bfff r-x      9000      9000  /system/lib/android.hardware.configstore@1.0.so (BuildId: b9e2137c50476d9a2596a9d62b297220) (load bias 0x10000)
+    ef66c000-ef67afff ---         0      f000
+    ef67b000-ef67cfff r--     11000      2000  /system/lib/android.hardware.configstore@1.0.so (BuildId: b9e2137c50476d9a2596a9d62b297220) (load bias 0x10000)
+    ef67d000-ef68bfff ---         0      f000
+    ef68c000-ef68cfff rw-     12000      1000  /system/lib/android.hardware.configstore@1.0.so (BuildId: b9e2137c50476d9a2596a9d62b297220) (load bias 0x10000)
+    ef6af000-ef6d2fff rw-         0     24000  /dmabuf:
+    ef6d3000-ef6e0fff r--         0      e000  /system/lib/libEGL.so (BuildId: 772a6d1b44dc8d5b532aaebc4fcc87e2) (load bias 0x10000)
+    ef6e1000-ef6effff ---         0      f000
+    ef6f0000-ef702fff r-x      d000     13000  /system/lib/libEGL.so (BuildId: 772a6d1b44dc8d5b532aaebc4fcc87e2) (load bias 0x10000)
+    ef703000-ef711fff ---         0      f000
+    ef712000-ef715fff r--     1f000      4000  /system/lib/libEGL.so (BuildId: 772a6d1b44dc8d5b532aaebc4fcc87e2) (load bias 0x10000)
+    ef716000-ef724fff ---         0      f000
+    ef725000-ef725fff rw-     22000      1000  /system/lib/libEGL.so (BuildId: 772a6d1b44dc8d5b532aaebc4fcc87e2) (load bias 0x10000)
+    ef726000-ef729fff rw-         0      4000  [anon:.bss]
+    ef72b000-ef749fff r--         0     1f000  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa) (load bias 0x1000)
+    ef74a000-ef76dfff rw-         0     24000  /dmabuf:
+    ef76e000-ef771fff r--         0      4000  /vendor/lib/libcodec2_unisoc_store.so (BuildId: d1be9ecfb986a6dd662a5057fd9bda95) (load bias 0x1000)
+    ef772000-ef775fff r-x      3000      4000  /vendor/lib/libcodec2_unisoc_store.so (BuildId: d1be9ecfb986a6dd662a5057fd9bda95) (load bias 0x1000)
+    ef776000-ef776fff r--      6000      1000  /vendor/lib/libcodec2_unisoc_store.so (BuildId: d1be9ecfb986a6dd662a5057fd9bda95) (load bias 0x1000)
+    ef777000-ef777fff rw-      6000      1000  /vendor/lib/libcodec2_unisoc_store.so (BuildId: d1be9ecfb986a6dd662a5057fd9bda95) (load bias 0x1000)
+    ef783000-ef789fff r--         0      7000  /system/lib/libgralloctypes.so (BuildId: 5f8becca38b3724d9f4803ab71d75f9d) (load bias 0x10000)
+    ef78a000-ef798fff ---         0      f000
+    ef799000-ef79ffff r-x      6000      7000  /system/lib/libgralloctypes.so (BuildId: 5f8becca38b3724d9f4803ab71d75f9d) (load bias 0x10000)
+    ef7a0000-ef7aefff ---         0      f000
+    ef7af000-ef7affff r--      c000      1000  /system/lib/libgralloctypes.so (BuildId: 5f8becca38b3724d9f4803ab71d75f9d) (load bias 0x10000)
+    ef7b0000-ef7befff ---         0      f000
+    ef7bf000-ef7bffff rw-      c000      1000  /system/lib/libgralloctypes.so (BuildId: 5f8becca38b3724d9f4803ab71d75f9d) (load bias 0x10000)
+    ef7d5000-ef7e3fff r--         0      f000  /apex/com.android.vndk.v33/lib/android.hardware.media.bufferpool@2.0.so (BuildId: 3c9fcbd84e72295775c508d79f46feb2) (load bias 0x1000)
+    ef7e4000-ef7f3fff r-x      e000     10000  /apex/com.android.vndk.v33/lib/android.hardware.media.bufferpool@2.0.so (BuildId: 3c9fcbd84e72295775c508d79f46feb2) (load bias 0x1000)
+    ef7f4000-ef7f7fff r--     1d000      4000  /apex/com.android.vndk.v33/lib/android.hardware.media.bufferpool@2.0.so (BuildId: 3c9fcbd84e72295775c508d79f46feb2) (load bias 0x1000)
+    ef7f8000-ef7f8fff rw-     20000      1000  /apex/com.android.vndk.v33/lib/android.hardware.media.bufferpool@2.0.so (BuildId: 3c9fcbd84e72295775c508d79f46feb2) (load bias 0x1000)
+    ef803000-ef805fff r--         0      3000  /system/lib/liblog.so (BuildId: 80ffcea9ceb21d499bd179ae3f7f1cbe) (load bias 0x10000)
+    ef806000-ef814fff ---         0      f000
+    ef815000-ef81cfff r-x      2000      8000  /system/lib/liblog.so (BuildId: 80ffcea9ceb21d499bd179ae3f7f1cbe) (load bias 0x10000)
+    ef81d000-ef82bfff ---         0      f000
+    ef82c000-ef82cfff r--      9000      1000  /system/lib/liblog.so (BuildId: 80ffcea9ceb21d499bd179ae3f7f1cbe) (load bias 0x10000)
+    ef82d000-ef83bfff ---         0      f000
+    ef83c000-ef83cfff rw-      9000      1000  /system/lib/liblog.so (BuildId: 80ffcea9ceb21d499bd179ae3f7f1cbe) (load bias 0x10000)
+    ef842000-ef848fff r--         0      7000  /system/lib/android.hardware.graphics.allocator@3.0.so (BuildId: 55337cd2d8180c567c6ab8966e9c5e9c) (load bias 0x10000)
+    ef849000-ef857fff ---         0      f000
+    ef858000-ef85dfff r-x      6000      6000  /system/lib/android.hardware.graphics.allocator@3.0.so (BuildId: 55337cd2d8180c567c6ab8966e9c5e9c) (load bias 0x10000)
+    ef85e000-ef86cfff ---         0      f000
+    ef86d000-ef86efff r--      b000      2000  /system/lib/android.hardware.graphics.allocator@3.0.so (BuildId: 55337cd2d8180c567c6ab8966e9c5e9c) (load bias 0x10000)
+    ef86f000-ef87dfff ---         0      f000
+    ef87e000-ef87efff rw-      c000      1000  /system/lib/android.hardware.graphics.allocator@3.0.so (BuildId: 55337cd2d8180c567c6ab8966e9c5e9c) (load bias 0x10000)
+    ef888000-ef888fff r--         0      1000  /system/lib/android.hardware.graphics.common@1.0.so (BuildId: 1104ebb18a335b113a13c6245bbbf9ef) (load bias 0x10000)
+    ef889000-ef897fff ---         0      f000
+    ef898000-ef898fff r-x         0      1000  /system/lib/android.hardware.graphics.common@1.0.so (BuildId: 1104ebb18a335b113a13c6245bbbf9ef) (load bias 0x10000)
+    ef899000-ef8a7fff ---         0      f000
+    ef8a8000-ef8a8fff r--         0      1000  /system/lib/android.hardware.graphics.common@1.0.so (BuildId: 1104ebb18a335b113a13c6245bbbf9ef) (load bias 0x10000)
+    ef8c0000-ef8c8fff r--         0      9000  /system/lib/android.hardware.graphics.mapper@2.1.so (BuildId: dd5b3aec23df341a64215ed031371d5e) (load bias 0x10000)
+    ef8c9000-ef8d7fff ---         0      f000
+    ef8d8000-ef8ddfff r-x      8000      6000  /system/lib/android.hardware.graphics.mapper@2.1.so (BuildId: dd5b3aec23df341a64215ed031371d5e) (load bias 0x10000)
+    ef8de000-ef8ecfff ---         0      f000
+    ef8ed000-ef8eefff r--      d000      2000  /system/lib/android.hardware.graphics.mapper@2.1.so (BuildId: dd5b3aec23df341a64215ed031371d5e) (load bias 0x10000)
+    ef8ef000-ef8fdfff ---         0      f000
+    ef8fe000-ef8fefff rw-      e000      1000  /system/lib/android.hardware.graphics.mapper@2.1.so (BuildId: dd5b3aec23df341a64215ed031371d5e) (load bias 0x10000)
+    ef909000-ef90bfff r--         0      3000  /system/lib/libnativewindow.so (BuildId: dc992604b8e1f2ab09bdfc58125db92f) (load bias 0x10000)
+    ef90c000-ef91afff ---         0      f000
+    ef91b000-ef91dfff r-x      2000      3000  /system/lib/libnativewindow.so (BuildId: dc992604b8e1f2ab09bdfc58125db92f) (load bias 0x10000)
+    ef91e000-ef92cfff ---         0      f000
+    ef92d000-ef92dfff r--      4000      1000  /system/lib/libnativewindow.so (BuildId: dc992604b8e1f2ab09bdfc58125db92f) (load bias 0x10000)
+    ef92e000-ef93cfff ---         0      f000
+    ef93d000-ef93dfff rw-      4000      1000  /system/lib/libnativewindow.so (BuildId: dc992604b8e1f2ab09bdfc58125db92f) (load bias 0x10000)
+    ef94b000-ef965fff r--         0     1b000  /apex/com.android.vndk.v33/lib/android.hardware.media.omx@1.0.so (BuildId: 7661d855911ed345b4a670d6d50a5980) (load bias 0x1000)
+    ef966000-ef989fff r-x     1a000     24000  /apex/com.android.vndk.v33/lib/android.hardware.media.omx@1.0.so (BuildId: 7661d855911ed345b4a670d6d50a5980) (load bias 0x1000)
+    ef98a000-ef98dfff r--     3d000      4000  /apex/com.android.vndk.v33/lib/android.hardware.media.omx@1.0.so (BuildId: 7661d855911ed345b4a670d6d50a5980) (load bias 0x1000)
+    ef98e000-ef98efff rw-     40000      1000  /apex/com.android.vndk.v33/lib/android.hardware.media.omx@1.0.so (BuildId: 7661d855911ed345b4a670d6d50a5980) (load bias 0x1000)
+    ef9a4000-ef9eafff rw-         0     47000  /dmabuf:
+    ef9eb000-ef9f0fff r--         0      6000  /apex/com.android.vndk.v33/lib/libcutils.so (BuildId: d6692a35cdebdd97b591ccb173014c0c) (load bias 0x1000)
+    ef9f1000-ef9f8fff r-x      5000      8000  /apex/com.android.vndk.v33/lib/libcutils.so (BuildId: d6692a35cdebdd97b591ccb173014c0c) (load bias 0x1000)
+    ef9f9000-ef9fafff r--      c000      2000  /apex/com.android.vndk.v33/lib/libcutils.so (BuildId: d6692a35cdebdd97b591ccb173014c0c) (load bias 0x1000)
+    ef9fb000-ef9fbfff rw-      d000      1000  /apex/com.android.vndk.v33/lib/libcutils.so (BuildId: d6692a35cdebdd97b591ccb173014c0c) (load bias 0x1000)
+    efa0d000-efa0dfff r--         0      1000  /system/lib/libcgrouprc.so (BuildId: 1b8b65a0bf57e979f2ab7eda775fc992) (load bias 0x10000)
+    efa0e000-efa1cfff ---         0      f000
+    efa1d000-efa1efff r-x         0      2000  /system/lib/libcgrouprc.so (BuildId: 1b8b65a0bf57e979f2ab7eda775fc992) (load bias 0x10000)
+    efa1f000-efa2dfff ---         0      f000
+    efa2e000-efa2efff r--      1000      1000  /system/lib/libcgrouprc.so (BuildId: 1b8b65a0bf57e979f2ab7eda775fc992) (load bias 0x10000)
+    efa2f000-efa3dfff ---         0      f000
+    efa3e000-efa3efff rw-      1000      1000  /system/lib/libcgrouprc.so (BuildId: 1b8b65a0bf57e979f2ab7eda775fc992) (load bias 0x10000)
+    efa49000-efa54fff r--         0      c000  /system/lib/libGLESv3.so (BuildId: 2628046123a17fb43f5987dcb6aa60df) (load bias 0x10000)
+    efa55000-efa63fff ---         0      f000
+    efa64000-efa68fff r-x      b000      5000  /system/lib/libGLESv3.so (BuildId: 2628046123a17fb43f5987dcb6aa60df) (load bias 0x10000)
+    efa69000-efa77fff ---         0      f000
+    efa78000-efa78fff r--      f000      1000  /system/lib/libGLESv3.so (BuildId: 2628046123a17fb43f5987dcb6aa60df) (load bias 0x10000)
+    efa7e000-efa9bfff r--         0     1e000  /vendor/lib/libomx_avcdec_hw_sprd.so (BuildId: 17405981d85d08b8ca41da5d942ea622) (load bias 0x1000)
+    efa9c000-efaa9fff r--         0      e000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.bufferqueue@2.0.so (BuildId: 05f6d5d3c4d40dbee445ca9525774632) (load bias 0x1000)
+    efaaa000-efab8fff r-x      d000      f000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.bufferqueue@2.0.so (BuildId: 05f6d5d3c4d40dbee445ca9525774632) (load bias 0x1000)
+    efab9000-efabbfff r--     1b000      3000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.bufferqueue@2.0.so (BuildId: 05f6d5d3c4d40dbee445ca9525774632) (load bias 0x1000)
+    efabc000-efabcfff rw-     1d000      1000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.bufferqueue@2.0.so (BuildId: 05f6d5d3c4d40dbee445ca9525774632) (load bias 0x1000)
+    efac2000-efaddfff r--         0     1c000  /vendor/lib/libcodec2_unisoc_avcdec.so (BuildId: c678e8f38fd875357ba6240aeba0ff36) (load bias 0x1000)
+    efade000-efae4fff r--         0      7000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.allocator@4.0.so (BuildId: 1a17e4af96efb128e1c0e70682c16baa) (load bias 0x1000)
+    efae5000-efaeafff r-x      6000      6000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.allocator@4.0.so (BuildId: 1a17e4af96efb128e1c0e70682c16baa) (load bias 0x1000)
+    efaeb000-efaebfff r--      b000      1000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.allocator@4.0.so (BuildId: 1a17e4af96efb128e1c0e70682c16baa) (load bias 0x1000)
+    efaec000-efaecfff rw-      b000      1000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.allocator@4.0.so (BuildId: 1a17e4af96efb128e1c0e70682c16baa) (load bias 0x1000)
+    efb03000-efb26fff rw-         0     24000  /dmabuf:
+    efb27000-efb2dfff r--         0      7000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.allocator@2.0.so (BuildId: 1db54c83bc9d217ae1ab6aed211713ec) (load bias 0x1000)
+    efb2e000-efb33fff r-x      6000      6000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.allocator@2.0.so (BuildId: 1db54c83bc9d217ae1ab6aed211713ec) (load bias 0x1000)
+    efb34000-efb35fff r--      b000      2000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.allocator@2.0.so (BuildId: 1db54c83bc9d217ae1ab6aed211713ec) (load bias 0x1000)
+    efb36000-efb36fff rw-      c000      1000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.allocator@2.0.so (BuildId: 1db54c83bc9d217ae1ab6aed211713ec) (load bias 0x1000)
+    efb40000-efb47fff r--         0      8000  /system/lib/android.hardware.graphics.mapper@2.0.so (BuildId: 8458fed506858d677ad21c0886bbb646) (load bias 0x10000)
+    efb48000-efb56fff ---         0      f000
+    efb57000-efb5dfff r-x      7000      7000  /system/lib/android.hardware.graphics.mapper@2.0.so (BuildId: 8458fed506858d677ad21c0886bbb646) (load bias 0x10000)
+    efb5e000-efb6cfff ---         0      f000
+    efb6d000-efb6dfff r--      d000      1000  /system/lib/android.hardware.graphics.mapper@2.0.so (BuildId: 8458fed506858d677ad21c0886bbb646) (load bias 0x10000)
+    efb6e000-efb7cfff ---         0      f000
+    efb7d000-efb7dfff rw-      d000      1000  /system/lib/android.hardware.graphics.mapper@2.0.so (BuildId: 8458fed506858d677ad21c0886bbb646) (load bias 0x10000)
+    efb80000-efb8ffff r--         0     10000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.bufferqueue@1.0.so (BuildId: ed075e3f9ae8b0dab66e89b8d313ee1d) (load bias 0x1000)
+    efb90000-efba0fff r-x      f000     11000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.bufferqueue@1.0.so (BuildId: ed075e3f9ae8b0dab66e89b8d313ee1d) (load bias 0x1000)
+    efba1000-efba3fff r--     1f000      3000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.bufferqueue@1.0.so (BuildId: ed075e3f9ae8b0dab66e89b8d313ee1d) (load bias 0x1000)
+    efba4000-efba4fff rw-     21000      1000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.bufferqueue@1.0.so (BuildId: ed075e3f9ae8b0dab66e89b8d313ee1d) (load bias 0x1000)
+    efba7000-efbc6fff r--         0     20000  /dev/__properties__/u:object_r:bootloader_prop:s0
+    efbc7000-efbc7fff r--         0      1000  /system/lib/libnativeloader_lazy.so (BuildId: 4afe911160d04ada9dfda60824187ff9) (load bias 0x10000)
+    efbc8000-efbd6fff ---         0      f000
+    efbd7000-efbd7fff r-x         0      1000  /system/lib/libnativeloader_lazy.so (BuildId: 4afe911160d04ada9dfda60824187ff9) (load bias 0x10000)
+    efbd8000-efbe6fff ---         0      f000
+    efbe7000-efbe7fff r--         0      1000  /system/lib/libnativeloader_lazy.so (BuildId: 4afe911160d04ada9dfda60824187ff9) (load bias 0x10000)
+    efbe8000-efbf6fff ---         0      f000
+    efbf7000-efbf7fff rw-         0      1000  /system/lib/libnativeloader_lazy.so (BuildId: 4afe911160d04ada9dfda60824187ff9) (load bias 0x10000)
+    efbfc000-efc1ffff rw-         0     24000  /dmabuf:
+    efc20000-efc22fff r--         0      3000  /vendor/lib/libmediahdrtosdrtransform.so (BuildId: 081afc519c82ec3b7089997821ad1157) (load bias 0x1000)
+    efc23000-efc23fff ---         0      1000
+    efc24000-efc26fff r-x      3000      3000  /vendor/lib/libmediahdrtosdrtransform.so (BuildId: 081afc519c82ec3b7089997821ad1157) (load bias 0x1000)
+    efc27000-efc27fff r--      5000      1000  /vendor/lib/libmediahdrtosdrtransform.so (BuildId: 081afc519c82ec3b7089997821ad1157) (load bias 0x1000)
+    efc29000-efc6ffff rw-         0     47000  /dmabuf:
+    efc70000-efc71fff r--         0      2000  /apex/com.android.vndk.v33/lib/libcap.so (BuildId: 893c71f002a57cf0eb0a31f76a81bcba) (load bias 0x1000)
+    efc72000-efc75fff r-x      1000      4000  /apex/com.android.vndk.v33/lib/libcap.so (BuildId: 893c71f002a57cf0eb0a31f76a81bcba) (load bias 0x1000)
+    efc76000-efc76fff r--      4000      1000  /apex/com.android.vndk.v33/lib/libcap.so (BuildId: 893c71f002a57cf0eb0a31f76a81bcba) (load bias 0x1000)
+    efc77000-efc77fff rw-      4000      1000  /apex/com.android.vndk.v33/lib/libcap.so (BuildId: 893c71f002a57cf0eb0a31f76a81bcba) (load bias 0x1000)
+    efc89000-efc89fff r--         0      1000  /system/lib/libnativebridge_lazy.so (BuildId: 27a7620e9c12f9a76680f4416f488754) (load bias 0x10000)
+    efc8a000-efc98fff ---         0      f000
+    efc99000-efc99fff r-x         0      1000  /system/lib/libnativebridge_lazy.so (BuildId: 27a7620e9c12f9a76680f4416f488754) (load bias 0x10000)
+    efc9a000-efca8fff ---         0      f000
+    efca9000-efca9fff r--         0      1000  /system/lib/libnativebridge_lazy.so (BuildId: 27a7620e9c12f9a76680f4416f488754) (load bias 0x10000)
+    efcaa000-efcb8fff ---         0      f000
+    efcb9000-efcb9fff rw-         0      1000  /system/lib/libnativebridge_lazy.so (BuildId: 27a7620e9c12f9a76680f4416f488754) (load bias 0x10000)
+    efcc2000-efcc5fff r--         0      4000  /system/lib/libGLESv1_CM.so (BuildId: ec123862e2e973c663e8eab6598e069e) (load bias 0x10000)
+    efcc6000-efcd4fff ---         0      f000
+    efcd5000-efcd6fff r-x      3000      2000  /system/lib/libGLESv1_CM.so (BuildId: ec123862e2e973c663e8eab6598e069e) (load bias 0x10000)
+    efcd7000-efce5fff ---         0      f000
+    efce6000-efce7fff r--      4000      2000  /system/lib/libGLESv1_CM.so (BuildId: ec123862e2e973c663e8eab6598e069e) (load bias 0x10000)
+    efce8000-efd07fff r--         0     20000  /dev/__properties__/u:object_r:fingerprint_prop:s0
+    efd08000-efd13fff r--         0      c000  /system/lib/libGLESv2.so (BuildId: fea216124d86457198ab6132f68291eb) (load bias 0x10000)
+    efd14000-efd22fff ---         0      f000
+    efd23000-efd27fff r-x      b000      5000  /system/lib/libGLESv2.so (BuildId: fea216124d86457198ab6132f68291eb) (load bias 0x10000)
+    efd28000-efd36fff ---         0      f000
+    efd37000-efd37fff r--      f000      1000  /system/lib/libGLESv2.so (BuildId: fea216124d86457198ab6132f68291eb) (load bias 0x10000)
+    efd47000-efd4dfff r--         0      7000  /apex/com.android.vndk.v33/lib/android.hidl.memory.token@1.0.so (BuildId: 0773abfd3ac75b6a589ec3524aebcf7f) (load bias 0x1000)
+    efd4e000-efd52fff r-x      6000      5000  /apex/com.android.vndk.v33/lib/android.hidl.memory.token@1.0.so (BuildId: 0773abfd3ac75b6a589ec3524aebcf7f) (load bias 0x1000)
+    efd53000-efd54fff r--      a000      2000  /apex/com.android.vndk.v33/lib/android.hidl.memory.token@1.0.so (BuildId: 0773abfd3ac75b6a589ec3524aebcf7f) (load bias 0x1000)
+    efd55000-efd55fff rw-      b000      1000  /apex/com.android.vndk.v33/lib/android.hidl.memory.token@1.0.so (BuildId: 0773abfd3ac75b6a589ec3524aebcf7f) (load bias 0x1000)
+    efd5a000-efd6dfff r--         0     14000  /apex/com.android.vndk.v33/lib/libutils.so (BuildId: 612ae32fde5fc8cc3e1e84d39261d021) (load bias 0x1000)
+    efd6e000-efd6efff ---         0      1000
+    efd6f000-efd94fff rw-         0     26000  [anon:scudo:secondary]
+    efd95000-efd95fff ---         0      1000
+    efd96000-efd9afff r--         0      5000  /apex/com.android.vndk.v33/lib/android.hardware.power-V3-ndk.so (BuildId: 891e1fd4a3091755fcba683f343909d2) (load bias 0x1000)
+    efd9b000-efd9efff r-x      4000      4000  /apex/com.android.vndk.v33/lib/android.hardware.power-V3-ndk.so (BuildId: 891e1fd4a3091755fcba683f343909d2) (load bias 0x1000)
+    efd9f000-efda0fff r--      7000      2000  /apex/com.android.vndk.v33/lib/android.hardware.power-V3-ndk.so (BuildId: 891e1fd4a3091755fcba683f343909d2) (load bias 0x1000)
+    efda1000-efda1fff rw-      8000      1000  /apex/com.android.vndk.v33/lib/android.hardware.power-V3-ndk.so (BuildId: 891e1fd4a3091755fcba683f343909d2) (load bias 0x1000)
+    efda5000-efdb4fff rw-         0     10000  [anon:bionic_alloc_lob]
+    efdb5000-efdc3fff rw-         0      f000  /dmabuf:
+    efdc4000-efdcafff r--         0      7000  /system/lib/android.hardware.graphics.allocator@4.0.so (BuildId: b1a0ab8f61171a045015535cfedd74af) (load bias 0x10000)
+    efdcb000-efdd9fff ---         0      f000
+    efdda000-efddffff r-x      6000      6000  /system/lib/android.hardware.graphics.allocator@4.0.so (BuildId: b1a0ab8f61171a045015535cfedd74af) (load bias 0x10000)
+    efde0000-efdeefff ---         0      f000
+    efdef000-efdeffff r--      b000      1000  /system/lib/android.hardware.graphics.allocator@4.0.so (BuildId: b1a0ab8f61171a045015535cfedd74af) (load bias 0x10000)
+    efdf0000-efdfefff ---         0      f000
+    efdff000-efdfffff rw-      b000      1000  /system/lib/android.hardware.graphics.allocator@4.0.so (BuildId: b1a0ab8f61171a045015535cfedd74af) (load bias 0x10000)
+    efe05000-efe05fff r--         0      1000  /system/lib/libsync.so (BuildId: 1f23eb1ac4850704c69d1ca4293e578a) (load bias 0x10000)
+    efe06000-efe14fff ---         0      f000
+    efe15000-efe15fff r-x         0      1000  /system/lib/libsync.so (BuildId: 1f23eb1ac4850704c69d1ca4293e578a) (load bias 0x10000)
+    efe16000-efe24fff ---         0      f000
+    efe25000-efe25fff r--         0      1000  /system/lib/libsync.so (BuildId: 1f23eb1ac4850704c69d1ca4293e578a) (load bias 0x10000)
+    efe26000-efe34fff ---         0      f000
+    efe35000-efe35fff rw-         0      1000  /system/lib/libsync.so (BuildId: 1f23eb1ac4850704c69d1ca4293e578a) (load bias 0x10000)
+    efe43000-efe6afff r--         0     28000  /vendor/lib/libcodec2_vndk.so (BuildId: 756e877ff8633bc7c9cad8ae746e1523) (load bias 0x1000)
+    efe6b000-efe6bfff ---         0      1000
+    efe6c000-efeb8fff r-x     28000     4d000  /vendor/lib/libcodec2_vndk.so (BuildId: 756e877ff8633bc7c9cad8ae746e1523) (load bias 0x1000)
+    efeb9000-efebbfff r--     74000      3000  /vendor/lib/libcodec2_vndk.so (BuildId: 756e877ff8633bc7c9cad8ae746e1523) (load bias 0x1000)
+    efebc000-efebcfff rw-     76000      1000  /vendor/lib/libcodec2_vndk.so (BuildId: 756e877ff8633bc7c9cad8ae746e1523) (load bias 0x1000)
+    efec0000-efee3fff rw-         0     24000  /dmabuf:
+    efee4000-efeebfff r--         0      8000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.mapper@2.0.so (BuildId: 3efb596ebac29fbeb3a953c41795fd12) (load bias 0x1000)
+    efeec000-efef2fff r-x      7000      7000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.mapper@2.0.so (BuildId: 3efb596ebac29fbeb3a953c41795fd12) (load bias 0x1000)
+    efef3000-efef3fff r--      d000      1000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.mapper@2.0.so (BuildId: 3efb596ebac29fbeb3a953c41795fd12) (load bias 0x1000)
+    efef4000-efef4fff rw-      d000      1000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.mapper@2.0.so (BuildId: 3efb596ebac29fbeb3a953c41795fd12) (load bias 0x1000)
+    efef8000-eff00fff rw-         0      9000  [anon:bionic_alloc_lob]
+    eff01000-eff04fff r--         0      4000  /system/lib/android.hardware.graphics.allocator-V2-ndk.so (BuildId: 432e3e06a38245491a95cef69508c92a) (load bias 0x10000)
+    eff05000-eff13fff ---         0      f000
+    eff14000-eff17fff r-x      3000      4000  /system/lib/android.hardware.graphics.allocator-V2-ndk.so (BuildId: 432e3e06a38245491a95cef69508c92a) (load bias 0x10000)
+    eff18000-eff26fff ---         0      f000
+    eff27000-eff27fff r--      6000      1000  /system/lib/android.hardware.graphics.allocator-V2-ndk.so (BuildId: 432e3e06a38245491a95cef69508c92a) (load bias 0x10000)
+    eff28000-eff36fff ---         0      f000
+    eff37000-eff37fff rw-      6000      1000  /system/lib/android.hardware.graphics.allocator-V2-ndk.so (BuildId: 432e3e06a38245491a95cef69508c92a) (load bias 0x10000)
+    eff3c000-eff3cfff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    eff3e000-eff3efff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    eff3f000-eff4dfff rw-         0      f000  /dmabuf:
+    eff4e000-eff4efff r--         0      1000  /apex/com.android.runtime/lib/bionic/libdl.so (BuildId: 17316666762b44d3647373a7c2aa9184) (load bias 0x10000)
+    eff4f000-eff5dfff ---         0      f000
+    eff5e000-eff5efff r-x         0      1000  /apex/com.android.runtime/lib/bionic/libdl.so (BuildId: 17316666762b44d3647373a7c2aa9184) (load bias 0x10000)
+    eff5f000-eff6dfff ---         0      f000
+    eff6e000-eff6efff r--         0      1000  /apex/com.android.runtime/lib/bionic/libdl.so (BuildId: 17316666762b44d3647373a7c2aa9184) (load bias 0x10000)
+    eff6f000-eff7efff ---         0     10000
+    eff7f000-eff7ffff r--         0      1000  [anon:.bss]
+    eff83000-effa6fff rw-         0     24000  /dmabuf:
+    effa7000-effa7fff r--         0      1000  /apex/com.android.vndk.v33/lib/libion.so (BuildId: 9d63d52fa33a8fb9ea5ca9ea3a486815) (load bias 0x1000)
+    effa8000-effa9fff r-x         0      2000  /apex/com.android.vndk.v33/lib/libion.so (BuildId: 9d63d52fa33a8fb9ea5ca9ea3a486815) (load bias 0x1000)
+    effaa000-effaafff r--      1000      1000  /apex/com.android.vndk.v33/lib/libion.so (BuildId: 9d63d52fa33a8fb9ea5ca9ea3a486815) (load bias 0x1000)
+    effab000-effabfff rw-      1000      1000  /apex/com.android.vndk.v33/lib/libion.so (BuildId: 9d63d52fa33a8fb9ea5ca9ea3a486815) (load bias 0x1000)
+    effac000-effb4fff rw-         0      9000  [anon:bionic_alloc_small_objects]
+    effb5000-effc3fff rw-         0      f000  /dmabuf:
+    effc4000-effd4fff r--         0     11000  /vendor/lib/android.hardware.cas@1.0.so (BuildId: aee0a6acaef5421b1112d7462bd8e4f0) (load bias 0x1000)
+    effd5000-effe8fff r-x     10000     14000  /vendor/lib/android.hardware.cas@1.0.so (BuildId: aee0a6acaef5421b1112d7462bd8e4f0) (load bias 0x1000)
+    effe9000-effebfff r--     23000      3000  /vendor/lib/android.hardware.cas@1.0.so (BuildId: aee0a6acaef5421b1112d7462bd8e4f0) (load bias 0x1000)
+    effec000-effecfff rw-     25000      1000  /vendor/lib/android.hardware.cas@1.0.so (BuildId: aee0a6acaef5421b1112d7462bd8e4f0) (load bias 0x1000)
+    effed000-effeffff rw-         0      3000  [anon:bionic_alloc_small_objects]
+    efff0000-f0013fff rw-         0     24000  /dmabuf:
+    f0014000-f0019fff r--         0      6000  /apex/com.android.vndk.v33/lib/libgralloctypes.so (BuildId: 8ec418d593ff334a4779eaf50e704dcd) (load bias 0x1000)
+    f001a000-f0021fff r-x      5000      8000  /apex/com.android.vndk.v33/lib/libgralloctypes.so (BuildId: 8ec418d593ff334a4779eaf50e704dcd) (load bias 0x1000)
+    f0022000-f0022fff r--      c000      1000  /apex/com.android.vndk.v33/lib/libgralloctypes.so (BuildId: 8ec418d593ff334a4779eaf50e704dcd) (load bias 0x1000)
+    f0023000-f0023fff rw-      c000      1000  /apex/com.android.vndk.v33/lib/libgralloctypes.so (BuildId: 8ec418d593ff334a4779eaf50e704dcd) (load bias 0x1000)
+    f0024000-f0024fff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f0025000-f0064fff rw-         0     40000
+    f0065000-f0087fff r--         0     23000  /vendor/lib/android.hardware.media.c2@1.0.so (BuildId: c46ad6ef4d8fc291454f908e941f766c) (load bias 0x1000)
+    f0088000-f00b7fff r-x     22000     30000  /vendor/lib/android.hardware.media.c2@1.0.so (BuildId: c46ad6ef4d8fc291454f908e941f766c) (load bias 0x1000)
+    f00b8000-f00bdfff r--     51000      6000  /vendor/lib/android.hardware.media.c2@1.0.so (BuildId: c46ad6ef4d8fc291454f908e941f766c) (load bias 0x1000)
+    f00be000-f00befff rw-     56000      1000  /vendor/lib/android.hardware.media.c2@1.0.so (BuildId: c46ad6ef4d8fc291454f908e941f766c) (load bias 0x1000)
+    f00bf000-f00c1fff rw-         0      3000  [anon:bionic_alloc_small_objects]
+    f00c4000-f00cafff rw-         0      7000  [anon:bionic_alloc_small_objects]
+    f00cc000-f00d5fff r--         0      a000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.mapper@4.0.so (BuildId: b7ad657ceeed9f4415ea4d0933e7c3fc) (load bias 0x1000)
+    f00d6000-f00dffff r-x      9000      a000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.mapper@4.0.so (BuildId: b7ad657ceeed9f4415ea4d0933e7c3fc) (load bias 0x1000)
+    f00e0000-f00e1fff r--     12000      2000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.mapper@4.0.so (BuildId: b7ad657ceeed9f4415ea4d0933e7c3fc) (load bias 0x1000)
+    f00e2000-f00e2fff rw-     13000      1000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.mapper@4.0.so (BuildId: b7ad657ceeed9f4415ea4d0933e7c3fc) (load bias 0x1000)
+    f00e3000-f0113fff rw-         0     31000  /dev/ashmem/MessageQueue (deleted)
+    f0114000-f0119fff r--         0      6000  /apex/com.android.vndk.v33/lib/libdmabufheap.so (BuildId: 1d67c5d6fb1deb8c8088b7753f71de53) (load bias 0x1000)
+    f011a000-f0122fff r-x      5000      9000  /apex/com.android.vndk.v33/lib/libdmabufheap.so (BuildId: 1d67c5d6fb1deb8c8088b7753f71de53) (load bias 0x1000)
+    f0123000-f0123fff r--      d000      1000  /apex/com.android.vndk.v33/lib/libdmabufheap.so (BuildId: 1d67c5d6fb1deb8c8088b7753f71de53) (load bias 0x1000)
+    f0124000-f0124fff rw-      d000      1000  /apex/com.android.vndk.v33/lib/libdmabufheap.so (BuildId: 1d67c5d6fb1deb8c8088b7753f71de53) (load bias 0x1000)
+    f0125000-f0148fff rw-         0     24000  /dmabuf:
+    f0149000-f0149fff r--         0      1000  /system/lib/android.hardware.graphics.common@1.1.so (BuildId: 3f496b70df1b5072582d98f2e2efc4bf) (load bias 0x10000)
+    f014a000-f0158fff ---         0      f000
+    f0159000-f0159fff r-x         0      1000  /system/lib/android.hardware.graphics.common@1.1.so (BuildId: 3f496b70df1b5072582d98f2e2efc4bf) (load bias 0x10000)
+    f015a000-f0168fff ---         0      f000
+    f0169000-f0169fff r--         0      1000  /system/lib/android.hardware.graphics.common@1.1.so (BuildId: 3f496b70df1b5072582d98f2e2efc4bf) (load bias 0x10000)
+    f016a000-f016cfff rw-         0      3000  [anon:bionic_alloc_small_objects]
+    f016e000-f016efff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f016f000-f017dfff rw-         0      f000  /dmabuf:
+    f017e000-f018cfff rw-         0      f000  /dmabuf:
+    f018d000-f01b2fff r--         0     26000  /system/lib/libunwindstack.so (BuildId: 18080a35e1cbefcc4dd3ddd683f3bfa1) (load bias 0x10000)
+    f01b3000-f01c1fff ---         0      f000
+    f01c2000-f0215fff r-x     25000     54000  /system/lib/libunwindstack.so (BuildId: 18080a35e1cbefcc4dd3ddd683f3bfa1) (load bias 0x10000)
+    f0216000-f0224fff ---         0      f000
+    f0225000-f022afff r--     78000      6000  /system/lib/libunwindstack.so (BuildId: 18080a35e1cbefcc4dd3ddd683f3bfa1) (load bias 0x10000)
+    f022b000-f0239fff ---         0      f000
+    f023a000-f023afff rw-     7d000      1000  /system/lib/libunwindstack.so (BuildId: 18080a35e1cbefcc4dd3ddd683f3bfa1) (load bias 0x10000)
+    f023b000-f023bfff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f023d000-f023dfff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f0240000-f0242fff rw-         0      3000  [anon:bionic_alloc_small_objects]
+    f0243000-f0251fff rw-         0      f000  /dmabuf:
+    f0252000-f0252fff r--         0      1000  /system/lib/android.hardware.graphics.common@1.2.so (BuildId: 3342b7e34505de03e115e680bfcf5550) (load bias 0x10000)
+    f0253000-f0261fff ---         0      f000
+    f0262000-f0262fff r-x         0      1000  /system/lib/android.hardware.graphics.common@1.2.so (BuildId: 3342b7e34505de03e115e680bfcf5550) (load bias 0x10000)
+    f0263000-f0271fff ---         0      f000
+    f0272000-f0272fff r--         0      1000  /system/lib/android.hardware.graphics.common@1.2.so (BuildId: 3342b7e34505de03e115e680bfcf5550) (load bias 0x10000)
+    f0273000-f0274fff rw-         0      2000  [anon:bionic_alloc_small_objects]
+    f0275000-f0294fff r--         0     20000  /dev/__properties__/u:object_r:codec2_config_prop:s0
+    f0295000-f0295fff r--         0      1000  /apex/com.android.vndk.v33/lib/android.hardware.media@1.0.so (BuildId: e2ac06c9326f69b0bc16cbb83f04ea82) (load bias 0x1000)
+    f0296000-f0296fff r-x         0      1000  /apex/com.android.vndk.v33/lib/android.hardware.media@1.0.so (BuildId: e2ac06c9326f69b0bc16cbb83f04ea82) (load bias 0x1000)
+    f0297000-f0297fff r--         0      1000  /apex/com.android.vndk.v33/lib/android.hardware.media@1.0.so (BuildId: e2ac06c9326f69b0bc16cbb83f04ea82) (load bias 0x1000)
+    f0298000-f029afff rw-         0      3000  [anon:bionic_alloc_small_objects]
+    f029b000-f029cfff rw-         0      2000  [anon:bionic_alloc_lob]
+    f029e000-f02a0fff rw-         0      3000  [anon:bionic_alloc_lob]
+    f02a1000-f02d1fff rw-         0     31000  /dev/ashmem/MessageQueue (deleted)
+    f02d2000-f02dbfff r--         0      a000  /system/lib/android.hardware.graphics.mapper@4.0.so (BuildId: c75c9db29b735882b39f70fe4290c339) (load bias 0x10000)
+    f02dc000-f02eafff ---         0      f000
+    f02eb000-f02f4fff r-x      9000      a000  /system/lib/android.hardware.graphics.mapper@4.0.so (BuildId: c75c9db29b735882b39f70fe4290c339) (load bias 0x10000)
+    f02f5000-f0303fff ---         0      f000
+    f0304000-f0305fff r--     12000      2000  /system/lib/android.hardware.graphics.mapper@4.0.so (BuildId: c75c9db29b735882b39f70fe4290c339) (load bias 0x10000)
+    f0306000-f0314fff ---         0      f000
+    f0315000-f0315fff rw-     13000      1000  /system/lib/android.hardware.graphics.mapper@4.0.so (BuildId: c75c9db29b735882b39f70fe4290c339) (load bias 0x10000)
+    f0316000-f0346fff rw-         0     31000  /dev/ashmem/MessageQueue (deleted)
+    f0347000-f0350fff r--         0      a000  /system/lib/libutils.so (BuildId: 0c31534989921f873586bbc32a4c1e1a) (load bias 0x10000)
+    f0351000-f035ffff ---         0      f000
+    f0360000-f0369fff r-x      9000      a000  /system/lib/libutils.so (BuildId: 0c31534989921f873586bbc32a4c1e1a) (load bias 0x10000)
+    f036a000-f0378fff ---         0      f000
+    f0379000-f0379fff r--     12000      1000  /system/lib/libutils.so (BuildId: 0c31534989921f873586bbc32a4c1e1a) (load bias 0x10000)
+    f037a000-f0388fff ---         0      f000
+    f0389000-f0389fff rw-     12000      1000  /system/lib/libutils.so (BuildId: 0c31534989921f873586bbc32a4c1e1a) (load bias 0x10000)
+    f038a000-f038afff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f038b000-f0395fff rw-         0      b000  [anon:bionic_alloc_lob]
+    f0396000-f03c6fff rw-         0     31000  /dev/ashmem/MessageQueue (deleted)
+    f03c7000-f03d1fff r--         0      b000  /vendor/lib/libsfplugin_ccodec_utils.so (BuildId: db1b968593d2005c74254baf10b43931) (load bias 0x1000)
+    f03d2000-f03d2fff ---         0      1000
+    f03d3000-f03fafff r-x      b000     28000  /vendor/lib/libsfplugin_ccodec_utils.so (BuildId: db1b968593d2005c74254baf10b43931) (load bias 0x1000)
+    f03fb000-f03fcfff r--     32000      2000  /vendor/lib/libsfplugin_ccodec_utils.so (BuildId: db1b968593d2005c74254baf10b43931) (load bias 0x1000)
+    f03fd000-f03fdfff rw-     33000      1000  /vendor/lib/libsfplugin_ccodec_utils.so (BuildId: db1b968593d2005c74254baf10b43931) (load bias 0x1000)
+    f03fe000-f03fefff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f03ff000-f0422fff rw-         0     24000  /dmabuf:
+    f0423000-f0426fff r--         0      4000  /system/lib/liblzma.so (BuildId: abe8ae3600b7251db3291ce448a5f64d) (load bias 0x10000)
+    f0427000-f0435fff ---         0      f000
+    f0436000-f044dfff r-x      3000     18000  /system/lib/liblzma.so (BuildId: abe8ae3600b7251db3291ce448a5f64d) (load bias 0x10000)
+    f044e000-f045cfff ---         0      f000
+    f045d000-f045dfff r--     1a000      1000  /system/lib/liblzma.so (BuildId: abe8ae3600b7251db3291ce448a5f64d) (load bias 0x10000)
+    f045e000-f046cfff ---         0      f000
+    f046d000-f046dfff rw-     1a000      1000  /system/lib/liblzma.so (BuildId: abe8ae3600b7251db3291ce448a5f64d) (load bias 0x10000)
+    f046e000-f0473fff rw-         0      6000  [anon:.bss]
+    f0474000-f0480fff rw-         0      d000  [anon:bionic_alloc_lob]
+    f0481000-f0486fff r--         0      6000  /system/lib/libcutils.so (BuildId: 844e1da16a58111ea912e4fec44e1984) (load bias 0x10000)
+    f0487000-f0495fff ---         0      f000
+    f0496000-f049efff r-x      5000      9000  /system/lib/libcutils.so (BuildId: 844e1da16a58111ea912e4fec44e1984) (load bias 0x10000)
+    f049f000-f04adfff ---         0      f000
+    f04ae000-f04affff r--      d000      2000  /system/lib/libcutils.so (BuildId: 844e1da16a58111ea912e4fec44e1984) (load bias 0x10000)
+    f04b0000-f04befff ---         0      f000
+    f04bf000-f04bffff rw-      e000      1000  /system/lib/libcutils.so (BuildId: 844e1da16a58111ea912e4fec44e1984) (load bias 0x10000)
+    f04c0000-f04cefff rw-         0      f000  /dmabuf:
+    f04cf000-f04eafff r--         0     1c000  /system/lib/libui.so (BuildId: fd3641cf8c465f7e6699b9f5a7ee940e) (load bias 0x10000)
+    f04eb000-f04f9fff ---         0      f000
+    f04fa000-f051afff r-x     1b000     21000  /system/lib/libui.so (BuildId: fd3641cf8c465f7e6699b9f5a7ee940e) (load bias 0x10000)
+    f051b000-f0529fff ---         0      f000
+    f052a000-f052bfff r--     3b000      2000  /system/lib/libui.so (BuildId: fd3641cf8c465f7e6699b9f5a7ee940e) (load bias 0x10000)
+    f052c000-f053afff ---         0      f000
+    f053b000-f053bfff rw-     3c000      1000  /system/lib/libui.so (BuildId: fd3641cf8c465f7e6699b9f5a7ee940e) (load bias 0x10000)
+    f053c000-f053dfff rw-         0      2000  [anon:.bss]
+    f0540000-f056dfff r--         0     2e000  /apex/com.android.vndk.v33/lib/libhidlbase.so (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6) (load bias 0x1000)
+    f056e000-f05abfff r-x     2d000     3e000  /apex/com.android.vndk.v33/lib/libhidlbase.so (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6) (load bias 0x1000)
+    f05ac000-f05b1fff r--     6a000      6000  /apex/com.android.vndk.v33/lib/libhidlbase.so (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6) (load bias 0x1000)
+    f05b2000-f05b2fff rw-     6f000      1000  /apex/com.android.vndk.v33/lib/libhidlbase.so (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6) (load bias 0x1000)
+    f05b3000-f05b3fff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f05b4000-f05bcfff rw-         0      9000  [anon:bionic_alloc_lob]
+    f05bd000-f05d0fff rw-  32000000     14000  /dev/sprd_vsp
+    f05d1000-f05d9fff r--         0      9000  /apex/com.android.vndk.v33/lib/libutils.so (BuildId: 612ae32fde5fc8cc3e1e84d39261d021) (load bias 0x1000)
+    f05da000-f05dafff ---         0      1000
+    f05db000-f05e3fff r-x      9000      9000  /apex/com.android.vndk.v33/lib/libutils.so (BuildId: 612ae32fde5fc8cc3e1e84d39261d021) (load bias 0x1000)
+    f05e4000-f05e5fff r--     11000      2000  /apex/com.android.vndk.v33/lib/libutils.so (BuildId: 612ae32fde5fc8cc3e1e84d39261d021) (load bias 0x1000)
+    f05e6000-f05e6fff rw-     12000      1000  /apex/com.android.vndk.v33/lib/libutils.so (BuildId: 612ae32fde5fc8cc3e1e84d39261d021) (load bias 0x1000)
+    f05e7000-f05e7fff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f05e8000-f05e9fff rw-         0      2000  [anon:bionic_alloc_lob]
+    f05ea000-f05f8fff rw-         0      f000  /dmabuf:
+    f05f9000-f0607fff rw-         0      f000  /dmabuf:
+    f0608000-f0638fff rw-         0     31000  /dev/ashmem/MessageQueue (deleted)
+    f0639000-f0639fff r--         0      1000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.common@1.0.so (BuildId: cd2e9db4c629d15634f9a06e663755c1) (load bias 0x1000)
+    f063a000-f063afff r-x         0      1000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.common@1.0.so (BuildId: cd2e9db4c629d15634f9a06e663755c1) (load bias 0x1000)
+    f063b000-f063bfff r--         0      1000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.common@1.0.so (BuildId: cd2e9db4c629d15634f9a06e663755c1) (load bias 0x1000)
+    f063c000-f063cfff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f063d000-f0647fff rw-         0      b000  [anon:bionic_alloc_lob]
+    f0648000-f064afff r--         0      3000  /system/lib/android.hardware.graphics.common-V4-ndk.so (BuildId: 0823b4ecda2cf16900e5ff05bef5c5a8) (load bias 0x10000)
+    f064b000-f0659fff ---         0      f000
+    f065a000-f065bfff r-x      2000      2000  /system/lib/android.hardware.graphics.common-V4-ndk.so (BuildId: 0823b4ecda2cf16900e5ff05bef5c5a8) (load bias 0x10000)
+    f065c000-f066afff ---         0      f000
+    f066b000-f066bfff r--      3000      1000  /system/lib/android.hardware.graphics.common-V4-ndk.so (BuildId: 0823b4ecda2cf16900e5ff05bef5c5a8) (load bias 0x10000)
+    f066c000-f067afff ---         0      f000
+    f067b000-f067bfff rw-      3000      1000  /system/lib/android.hardware.graphics.common-V4-ndk.so (BuildId: 0823b4ecda2cf16900e5ff05bef5c5a8) (load bias 0x10000)
+    f067c000-f067cfff rw-         0      1000  [anon:bionic_alloc_lob]
+    f067d000-f069cfff r--         0     20000  /dev/__properties__/u:object_r:use_memfd_prop:s0
+    f069d000-f069ffff r--         0      3000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.allocator-V1-ndk.so (BuildId: aca6393b6013aefe6234fdf07d916eaf) (load bias 0x1000)
+    f06a0000-f06a2fff r-x      2000      3000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.allocator-V1-ndk.so (BuildId: aca6393b6013aefe6234fdf07d916eaf) (load bias 0x1000)
+    f06a3000-f06a4fff r--      4000      2000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.allocator-V1-ndk.so (BuildId: aca6393b6013aefe6234fdf07d916eaf) (load bias 0x1000)
+    f06a5000-f06a5fff rw-      5000      1000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.allocator-V1-ndk.so (BuildId: aca6393b6013aefe6234fdf07d916eaf) (load bias 0x1000)
+    f06a6000-f06abfff rw-         0      6000  [anon:bionic_alloc_lob]
+    f06ac000-f06bffff rw-  32000000     14000  /dev/sprd_vsp
+    f06c0000-f06c7fff r--         0      8000  /system/lib/android.hardware.graphics.mapper@3.0.so (BuildId: e5e0e6f7cb4e4c525d5652bd57aeea57) (load bias 0x10000)
+    f06c8000-f06d6fff ---         0      f000
+    f06d7000-f06defff r-x      7000      8000  /system/lib/android.hardware.graphics.mapper@3.0.so (BuildId: e5e0e6f7cb4e4c525d5652bd57aeea57) (load bias 0x10000)
+    f06df000-f06edfff ---         0      f000
+    f06ee000-f06effff r--      e000      2000  /system/lib/android.hardware.graphics.mapper@3.0.so (BuildId: e5e0e6f7cb4e4c525d5652bd57aeea57) (load bias 0x10000)
+    f06f0000-f06fefff ---         0      f000
+    f06ff000-f06fffff rw-      f000      1000  /system/lib/android.hardware.graphics.mapper@3.0.so (BuildId: e5e0e6f7cb4e4c525d5652bd57aeea57) (load bias 0x10000)
+    f0700000-f070bfff r--         0      c000  /apex/com.android.vndk.v33/lib/libbase.so (BuildId: 2d90fae97fbd7e15cb82b5458ebfcf50) (load bias 0x1000)
+    f070c000-f0728fff r-x      b000     1d000  /apex/com.android.vndk.v33/lib/libbase.so (BuildId: 2d90fae97fbd7e15cb82b5458ebfcf50) (load bias 0x1000)
+    f0729000-f0729fff r--     27000      1000  /apex/com.android.vndk.v33/lib/libbase.so (BuildId: 2d90fae97fbd7e15cb82b5458ebfcf50) (load bias 0x1000)
+    f072a000-f072afff rw-     27000      1000  /apex/com.android.vndk.v33/lib/libbase.so (BuildId: 2d90fae97fbd7e15cb82b5458ebfcf50) (load bias 0x1000)
+    f072b000-f072bfff rw-         0      1000  [anon:.bss]
+    f072c000-f072cfff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f072d000-f072efff rw-         0      2000  [anon:bionic_alloc_lob]
+    f072f000-f072ffff ---         0      1000
+    f0730000-f0744fff rw-         0     15000  [anon:scudo:secondary]
+    f0745000-f0745fff ---         0      1000
+    f0746000-f0746fff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f0747000-f0748fff rw-         0      2000  [anon:bionic_alloc_lob]
+    f0749000-f075cfff rw-  32000000     14000  /dev/sprd_vsp
+    f075d000-f0760fff r--         0      4000  /vendor/lib/vendor.unisoc.hardware.power-V1-ndk.so (BuildId: 2a7ae8d167b8fcee6f6d3c79ff0c21d3) (load bias 0x1000)
+    f0761000-f0764fff r-x      3000      4000  /vendor/lib/vendor.unisoc.hardware.power-V1-ndk.so (BuildId: 2a7ae8d167b8fcee6f6d3c79ff0c21d3) (load bias 0x1000)
+    f0765000-f0765fff r--      6000      1000  /vendor/lib/vendor.unisoc.hardware.power-V1-ndk.so (BuildId: 2a7ae8d167b8fcee6f6d3c79ff0c21d3) (load bias 0x1000)
+    f0766000-f0766fff rw-      6000      1000  /vendor/lib/vendor.unisoc.hardware.power-V1-ndk.so (BuildId: 2a7ae8d167b8fcee6f6d3c79ff0c21d3) (load bias 0x1000)
+    f0767000-f0775fff rw-         0      f000  /dmabuf:
+    f0776000-f07a6fff rw-         0     31000  /dev/ashmem/MessageQueue (deleted)
+    f07a7000-f07affff r--         0      9000  /apex/com.android.runtime/lib/bionic/libm.so (BuildId: 44009c60fc074c75e639f9187d0ff79d) (load bias 0x10000)
+    f07b0000-f07befff ---         0      f000
+    f07bf000-f07d5fff r-x      8000     17000  /apex/com.android.runtime/lib/bionic/libm.so (BuildId: 44009c60fc074c75e639f9187d0ff79d) (load bias 0x10000)
+    f07d6000-f07e4fff ---         0      f000
+    f07e5000-f07e5fff r--     1e000      1000  /apex/com.android.runtime/lib/bionic/libm.so (BuildId: 44009c60fc074c75e639f9187d0ff79d) (load bias 0x10000)
+    f07e6000-f07f4fff ---         0      f000
+    f07f5000-f07f5fff rw-     1e000      1000  /apex/com.android.runtime/lib/bionic/libm.so (BuildId: 44009c60fc074c75e639f9187d0ff79d) (load bias 0x10000)
+    f07f6000-f07f7fff rw-         0      2000  [anon:bionic_alloc_small_objects]
+    f07f8000-f0800fff rw-         0      9000  [anon:bionic_alloc_lob]
+    f0801000-f0801fff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f0802000-f0802fff rw-         0      1000  [anon:bionic_alloc_lob]
+    f0803000-f0803fff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f0804000-f0809fff rw-         0      6000  [anon:bionic_alloc_lob]
+    f080a000-f0820fff r--         0     17000  /apex/com.android.vndk.v33/lib/libstagefright_bufferqueue_helper.so (BuildId: aed723ce6c0b205ec5252bc2b8661122) (load bias 0x1000)
+    f0821000-f083bfff r-x     16000     1b000  /apex/com.android.vndk.v33/lib/libstagefright_bufferqueue_helper.so (BuildId: aed723ce6c0b205ec5252bc2b8661122) (load bias 0x1000)
+    f083c000-f083dfff r--     30000      2000  /apex/com.android.vndk.v33/lib/libstagefright_bufferqueue_helper.so (BuildId: aed723ce6c0b205ec5252bc2b8661122) (load bias 0x1000)
+    f083e000-f083efff rw-     31000      1000  /apex/com.android.vndk.v33/lib/libstagefright_bufferqueue_helper.so (BuildId: aed723ce6c0b205ec5252bc2b8661122) (load bias 0x1000)
+    f083f000-f083ffff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f0840000-f085ffff r--         0     20000  /dev/__properties__/u:object_r:userdebug_or_eng_prop:s0
+    f0860000-f0868fff r--         0      9000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.mapper@3.0.so (BuildId: a52162e3bcf827f0c901dbbb2dffe787) (load bias 0x1000)
+    f0869000-f086ffff r-x      8000      7000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.mapper@3.0.so (BuildId: a52162e3bcf827f0c901dbbb2dffe787) (load bias 0x1000)
+    f0870000-f0871fff r--      e000      2000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.mapper@3.0.so (BuildId: a52162e3bcf827f0c901dbbb2dffe787) (load bias 0x1000)
+    f0872000-f0872fff rw-      f000      1000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.mapper@3.0.so (BuildId: a52162e3bcf827f0c901dbbb2dffe787) (load bias 0x1000)
+    f0873000-f0873fff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f0874000-f0874fff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0875000-f087ffff rw-         0      b000  [anon:bionic_alloc_small_objects]
+    f0880000-f0880fff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0881000-f089dfff r--         0     1d000  /apex/com.android.vndk.v33/lib/libui.so (BuildId: ce1678fbea8bf7fc41705b1674b13905) (load bias 0x1000)
+    f089e000-f08bbfff r-x     1c000     1e000  /apex/com.android.vndk.v33/lib/libui.so (BuildId: ce1678fbea8bf7fc41705b1674b13905) (load bias 0x1000)
+    f08bc000-f08bdfff r--     39000      2000  /apex/com.android.vndk.v33/lib/libui.so (BuildId: ce1678fbea8bf7fc41705b1674b13905) (load bias 0x1000)
+    f08be000-f08befff rw-     3a000      1000  /apex/com.android.vndk.v33/lib/libui.so (BuildId: ce1678fbea8bf7fc41705b1674b13905) (load bias 0x1000)
+    f08bf000-f08bffff rw-         0      1000  [anon:.bss]
+    f08c0000-f08cefff rw-         0      f000  /dmabuf:
+    f08cf000-f08d0fff r--         0      2000  /vendor/lib/libpowerhal_cli.so (BuildId: 8490a6d7004bc71ad08bdf51d7d4a8fa) (load bias 0x1000)
+    f08d1000-f08d2fff r-x      1000      2000  /vendor/lib/libpowerhal_cli.so (BuildId: 8490a6d7004bc71ad08bdf51d7d4a8fa) (load bias 0x1000)
+    f08d3000-f08d4fff r--      2000      2000  /vendor/lib/libpowerhal_cli.so (BuildId: 8490a6d7004bc71ad08bdf51d7d4a8fa) (load bias 0x1000)
+    f08d5000-f08d5fff rw-      3000      1000  /vendor/lib/libpowerhal_cli.so (BuildId: 8490a6d7004bc71ad08bdf51d7d4a8fa) (load bias 0x1000)
+    f08d6000-f08d8fff rw-         0      3000  [anon:bionic_alloc_small_objects]
+    f08d9000-f08e7fff rw-         0      f000  /dmabuf:
+    f08e8000-f0907fff r--         0     20000  /dev/__properties__/u:object_r:timezone_prop:s0
+    f0908000-f0927fff r--         0     20000  /dev/__properties__/u:object_r:timezone_prop:s0
+    f0928000-f0931fff r--         0      a000  /apex/com.android.vndk.v33/lib/android.hidl.memory@1.0.so (BuildId: 52332d02b8165b8f6ad6e8aff7acc5bc) (load bias 0x1000)
+    f0932000-f093bfff r-x      9000      a000  /apex/com.android.vndk.v33/lib/android.hidl.memory@1.0.so (BuildId: 52332d02b8165b8f6ad6e8aff7acc5bc) (load bias 0x1000)
+    f093c000-f093dfff r--     12000      2000  /apex/com.android.vndk.v33/lib/android.hidl.memory@1.0.so (BuildId: 52332d02b8165b8f6ad6e8aff7acc5bc) (load bias 0x1000)
+    f093e000-f093efff rw-     13000      1000  /apex/com.android.vndk.v33/lib/android.hidl.memory@1.0.so (BuildId: 52332d02b8165b8f6ad6e8aff7acc5bc) (load bias 0x1000)
+    f093f000-f093ffff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f0940000-f0949fff r--         0      a000  /system/lib/android.hardware.configstore@1.1.so (BuildId: e26f07fd1e25592a63521b16ba298d83) (load bias 0x10000)
+    f094a000-f0958fff ---         0      f000
+    f0959000-f095ffff r-x      9000      7000  /system/lib/android.hardware.configstore@1.1.so (BuildId: e26f07fd1e25592a63521b16ba298d83) (load bias 0x10000)
+    f0960000-f096efff ---         0      f000
+    f096f000-f096ffff r--      f000      1000  /system/lib/android.hardware.configstore@1.1.so (BuildId: e26f07fd1e25592a63521b16ba298d83) (load bias 0x10000)
+    f0970000-f097efff ---         0      f000
+    f097f000-f097ffff rw-      f000      1000  /system/lib/android.hardware.configstore@1.1.so (BuildId: e26f07fd1e25592a63521b16ba298d83) (load bias 0x10000)
+    f0980000-f0981fff rw-         0      2000  [anon:bionic_alloc_small_objects]
+    f0982000-f0982fff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0983000-f0986fff rw-         0      4000  [anon:bionic_alloc_small_objects]
+    f0987000-f098bfff r--         0      5000  /system/lib/libgraphicsenv.so (BuildId: 5249ac7f4203fa0b139193e146b92180) (load bias 0x10000)
+    f098c000-f099afff ---         0      f000
+    f099b000-f099efff r-x      4000      4000  /system/lib/libgraphicsenv.so (BuildId: 5249ac7f4203fa0b139193e146b92180) (load bias 0x10000)
+    f099f000-f09adfff ---         0      f000
+    f09ae000-f09affff r--      7000      2000  /system/lib/libgraphicsenv.so (BuildId: 5249ac7f4203fa0b139193e146b92180) (load bias 0x10000)
+    f09b0000-f09befff ---         0      f000
+    f09bf000-f09bffff rw-      8000      1000  /system/lib/libgraphicsenv.so (BuildId: 5249ac7f4203fa0b139193e146b92180) (load bias 0x10000)
+    f09c0000-f09c4fff rw-         0      5000  [anon:bionic_alloc_small_objects]
+    f09c5000-f09f7fff r--         0     33000  /apex/com.android.vndk.v33/lib/libc++.so (BuildId: 963a6d210362123fc7d7a49ca7fef3b5) (load bias 0x1000)
+    f09f8000-f0a36fff r-x     32000     3f000  /apex/com.android.vndk.v33/lib/libc++.so (BuildId: 963a6d210362123fc7d7a49ca7fef3b5) (load bias 0x1000)
+    f0a37000-f0a3afff r--     70000      4000  /apex/com.android.vndk.v33/lib/libc++.so (BuildId: 963a6d210362123fc7d7a49ca7fef3b5) (load bias 0x1000)
+    f0a3b000-f0a3bfff rw-     73000      1000  /apex/com.android.vndk.v33/lib/libc++.so (BuildId: 963a6d210362123fc7d7a49ca7fef3b5) (load bias 0x1000)
+    f0a3c000-f0a3cfff rw-         0      1000  [anon:.bss]
+    f0a3d000-f0a3dfff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0a3e000-f0a3ffff rw-         0      2000  [anon:bionic_alloc_small_objects]
+    f0a40000-f0a76fff r--         0     37000  /apex/com.android.vndk.v33/lib/libbinder.so (BuildId: 084d0521b392f7656772173e0de7122d) (load bias 0x1000)
+    f0a77000-f0ab3fff r-x     36000     3d000  /apex/com.android.vndk.v33/lib/libbinder.so (BuildId: 084d0521b392f7656772173e0de7122d) (load bias 0x1000)
+    f0ab4000-f0abafff r--     72000      7000  /apex/com.android.vndk.v33/lib/libbinder.so (BuildId: 084d0521b392f7656772173e0de7122d) (load bias 0x1000)
+    f0abb000-f0abbfff rw-     78000      1000  /apex/com.android.vndk.v33/lib/libbinder.so (BuildId: 084d0521b392f7656772173e0de7122d) (load bias 0x1000)
+    f0abc000-f0abcfff rw-         0      1000  [anon:.bss]
+    f0abd000-f0ac0fff rw-         0      4000  [anon:bionic_alloc_small_objects]
+    f0ac1000-f0ac2fff rw-         0      2000  [anon:bionic_alloc_small_objects]
+    f0ac3000-f0ae2fff r--         0     20000  /dev/__properties__/u:object_r:bootloader_prop:s0
+    f0ae3000-f0ae3fff r--         0      1000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.common@1.1.so (BuildId: fef8d03262bfb147f9ce72019b584e47) (load bias 0x1000)
+    f0ae4000-f0ae4fff r-x         0      1000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.common@1.1.so (BuildId: fef8d03262bfb147f9ce72019b584e47) (load bias 0x1000)
+    f0ae5000-f0ae5fff r--         0      1000  /apex/com.android.vndk.v33/lib/android.hardware.graphics.common@1.1.so (BuildId: fef8d03262bfb147f9ce72019b584e47) (load bias 0x1000)
+    f0ae6000-f0aeffff rw-         0      a000  [anon:bionic_alloc_small_objects]
+    f0af0000-f0af0fff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f0af1000-f0b10fff r--         0     20000  /dev/__properties__/u:object_r:vndk_prop:s0
+    f0b11000-f0b11fff r--         0      1000  /system/lib/android.hardware.configstore-utils.so (BuildId: 98cc86ebc2603ab4788bbaaf90109004) (load bias 0x10000)
+    f0b12000-f0b20fff ---         0      f000
+    f0b21000-f0b21fff r-x         0      1000  /system/lib/android.hardware.configstore-utils.so (BuildId: 98cc86ebc2603ab4788bbaaf90109004) (load bias 0x10000)
+    f0b22000-f0b30fff ---         0      f000
+    f0b31000-f0b31fff r--         0      1000  /system/lib/android.hardware.configstore-utils.so (BuildId: 98cc86ebc2603ab4788bbaaf90109004) (load bias 0x10000)
+    f0b32000-f0b32fff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f0b33000-f0b33fff ---         0      1000
+    f0b34000-f0b37fff rw-         0      4000  [anon:thread signal stack]
+    f0b38000-f0b38fff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0b39000-f0b39fff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f0b3a000-f0b3afff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0b3b000-f0b3bfff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0b3c000-f0b3cfff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f0b3d000-f0b3dfff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0b3e000-f0b5dfff r--         0     20000  /dev/__properties__/u:object_r:servicemanager_prop:s0
+    f0b5e000-f0b5efff r--         0      1000  /apex/com.android.vndk.v33/lib/libcodec2.so (BuildId: 6fa326ee1a267dfee010bce6710ea4b8) (load bias 0x1000)
+    f0b5f000-f0b5ffff r-x         0      1000  /apex/com.android.vndk.v33/lib/libcodec2.so (BuildId: 6fa326ee1a267dfee010bce6710ea4b8) (load bias 0x1000)
+    f0b60000-f0b60fff r--         0      1000  /apex/com.android.vndk.v33/lib/libcodec2.so (BuildId: 6fa326ee1a267dfee010bce6710ea4b8) (load bias 0x1000)
+    f0b61000-f0b74fff rw-  32000000     14000  /dev/sprd_vsp
+    f0b75000-f0b94fff r--         0     20000  /dev/__properties__/u:object_r:build_vendor_prop:s0
+    f0b95000-f0b9dfff r--         0      9000  /vendor/lib/libcodec2_hidl@1.1.so (BuildId: 424252bde154a0ecff8af6d7f6cf7fa2) (load bias 0x1000)
+    f0b9e000-f0b9efff ---         0      1000
+    f0b9f000-f0ba9fff r-x      9000      b000  /vendor/lib/libcodec2_hidl@1.1.so (BuildId: 424252bde154a0ecff8af6d7f6cf7fa2) (load bias 0x1000)
+    f0baa000-f0babfff r--     13000      2000  /vendor/lib/libcodec2_hidl@1.1.so (BuildId: 424252bde154a0ecff8af6d7f6cf7fa2) (load bias 0x1000)
+    f0bac000-f0bacfff rw-     14000      1000  /vendor/lib/libcodec2_hidl@1.1.so (BuildId: 424252bde154a0ecff8af6d7f6cf7fa2) (load bias 0x1000)
+    f0bad000-f0badfff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0bae000-f0baefff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f0baf000-f0baffff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0bb0000-f0bb0fff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0bb1000-f0bb1fff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0bb2000-f0bb2fff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f0bb3000-f0bb3fff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0bb4000-f0bb7fff rw-         0      4000  [anon:bionic_alloc_small_objects]
+    f0bb8000-f0bb8fff ---         0      1000
+    f0bb9000-f0bbcfff rw-         0      4000  [anon:thread signal stack]
+    f0bbd000-f0bc1fff rw-         0      5000  [anon:bionic_alloc_small_objects]
+    f0bc2000-f0bc2fff rw-     30000      1000  /dev/ashmem/MessageQueue (deleted)
+    f0bc3000-f0bc3fff rw-         0      1000  /dev/ashmem/MessageQueue (deleted)
+    f0bc4000-f0bc4fff rw-         0      1000  /dev/ashmem/MessageQueue (deleted)
+    f0bc5000-f0bc5fff rw-         0      1000  /dev/ashmem/MessageQueue (deleted)
+    f0bc6000-f0bc7fff rw-         0      2000  [anon:bionic_alloc_small_objects]
+    f0bc8000-f0bd8fff r--         0     11000  /vendor/lib/libcodec2_hidl@1.0.so (BuildId: 6b90c789de69b94b05f64f2bb8679405) (load bias 0x1000)
+    f0bd9000-f0bd9fff ---         0      1000
+    f0bda000-f0bf8fff r-x     11000     1f000  /vendor/lib/libcodec2_hidl@1.0.so (BuildId: 6b90c789de69b94b05f64f2bb8679405) (load bias 0x1000)
+    f0bf9000-f0bfafff r--     2f000      2000  /vendor/lib/libcodec2_hidl@1.0.so (BuildId: 6b90c789de69b94b05f64f2bb8679405) (load bias 0x1000)
+    f0bfb000-f0bfbfff rw-     30000      1000  /vendor/lib/libcodec2_hidl@1.0.so (BuildId: 6b90c789de69b94b05f64f2bb8679405) (load bias 0x1000)
+    f0bfc000-f0bfcfff rw-         0      1000  [anon:.bss]
+    f0bfd000-f0c1cfff r--         0     20000  /dev/__properties__/u:object_r:vendor_video_prop:s0
+    f0c1d000-f0c1ffff r--         0      3000  /vendor/lib/libcodec2_hidl_plugin.so (BuildId: df1f0b8341515454b29f77eccd303f8f) (load bias 0x1000)
+    f0c20000-f0c20fff ---         0      1000
+    f0c21000-f0c2afff r-x      3000      a000  /vendor/lib/libcodec2_hidl_plugin.so (BuildId: df1f0b8341515454b29f77eccd303f8f) (load bias 0x1000)
+    f0c2b000-f0c2bfff r--      c000      1000  /vendor/lib/libcodec2_hidl_plugin.so (BuildId: df1f0b8341515454b29f77eccd303f8f) (load bias 0x1000)
+    f0c2c000-f0c2cfff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0c2d000-f0c2dfff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0c2e000-f0c2efff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0c2f000-f0c2ffff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f0c30000-f0c30fff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0c31000-f0c31fff rw-     30000      1000  /dev/ashmem/MessageQueue (deleted)
+    f0c32000-f0c32fff rw-         0      1000  /dev/ashmem/MessageQueue (deleted)
+    f0c33000-f0c33fff rw-         0      1000  /dev/ashmem/MessageQueue (deleted)
+    f0c34000-f0c34fff ---         0      1000
+    f0c35000-f0c38fff rw-         0      4000  [anon:thread signal stack]
+    f0c39000-f0c39fff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f0c3a000-f0c3afff rw-         0      1000  /dev/ashmem/MessageQueue (deleted)
+    f0c3b000-f0c3bfff rw-     30000      1000  /dev/ashmem/MessageQueue (deleted)
+    f0c3c000-f0c3cfff rw-         0      1000  /dev/ashmem/MessageQueue (deleted)
+    f0c3d000-f0c3dfff rw-         0      1000  /dev/ashmem/MessageQueue (deleted)
+    f0c3e000-f0c3efff rw-         0      1000  /dev/ashmem/MessageQueue (deleted)
+    f0c3f000-f0c3ffff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0c40000-f0c40fff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0c41000-f0c48fff r--         0      8000  /system/lib/libSurfaceFlingerProp.so (BuildId: 0eb280a7aa7c08b879a18963dc7eac44) (load bias 0x10000)
+    f0c49000-f0c57fff ---         0      f000
+    f0c58000-f0c5efff r-x      7000      7000  /system/lib/libSurfaceFlingerProp.so (BuildId: 0eb280a7aa7c08b879a18963dc7eac44) (load bias 0x10000)
+    f0c5f000-f0c6dfff ---         0      f000
+    f0c6e000-f0c6efff r--      d000      1000  /system/lib/libSurfaceFlingerProp.so (BuildId: 0eb280a7aa7c08b879a18963dc7eac44) (load bias 0x10000)
+    f0c6f000-f0c7dfff ---         0      f000
+    f0c7e000-f0c7efff rw-      d000      1000  /system/lib/libSurfaceFlingerProp.so (BuildId: 0eb280a7aa7c08b879a18963dc7eac44) (load bias 0x10000)
+    f0c7f000-f0c7ffff rw-         0      1000  [anon:bionic_alloc_lob]
+    f0c80000-f0c80fff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0c81000-f0c81fff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f0c82000-f0c82fff ---         0      1000
+    f0c83000-f0c86fff rw-         0      4000  [anon:thread signal stack]
+    f0c87000-f0c87fff ---         0      1000
+    f0c88000-f0c8bfff rw-         0      4000  [anon:thread signal stack]
+    f0c8c000-f0c8cfff ---         0      1000
+    f0c8d000-f0c90fff rw-         0      4000  [anon:thread signal stack]
+    f0c91000-f0c91fff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f0c92000-f0c92fff rw-     30000      1000  /dev/ashmem/MessageQueue (deleted)
+    f0c93000-f0c93fff rw-         0      1000  /dev/ashmem/MessageQueue (deleted)
+    f0c94000-f0c94fff rw-         0      1000  /dev/ashmem/MessageQueue (deleted)
+    f0c95000-f0c99fff rw-         0      5000  [anon:bionic_alloc_small_objects]
+    f0c9a000-f0cb9fff r--         0     20000  /dev/__properties__/u:object_r:userdebug_or_eng_prop:s0
+    f0cba000-f0cbafff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f0cbb000-f0cbbfff rw-         0      1000  /dev/ashmem/MessageQueue (deleted)
+    f0cbc000-f0cbcfff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0cbd000-f0cbdfff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0cbe000-f0cbefff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0cbf000-f0cbffff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0cc0000-f0cd3fff rw-  32000000     14000  /dev/sprd_vsp
+    f0cd4000-f0cd4fff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f0cd5000-f0cd5fff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0cd6000-f0cd6fff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f0cd7000-f0cd7fff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0cd8000-f0cd8fff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f0cd9000-f0cd9fff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0cda000-f0cdafff rw-     30000      1000  /dev/ashmem/MessageQueue (deleted)
+    f0cdb000-f0cdbfff rw-         0      1000  /dev/ashmem/MessageQueue (deleted)
+    f0cdc000-f0cdcfff rw-         0      1000  /dev/ashmem/MessageQueue (deleted)
+    f0cdd000-f0ce1fff rw-         0      5000  [anon:bionic_alloc_small_objects]
+    f0ce2000-f0d01fff r--         0     20000  /dev/__properties__/u:object_r:hwservicemanager_prop:s0
+    f0d02000-f0d21fff r--         0     20000  /dev/__properties__/u:object_r:exported_default_prop:s0
+    f0d22000-f0d41fff r--         0     20000  /dev/__properties__/u:object_r:vendor_default_prop:s0
+    f0d42000-f0d42fff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f0d43000-f0d43fff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0d44000-f0d44fff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0d45000-f0d45fff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f0d46000-f0d46fff rw-     30000      1000  /dev/ashmem/MessageQueue (deleted)
+    f0d47000-f0d47fff ---         0      1000
+    f0d48000-f0d4bfff rw-         0      4000  [anon:thread signal stack]
+    f0d4c000-f0d4cfff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0d4d000-f0d4dfff rw-         0      1000  /dev/ashmem/MessageQueue (deleted)
+    f0d4e000-f0d4efff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0d4f000-f0d4ffff rw-         0      1000  /dev/ashmem/MessageQueue (deleted)
+    f0d50000-f0d50fff rw-         0      1000  /dev/ashmem/MessageQueue (deleted)
+    f0d51000-f0d51fff rw-         0      1000  /dev/ashmem/MessageQueue (deleted)
+    f0d52000-f0d52fff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0d53000-f0d53fff r--         0      1000  /dmabuf:system
+    f0d54000-f0d54fff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f0d55000-f0d55fff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0d56000-f0d56fff ---         0      1000
+    f0d57000-f0d5afff rw-         0      4000  [anon:thread signal stack]
+    f0d5b000-f0d5bfff ---         0      1000
+    f0d5c000-f0d5ffff rw-         0      4000  [anon:thread signal stack]
+    f0d60000-f0d7ffff r--         0     20000  /dev/__properties__/u:object_r:log_file_logger_prop:s0
+    f0d80000-f0dbffff rw-         0     40000  [anon:scudo:primary]
+    f0dc0000-f0dc0fff r--         0      1000  /dmabuf:system
+    f0dc1000-f0dc1fff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f0dc2000-f0dc2fff rw-         0      1000  [anon:bionic_alloc_lob]
+    f0dc3000-f0dc4fff rw-         0      2000  [anon:bionic_alloc_small_objects]
+    f0dc5000-f0dc5fff ---         0      1000
+    f0dc6000-f0dc9fff rw-         0      4000  [anon:thread signal stack]
+    f0dca000-f0de9fff r--         0     20000  /dev/__properties__/u:object_r:log_tag_prop:s0
+    f0dea000-f0deafff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f0deb000-f0debfff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0dec000-f0decfff r--         0      1000  /dmabuf:system
+    f0ded000-f0deefff rw-         0      2000  [anon:bionic_alloc_small_objects]
+    f0def000-f0df0fff rw-         0      2000  [anon:bionic_alloc_small_objects]
+    f0df1000-f0df1fff r--         0      1000  /dmabuf:system
+    f0df2000-f0df2fff ---         0      1000
+    f0df3000-f0df6fff rw-         0      4000  [anon:thread signal stack]
+    f0df7000-f0dfafff rw-         0      4000  [anon:bionic_alloc_lob]
+    f0dfb000-f0dfbfff ---         0      1000
+    f0dfc000-f0dfffff rw-         0      4000  [anon:thread signal stack]
+    f0e00000-f0ebffff rw-         0     c0000  [anon:scudo:primary]
+    f0ec0000-f0ec0fff rw-         0      1000  /memfd:gralloc_shared_memory (deleted)
+    f0ec1000-f0ec1fff rw-     30000      1000  /dev/ashmem/MessageQueue (deleted)
+    f0ec2000-f0ec3fff r--         0      2000  /system/lib/libnetd_client.so (BuildId: 13a1a60d7c93a1ddab0fcd4cf178850c) (load bias 0x10000)
+    f0ec4000-f0ed3fff ---         0     10000
+    f0ed4000-f0ed7fff r-x      2000      4000  /system/lib/libnetd_client.so (BuildId: 13a1a60d7c93a1ddab0fcd4cf178850c) (load bias 0x10000)
+    f0ed8000-f0ee6fff ---         0      f000
+    f0ee7000-f0ee7fff r--      5000      1000  /system/lib/libnetd_client.so (BuildId: 13a1a60d7c93a1ddab0fcd4cf178850c) (load bias 0x10000)
+    f0ee8000-f0ef6fff ---         0      f000
+    f0ef7000-f0ef7fff rw-      5000      1000  /system/lib/libnetd_client.so (BuildId: 13a1a60d7c93a1ddab0fcd4cf178850c) (load bias 0x10000)
+    f0ef8000-f0ef8fff rw-         0      1000  /dev/ashmem/MessageQueue (deleted)
+    f0ef9000-f0ef9fff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f0efa000-f0efafff rw-         0      1000  /dev/ashmem/MessageQueue (deleted)
+    f0efb000-f0efbfff ---         0      1000
+    f0efc000-f0efffff rw-         0      4000  [anon:thread signal stack]
+    f0f00000-f0f3ffff rw-         0     40000  [anon:scudo:primary]
+    f0f40000-f0f40fff rw-         0      1000  /dev/ashmem/MessageQueue (deleted)
+    f0f41000-f0f41fff ---         0      1000
+    f0f42000-f0f45fff rw-         0      4000  [anon:thread signal stack]
+    f0f46000-f0f46fff ---         0      1000
+    f0f47000-f0f4afff rw-         0      4000  [anon:thread signal stack]
+    f0f4b000-f0f4bfff ---         0      1000
+    f0f4c000-f0f4ffff rw-         0      4000  [anon:thread signal stack]
+    f0f50000-f0f50fff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f0f51000-f0f51fff ---         0      1000
+    f0f52000-f0f55fff rw-         0      4000  [anon:thread signal stack]
+    f0f56000-f0f56fff ---         0      1000
+    f0f57000-f0f5afff rw-         0      4000  [anon:thread signal stack]
+    f0f5b000-f0f5bfff ---         0      1000
+    f0f5c000-f0f5ffff rw-         0      4000  [anon:thread signal stack]
+    f0f60000-f0f7ffff r--         0     20000  /dev/__properties__/u:object_r:heapprofd_prop:s0
+    f0f80000-f0f9ffff r--         0     20000  /dev/__properties__/u:object_r:libc_debug_prop:s0
+    f0fa0000-f0fbffff r--         0     20000  /dev/__properties__/u:object_r:gwp_asan_prop:s0
+    f0fc0000-f0ffffff rw-         0     40000  [anon:scudo:primary]
+    f1000000-f1000fff ---         0      1000
+    f1001000-f1004fff rw-         0      4000  [anon:thread signal stack]
+    f1005000-f1005fff ---         0      1000
+    f1006000-f1009fff rw-         0      4000  [anon:thread signal stack]
+    f100a000-f100afff ---         0      1000
+    f100b000-f100efff rw-         0      4000  [anon:thread signal stack]
+    f100f000-f10cffff rw-         0     c1000  [anon:AllocatorRingBuffer]
+    f10d0000-f10effff r--         0     20000  /dev/__properties__/u:object_r:debug_prop:s0
+    f10f0000-f110ffff r--         0     20000  /dev/__properties__/properties_serial
+    f1110000-f1112fff rw-         0      3000  [anon:System property context nodes]
+    f1113000-f112bfff r--         0     19000  /dev/__properties__/property_info
+    f112c000-f112cfff r--         0      1000  [anon:cfi shadow]
+    f112d000-f1132fff ---         0      6000  [anon:cfi shadow]
+    f1133000-f1133fff r--         0      1000  [anon:cfi shadow]
+    f1134000-f1134fff ---         0      1000
+    f1135000-f1137fff rw-         0      3000  [anon:stack_and_tls:main]
+    f1138000-f1138fff ---         0      1000
+    f1139000-f1158fff r--         0     20000  /dev/__properties__/u:object_r:bq_config_prop:s0
+    f1159000-f115cfff r--         0      4000  [anon:atexit handlers]
+    f115d000-f117cfff r--         0     20000  /dev/__properties__/u:object_r:build_prop:s0
+    f117d000-f119cfff r--         0     20000  /dev/__properties__/u:object_r:vendor_socket_hook_prop:s0
+    f119d000-f1264fff r--         0     c8000  [anon:linker_alloc]
+    f1265000-f1266fff rw-         0      2000  [anon:bionic_alloc_lob]
+    f1267000-f1267fff rw-     30000      1000  /dev/ashmem/MessageQueue (deleted)
+    f1268000-f126bfff rw-         0      4000  [anon:bionic_alloc_small_objects]
+    f126c000-f128bfff r--         0     20000  /dev/__properties__/u:object_r:vndk_prop:s0
+    f128c000-f12effff r--         0     64000  [anon:linker_alloc]
+    f12f0000-f130ffff r--         0     20000  /dev/__properties__/u:object_r:debug_prop:s0
+    f1310000-f132ffff r--         0     20000  /dev/__properties__/properties_serial
+    f1330000-f1348fff r--         0     19000  /dev/__properties__/property_info
+    f1349000-f13acfff r--         0     64000  [anon:linker_alloc]
+    f13ad000-f13cafff r--         0     1e000  /apex/com.android.runtime/bin/linker (BuildId: 4a524b08d079aa26baa1a321dded009d) (load bias 0x10000)
+    f13cb000-f13cbfff rw-         0      1000  /dev/ashmem/MessageQueue (deleted)
+    f13cc000-f13d1fff rw-         0      6000  [anon:bionic_alloc_small_objects]
+    f13d2000-f13d2fff rw-         0      1000  /dev/ashmem/MessageQueue (deleted)
+    f13d3000-f13d9fff rw-         0      7000  [anon:bionic_alloc_small_objects]
+    f13da000-f148afff r-x     1d000     b1000  /apex/com.android.runtime/bin/linker (BuildId: 4a524b08d079aa26baa1a321dded009d) (load bias 0x10000)
+    f148b000-f148bfff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f148c000-f148cfff ---         0      1000
+    f148d000-f1494fff rw-         0      8000
+    f1495000-f1495fff ---         0      1000
+    f1496000-f1498fff rw-         0      3000  [anon:System property context nodes]
+    f1499000-f1499fff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f149a000-f149ffff r--     cd000      6000  /apex/com.android.runtime/bin/linker (BuildId: 4a524b08d079aa26baa1a321dded009d) (load bias 0x10000)
+    f14a0000-f14a0fff r--         0      1000  [anon:atexit handlers]
+    f14a1000-f14a1fff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f14a2000-f14a2fff ---         0      1000
+    f14a3000-f14a6fff rw-         0      4000  [anon:thread signal stack]
+    f14a7000-f14a7fff rw-         0      1000  [anon:arc4random data]
+    f14a8000-f14a8fff rw-         0      1000  /dev/ashmem/MessageQueue (deleted)
+    f14a9000-f14a9fff rw-         0      1000  [anon:bionic_alloc_small_objects]
+    f14aa000-f14aafff rw-         0      1000  [anon:arc4random data]
+    f14ab000-f14abfff r-x         0      1000  [sigpage]
+    f14ac000-f14adfff r--         0      2000  [vvar]
+    f14ae000-f14aefff r-x         0      1000  [vdso]
+    f14af000-f14affff rw-     d2000      1000  /apex/com.android.runtime/bin/linker (BuildId: 4a524b08d079aa26baa1a321dded009d) (load bias 0x10000)
+    f14b0000-f14b7fff rw-         0      8000  [anon:.bss]
+    f14b8000-f14b8fff r--         0      1000  [anon:.bss]
+    f14b9000-f14bafff rw-         0      2000  [anon:.bss]
+    ff81a000-ff83bfff rw-         0     22000  [stack]
+    ffff0000-ffff0fff r-x         0      1000  [vectors]
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+Cmdline: media.unisoc.codec2 id.hardware.media.c2@1.1-unisoc-service
+pid: 598, tid: 598, name: android.hardwar  >>> media.unisoc.codec2 <<<
+uid: 1046
+    r0  fffffffc  r1  c0306201  r2  ff839d38  r3  ff839d1c
+    r4  ee1405b0  r5  00000000  r6  c0306201  r7  00000036
+    r8  ee140604  r9  ee140648  r10 00000000  r11 00000000
+    ip  ff839d38  sp  ff839d08  lr  eef291e3  pc  eef5d674
+
+7 total frames
+backtrace:
+      #00 pc 00085674  /apex/com.android.runtime/lib/bionic/libc.so (__ioctl+12) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #01 pc 000511df  /apex/com.android.runtime/lib/bionic/libc.so (ioctl+26) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #02 pc 0005fc5d  /apex/com.android.vndk.v33/lib/libhidlbase.so (android::hardware::IPCThreadState::talkWithDriver(bool)+168) (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6)
+      #03 pc 0005fd65  /apex/com.android.vndk.v33/lib/libhidlbase.so (android::hardware::IPCThreadState::getAndExecuteCommand()+20) (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6)
+      #04 pc 00060b81  /apex/com.android.vndk.v33/lib/libhidlbase.so (android::hardware::IPCThreadState::joinThreadPool(bool)+120) (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6)
+      #05 pc 00001eb4  /vendor/bin/hw/android.hardware.media.c2@1.1-unisoc-service (main+596) (BuildId: 9d4f487cd84e0ae13137a870c5e85380)
+      #06 pc 000437ad  /apex/com.android.runtime/lib/bionic/libc.so (__libc_init+60) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+Cmdline: media.unisoc.codec2 id.hardware.media.c2@1.1-unisoc-service
+pid: 598, tid: 677, name: vndbinder:598_1  >>> media.unisoc.codec2 <<<
+uid: 1046
+    r0  fffffffc  r1  c0306201  r2  edffe0f0  r3  edffe0d4
+    r4  fffffffc  r5  ee341220  r6  c0306201  r7  00000036
+    r8  ee3412b0  r9  ee341274  r10 00000000  r11 00000000
+    ip  edffe0f0  sp  edffe0c0  lr  eef291e3  pc  eef5d674
+
+9 total frames
+backtrace:
+      #00 pc 00085674  /apex/com.android.runtime/lib/bionic/libc.so (__ioctl+12) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #01 pc 000511df  /apex/com.android.runtime/lib/bionic/libc.so (ioctl+26) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #02 pc 0003eb5f  /apex/com.android.vndk.v33/lib/libbinder.so (android::IPCThreadState::talkWithDriver(bool)+214) (BuildId: 084d0521b392f7656772173e0de7122d)
+      #03 pc 0003ed61  /apex/com.android.vndk.v33/lib/libbinder.so (android::IPCThreadState::getAndExecuteCommand()+8) (BuildId: 084d0521b392f7656772173e0de7122d)
+      #04 pc 0003f469  /apex/com.android.vndk.v33/lib/libbinder.so (android::IPCThreadState::joinThreadPool(bool)+44) (BuildId: 084d0521b392f7656772173e0de7122d)
+      #05 pc 0005e459  /apex/com.android.vndk.v33/lib/libbinder.so (android::PoolThread::threadLoop()+12) (BuildId: 084d0521b392f7656772173e0de7122d)
+      #06 pc 0000d789  /apex/com.android.vndk.v33/lib/libutils.so (android::Thread::_threadLoop(void*)+264) (BuildId: 612ae32fde5fc8cc3e1e84d39261d021)
+      #07 pc 00094c5f  /apex/com.android.runtime/lib/bionic/libc.so (__pthread_start(void*)+40) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #08 pc 0004b653  /apex/com.android.runtime/lib/bionic/libc.so (__start_thread+30) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+Cmdline: media.unisoc.codec2 id.hardware.media.c2@1.1-unisoc-service
+pid: 598, tid: 678, name: vndbinder:598_2  >>> media.unisoc.codec2 <<<
+uid: 1046
+    r0  fffffffc  r1  c0306201  r2  eddbc0f0  r3  eddbc0d4
+    r4  fffffffc  r5  ee341000  r6  c0306201  r7  00000036
+    r8  ee341090  r9  ee341054  r10 00000000  r11 00000000
+    ip  eddbc0f0  sp  eddbc0c0  lr  eef291e3  pc  eef5d674
+
+9 total frames
+backtrace:
+      #00 pc 00085674  /apex/com.android.runtime/lib/bionic/libc.so (__ioctl+12) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #01 pc 000511df  /apex/com.android.runtime/lib/bionic/libc.so (ioctl+26) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #02 pc 0003eb5f  /apex/com.android.vndk.v33/lib/libbinder.so (android::IPCThreadState::talkWithDriver(bool)+214) (BuildId: 084d0521b392f7656772173e0de7122d)
+      #03 pc 0003ed61  /apex/com.android.vndk.v33/lib/libbinder.so (android::IPCThreadState::getAndExecuteCommand()+8) (BuildId: 084d0521b392f7656772173e0de7122d)
+      #04 pc 0003f469  /apex/com.android.vndk.v33/lib/libbinder.so (android::IPCThreadState::joinThreadPool(bool)+44) (BuildId: 084d0521b392f7656772173e0de7122d)
+      #05 pc 0005e459  /apex/com.android.vndk.v33/lib/libbinder.so (android::PoolThread::threadLoop()+12) (BuildId: 084d0521b392f7656772173e0de7122d)
+      #06 pc 0000d789  /apex/com.android.vndk.v33/lib/libutils.so (android::Thread::_threadLoop(void*)+264) (BuildId: 612ae32fde5fc8cc3e1e84d39261d021)
+      #07 pc 00094c5f  /apex/com.android.runtime/lib/bionic/libc.so (__pthread_start(void*)+40) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #08 pc 0004b653  /apex/com.android.runtime/lib/bionic/libc.so (__start_thread+30) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+Cmdline: media.unisoc.codec2 id.hardware.media.c2@1.1-unisoc-service
+pid: 598, tid: 683, name: HwBinder:598_1  >>> media.unisoc.codec2 <<<
+uid: 1046
+    r0  fffffffc  r1  c0306201  r2  edbbc0d8  r3  edbbc0bc
+    r4  ee140010  r5  00000000  r6  c0306201  r7  00000036
+    r8  ee140064  r9  ee1400a8  r10 ff839a20  r11 00000000
+    ip  edbbc0d8  sp  edbbc0a8  lr  eef291e3  pc  eef5d674
+
+9 total frames
+backtrace:
+      #00 pc 00085674  /apex/com.android.runtime/lib/bionic/libc.so (__ioctl+12) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #01 pc 000511df  /apex/com.android.runtime/lib/bionic/libc.so (ioctl+26) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #02 pc 0005fc5d  /apex/com.android.vndk.v33/lib/libhidlbase.so (android::hardware::IPCThreadState::talkWithDriver(bool)+168) (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6)
+      #03 pc 0005fd65  /apex/com.android.vndk.v33/lib/libhidlbase.so (android::hardware::IPCThreadState::getAndExecuteCommand()+20) (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6)
+      #04 pc 00060b81  /apex/com.android.vndk.v33/lib/libhidlbase.so (android::hardware::IPCThreadState::joinThreadPool(bool)+120) (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6)
+      #05 pc 00068aad  /apex/com.android.vndk.v33/lib/libhidlbase.so (android::hardware::PoolThread::threadLoop()+12) (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6)
+      #06 pc 0000d789  /apex/com.android.vndk.v33/lib/libutils.so (android::Thread::_threadLoop(void*)+264) (BuildId: 612ae32fde5fc8cc3e1e84d39261d021)
+      #07 pc 00094c5f  /apex/com.android.runtime/lib/bionic/libc.so (__pthread_start(void*)+40) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #08 pc 0004b653  /apex/com.android.runtime/lib/bionic/libc.so (__start_thread+30) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+Cmdline: media.unisoc.codec2 id.hardware.media.c2@1.1-unisoc-service
+pid: 598, tid: 684, name: HwBinder:598_2  >>> media.unisoc.codec2 <<<
+uid: 1046
+    r0  fffffffc  r1  c0306201  r2  edabb0d8  r3  edabb0bc
+    r4  ee142ad0  r5  00000000  r6  c0306201  r7  00000036
+    r8  ee142b24  r9  ee142b68  r10 edbbbee8  r11 00000000
+    ip  edabb0d8  sp  edabb0a8  lr  eef291e3  pc  eef5d674
+
+9 total frames
+backtrace:
+      #00 pc 00085674  /apex/com.android.runtime/lib/bionic/libc.so (__ioctl+12) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #01 pc 000511df  /apex/com.android.runtime/lib/bionic/libc.so (ioctl+26) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #02 pc 0005fc5d  /apex/com.android.vndk.v33/lib/libhidlbase.so (android::hardware::IPCThreadState::talkWithDriver(bool)+168) (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6)
+      #03 pc 0005fd65  /apex/com.android.vndk.v33/lib/libhidlbase.so (android::hardware::IPCThreadState::getAndExecuteCommand()+20) (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6)
+      #04 pc 00060b81  /apex/com.android.vndk.v33/lib/libhidlbase.so (android::hardware::IPCThreadState::joinThreadPool(bool)+120) (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6)
+      #05 pc 00068aad  /apex/com.android.vndk.v33/lib/libhidlbase.so (android::hardware::PoolThread::threadLoop()+12) (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6)
+      #06 pc 0000d789  /apex/com.android.vndk.v33/lib/libutils.so (android::Thread::_threadLoop(void*)+264) (BuildId: 612ae32fde5fc8cc3e1e84d39261d021)
+      #07 pc 00094c5f  /apex/com.android.runtime/lib/bionic/libc.so (__pthread_start(void*)+40) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #08 pc 0004b653  /apex/com.android.runtime/lib/bionic/libc.so (__start_thread+30) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+Cmdline: media.unisoc.codec2 id.hardware.media.c2@1.1-unisoc-service
+pid: 598, tid: 1052, name: android.hardwar  >>> media.unisoc.codec2 <<<
+uid: 1046
+    r0  f0fc53c0  r1  00000089  r2  0000009c  r3  00000000
+    r4  00000000  r5  ffffffff  r6  eef9c2c0  r7  000000f0
+    r8  0000009c  r9  f0fc53c0  r10 00000000  r11 f0fc53b0
+    ip  ed9ba0e0  sp  ed9ba0d0  lr  eef22ff3  pc  eef1d5a0
+
+8 total frames
+backtrace:
+      #00 pc 000455a0  /apex/com.android.runtime/lib/bionic/libc.so (syscall+28) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #01 pc 0004afef  /apex/com.android.runtime/lib/bionic/libc.so (__futex_wait_ex(void volatile*, bool, int, bool, timespec const*)+94) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #02 pc 0009426d  /apex/com.android.runtime/lib/bionic/libc.so (pthread_cond_wait+32) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #03 pc 0003d1f5  /apex/com.android.vndk.v33/lib/libc++.so (std::__1::condition_variable::wait(std::__1::unique_lock<std::__1::mutex>&)+8) (BuildId: 963a6d210362123fc7d7a49ca7fef3b5)
+      #04 pc 00014ef5  /vendor/lib/libstagefright_bufferpool@2.0.1.so (android::hardware::media::bufferpool::V2_0::implementation::Accessor::Impl::invalidatorThread(std::__1::map<unsigned int, std::__1::weak_ptr<android::hardware::media::bufferpool::V2_0::implementation::Accessor::Impl> const, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<unsigned int const, std::__1::weak_ptr<android::hardware::media::bufferpool::V2_0::implementation::Accessor::Impl> const> > >&, std::__1::mutex&, std::__1::condition_variable&, bool&) (.cfi)+76) (BuildId: 19cc9cda7a10ea6d90c2282e9ec34666)
+      #05 pc 00015335  /vendor/lib/libstagefright_bufferpool@2.0.1.so (void* std::__1::__thread_proxy<std::__1::tuple<std::__1::unique_ptr<std::__1::__thread_struct, std::__1::default_delete<std::__1::__thread_struct> >, void (*)(std::__1::map<unsigned int, std::__1::weak_ptr<android::hardware::media::bufferpool::V2_0::implementation::Accessor::Impl> const, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<unsigned int const, std::__1::weak_ptr<android::hardware::media::bufferpool::V2_0::implementation::Accessor::Impl> const> > >&, std::__1::mutex&, std::__1::condition_variable&, bool&), std::__1::reference_wrapper<std::__1::map<unsigned int, std::__1::weak_ptr<android::hardware::media::bufferpool::V2_0::implementation::Accessor::Impl> const, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<unsigned int const, std::__1::weak_ptr<android::hardware::media::bufferpool::V2_0::implementation::Accessor::Impl> const> > > >, std::__1::reference_wrapper<std::__1::mutex>, std::__1::reference_wrapper<std::__1::condition_variable>, std::__1::reference_wrapper<bool> > >(void*) (.cfi)+36) (BuildId: 19cc9cda7a10ea6d90c2282e9ec34666)
+      #06 pc 00094c5f  /apex/com.android.runtime/lib/bionic/libc.so (__pthread_start(void*)+40) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #07 pc 0004b653  /apex/com.android.runtime/lib/bionic/libc.so (__start_thread+30) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+Cmdline: media.unisoc.codec2 id.hardware.media.c2@1.1-unisoc-service
+pid: 598, tid: 1053, name: android.hardwar  >>> media.unisoc.codec2 <<<
+uid: 1046
+    r0  f0fc4d90  r1  00000089  r2  00000018  r3  00000000
+    r4  00000000  r5  ffffffff  r6  ed8b9130  r7  000000f0
+    r8  00000018  r9  f0fc4d90  r10 00000000  r11 00000003
+    ip  ed8b90e8  sp  ed8b90d8  lr  eef22ff3  pc  eef1d5a0
+
+8 total frames
+backtrace:
+      #00 pc 000455a0  /apex/com.android.runtime/lib/bionic/libc.so (syscall+28) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #01 pc 0004afef  /apex/com.android.runtime/lib/bionic/libc.so (__futex_wait_ex(void volatile*, bool, int, bool, timespec const*)+94) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #02 pc 0009426d  /apex/com.android.runtime/lib/bionic/libc.so (pthread_cond_wait+32) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #03 pc 0003d1f5  /apex/com.android.vndk.v33/lib/libc++.so (std::__1::condition_variable::wait(std::__1::unique_lock<std::__1::mutex>&)+8) (BuildId: 963a6d210362123fc7d7a49ca7fef3b5)
+      #04 pc 00015409  /vendor/lib/libstagefright_bufferpool@2.0.1.so (android::hardware::media::bufferpool::V2_0::implementation::Accessor::Impl::evictorThread(std::__1::map<std::__1::weak_ptr<android::hardware::media::bufferpool::V2_0::implementation::Accessor::Impl> const, long long, std::__1::owner_less<void>, std::__1::allocator<std::__1::pair<std::__1::weak_ptr<android::hardware::media::bufferpool::V2_0::implementation::Accessor::Impl> const, long long> > >&, std::__1::mutex&, std::__1::condition_variable&) (.cfi)+84) (BuildId: 19cc9cda7a10ea6d90c2282e9ec34666)
+      #05 pc 00015689  /vendor/lib/libstagefright_bufferpool@2.0.1.so (void* std::__1::__thread_proxy<std::__1::tuple<std::__1::unique_ptr<std::__1::__thread_struct, std::__1::default_delete<std::__1::__thread_struct> >, void (*)(std::__1::map<std::__1::weak_ptr<android::hardware::media::bufferpool::V2_0::implementation::Accessor::Impl> const, long long, std::__1::owner_less<void>, std::__1::allocator<std::__1::pair<std::__1::weak_ptr<android::hardware::media::bufferpool::V2_0::implementation::Accessor::Impl> const, long long> > >&, std::__1::mutex&, std::__1::condition_variable&), std::__1::reference_wrapper<std::__1::map<std::__1::weak_ptr<android::hardware::media::bufferpool::V2_0::implementation::Accessor::Impl> const, long long, std::__1::owner_less<void>, std::__1::allocator<std::__1::pair<std::__1::weak_ptr<android::hardware::media::bufferpool::V2_0::implementation::Accessor::Impl> const, long long> > > >, std::__1::reference_wrapper<std::__1::mutex>, std::__1::reference_wrapper<std::__1::condition_variable> > >(void*) (.cfi)+36) (BuildId: 19cc9cda7a10ea6d90c2282e9ec34666)
+      #06 pc 00094c5f  /apex/com.android.runtime/lib/bionic/libc.so (__pthread_start(void*)+40) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #07 pc 0004b653  /apex/com.android.runtime/lib/bionic/libc.so (__start_thread+30) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+Cmdline: media.unisoc.codec2 id.hardware.media.c2@1.1-unisoc-service
+pid: 598, tid: 1070, name: HwBinder:598_3  >>> media.unisoc.codec2 <<<
+uid: 1046
+    r0  fffffffc  r1  c0306201  r2  ec77c0d8  r3  ec77c0bc
+    r4  ee1418d0  r5  00000000  r6  c0306201  r7  00000036
+    r8  ee141924  r9  ee141968  r10 edbbbee8  r11 00000000
+    ip  ec77c0d8  sp  ec77c0a8  lr  eef291e3  pc  eef5d674
+
+9 total frames
+backtrace:
+      #00 pc 00085674  /apex/com.android.runtime/lib/bionic/libc.so (__ioctl+12) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #01 pc 000511df  /apex/com.android.runtime/lib/bionic/libc.so (ioctl+26) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #02 pc 0005fc5d  /apex/com.android.vndk.v33/lib/libhidlbase.so (android::hardware::IPCThreadState::talkWithDriver(bool)+168) (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6)
+      #03 pc 0005fd65  /apex/com.android.vndk.v33/lib/libhidlbase.so (android::hardware::IPCThreadState::getAndExecuteCommand()+20) (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6)
+      #04 pc 00060b81  /apex/com.android.vndk.v33/lib/libhidlbase.so (android::hardware::IPCThreadState::joinThreadPool(bool)+120) (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6)
+      #05 pc 00068aad  /apex/com.android.vndk.v33/lib/libhidlbase.so (android::hardware::PoolThread::threadLoop()+12) (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6)
+      #06 pc 0000d789  /apex/com.android.vndk.v33/lib/libutils.so (android::Thread::_threadLoop(void*)+264) (BuildId: 612ae32fde5fc8cc3e1e84d39261d021)
+      #07 pc 00094c5f  /apex/com.android.runtime/lib/bionic/libc.so (__pthread_start(void*)+40) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #08 pc 0004b653  /apex/com.android.runtime/lib/bionic/libc.so (__start_thread+30) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+Cmdline: media.unisoc.codec2 id.hardware.media.c2@1.1-unisoc-service
+pid: 598, tid: 1071, name: HwBinder:598_4  >>> media.unisoc.codec2 <<<
+uid: 1046
+    r0  fffffffc  r1  c0306201  r2  ec67b0d8  r3  ec67b0bc
+    r4  ee140b50  r5  00000000  r6  c0306201  r7  00000036
+    r8  ee140ba4  r9  ee140be8  r10 edbbbee8  r11 00000000
+    ip  ec67b0d8  sp  ec67b0a8  lr  eef291e3  pc  eef5d674
+
+9 total frames
+backtrace:
+      #00 pc 00085674  /apex/com.android.runtime/lib/bionic/libc.so (__ioctl+12) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #01 pc 000511df  /apex/com.android.runtime/lib/bionic/libc.so (ioctl+26) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #02 pc 0005fc5d  /apex/com.android.vndk.v33/lib/libhidlbase.so (android::hardware::IPCThreadState::talkWithDriver(bool)+168) (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6)
+      #03 pc 0005fd65  /apex/com.android.vndk.v33/lib/libhidlbase.so (android::hardware::IPCThreadState::getAndExecuteCommand()+20) (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6)
+      #04 pc 00060b81  /apex/com.android.vndk.v33/lib/libhidlbase.so (android::hardware::IPCThreadState::joinThreadPool(bool)+120) (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6)
+      #05 pc 00068aad  /apex/com.android.vndk.v33/lib/libhidlbase.so (android::hardware::PoolThread::threadLoop()+12) (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6)
+      #06 pc 0000d789  /apex/com.android.vndk.v33/lib/libutils.so (android::Thread::_threadLoop(void*)+264) (BuildId: 612ae32fde5fc8cc3e1e84d39261d021)
+      #07 pc 00094c5f  /apex/com.android.runtime/lib/bionic/libc.so (__pthread_start(void*)+40) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #08 pc 0004b653  /apex/com.android.runtime/lib/bionic/libc.so (__start_thread+30) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+Cmdline: media.unisoc.codec2 id.hardware.media.c2@1.1-unisoc-service
+pid: 598, tid: 3142, name: HwBinder:598_3  >>> media.unisoc.codec2 <<<
+uid: 1046
+    r0  f0bfc040  r1  00000089  r2  000971b0  r3  00000000
+    r4  00000000  r5  ffffffff  r6  f0bf9b74  r7  000000f0
+    r8  000971b0  r9  f0bfc040  r10 0000000b  r11 00000001
+    ip  ec1fb0f8  sp  ec1fb0e8  lr  eef22ff3  pc  eef1d5a0
+
+8 total frames
+backtrace:
+      #00 pc 000455a0  /apex/com.android.runtime/lib/bionic/libc.so (syscall+28) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #01 pc 0004afef  /apex/com.android.runtime/lib/bionic/libc.so (__futex_wait_ex(void volatile*, bool, int, bool, timespec const*)+94) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #02 pc 0009426d  /apex/com.android.runtime/lib/bionic/libc.so (pthread_cond_wait+32) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #03 pc 0003d1f5  /apex/com.android.vndk.v33/lib/libc++.so (std::__1::condition_variable::wait(std::__1::unique_lock<std::__1::mutex>&)+8) (BuildId: 963a6d210362123fc7d7a49ca7fef3b5)
+      #04 pc 0001f945  /vendor/lib/libcodec2_hidl@1.0.so (android::hardware::media::c2::V1_0::utils::InputBufferManager::main()+68) (BuildId: 6b90c789de69b94b05f64f2bb8679405)
+      #05 pc 0001fa01  /vendor/lib/libcodec2_hidl@1.0.so (void* std::__1::__thread_proxy<std::__1::tuple<std::__1::unique_ptr<std::__1::__thread_struct, std::__1::default_delete<std::__1::__thread_struct> >, void (android::hardware::media::c2::V1_0::utils::InputBufferManager::*)(), android::hardware::media::c2::V1_0::utils::InputBufferManager*> >(void*) (.cfi)+40) (BuildId: 6b90c789de69b94b05f64f2bb8679405)
+      #06 pc 00094c5f  /apex/com.android.runtime/lib/bionic/libc.so (__pthread_start(void*)+40) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #07 pc 0004b653  /apex/com.android.runtime/lib/bionic/libc.so (__start_thread+30) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+Cmdline: media.unisoc.codec2 id.hardware.media.c2@1.1-unisoc-service
+pid: 598, tid: 8063, name: HwBinder:598_7  >>> media.unisoc.codec2 <<<
+uid: 1046
+    r0  fffffffc  r1  c0306201  r2  ed0dc0d8  r3  ed0dc0bc
+    r4  ee140250  r5  00000000  r6  c0306201  r7  00000036
+    r8  ee1402a4  r9  ee1402e8  r10 ec67aee8  r11 00000000
+    ip  ed0dc0d8  sp  ed0dc0a8  lr  eef291e3  pc  eef5d674
+
+9 total frames
+backtrace:
+      #00 pc 00085674  /apex/com.android.runtime/lib/bionic/libc.so (__ioctl+12) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #01 pc 000511df  /apex/com.android.runtime/lib/bionic/libc.so (ioctl+26) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #02 pc 0005fc5d  /apex/com.android.vndk.v33/lib/libhidlbase.so (android::hardware::IPCThreadState::talkWithDriver(bool)+168) (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6)
+      #03 pc 0005fd65  /apex/com.android.vndk.v33/lib/libhidlbase.so (android::hardware::IPCThreadState::getAndExecuteCommand()+20) (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6)
+      #04 pc 00060b81  /apex/com.android.vndk.v33/lib/libhidlbase.so (android::hardware::IPCThreadState::joinThreadPool(bool)+120) (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6)
+      #05 pc 00068aad  /apex/com.android.vndk.v33/lib/libhidlbase.so (android::hardware::PoolThread::threadLoop()+12) (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6)
+      #06 pc 0000d789  /apex/com.android.vndk.v33/lib/libutils.so (android::Thread::_threadLoop(void*)+264) (BuildId: 612ae32fde5fc8cc3e1e84d39261d021)
+      #07 pc 00094c5f  /apex/com.android.runtime/lib/bionic/libc.so (__pthread_start(void*)+40) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #08 pc 0004b653  /apex/com.android.runtime/lib/bionic/libc.so (__start_thread+30) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+Cmdline: media.unisoc.codec2 id.hardware.media.c2@1.1-unisoc-service
+pid: 598, tid: 11220, name: decoder_fetcher  >>> media.unisoc.codec2 <<<
+uid: 1046
+    r0  f0e552dc  r1  00000089  r2  0000003a  r3  00000000
+    r4  00000000  r5  ffffffff  r6  eb1a4128  r7  000000f0
+    r8  0000003a  r9  f0e552dc  r10 00000000  r11 00000000
+    ip  eb1a40f0  sp  eb1a40e0  lr  eef22ff3  pc  eef1d5a0
+
+7 total frames
+backtrace:
+      #00 pc 000455a0  /apex/com.android.runtime/lib/bionic/libc.so (syscall+28) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #01 pc 0004afef  /apex/com.android.runtime/lib/bionic/libc.so (__futex_wait_ex(void volatile*, bool, int, bool, timespec const*)+94) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #02 pc 0009426d  /apex/com.android.runtime/lib/bionic/libc.so (pthread_cond_wait+32) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #03 pc 00010eff  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (android::ALooper::loop()+378) (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa)
+      #04 pc 0000d789  /apex/com.android.vndk.v33/lib/libutils.so (android::Thread::_threadLoop(void*)+264) (BuildId: 612ae32fde5fc8cc3e1e84d39261d021)
+      #05 pc 00094c5f  /apex/com.android.runtime/lib/bionic/libc.so (__pthread_start(void*)+40) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #06 pc 0004b653  /apex/com.android.runtime/lib/bionic/libc.so (__start_thread+30) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+Cmdline: media.unisoc.codec2 id.hardware.media.c2@1.1-unisoc-service
+pid: 598, tid: 11254, name: soc.avc.decoder  >>> media.unisoc.codec2 <<<
+uid: 1046
+  
+
+0 total frames
+backtrace:
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+Cmdline: media.unisoc.codec2 id.hardware.media.c2@1.1-unisoc-service
+pid: 598, tid: 11255, name: decoder_fetcher  >>> media.unisoc.codec2 <<<
+uid: 1046
+  
+
+0 total frames
+backtrace:
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+Cmdline: media.unisoc.codec2 id.hardware.media.c2@1.1-unisoc-service
+pid: 598, tid: 11294, name: soc.avc.decoder  >>> media.unisoc.codec2 <<<
+uid: 1046
+    r0  ee1c49bc  r1  00000089  r2  00000002  r3  00000000
+    r4  00000000  r5  ffffffff  r6  e8cfdcc4  r7  000000f0
+    r8  00000002  r9  ee1c49bc  r10 0000003e  r11 00000001
+    ip  e8cfdc78  sp  e8cfdc68  lr  eef22ff3  pc  eef1d5a0
+
+15 total frames
+backtrace:
+      #00 pc 000455a0  /apex/com.android.runtime/lib/bionic/libc.so (syscall+28) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #01 pc 0004afef  /apex/com.android.runtime/lib/bionic/libc.so (__futex_wait_ex(void volatile*, bool, int, bool, timespec const*)+94) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #02 pc 000959df  /apex/com.android.runtime/lib/bionic/libc.so (NonPI::MutexLockWithTimeout(pthread_mutex_internal_t*, bool, timespec const*)+142) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #03 pc 0001cafb  /vendor/lib/libcodec2_unisoc_common.so (android::Mutex::lock()+2) (BuildId: fdee27b21fa0b5efe1bb5be688f1a856)
+      #04 pc 00026137  /vendor/lib/libcodec2_unisoc_common.so (android::C2UnisocVideoDecoderComponent::getOneOutBlock(android::OutBlockInfo*&)+82) (BuildId: fdee27b21fa0b5efe1bb5be688f1a856)
+      #05 pc 0000f64c  /vendor/lib/libcodec2_unisoc_avcdec.so (android::C2UnisocAvcDec::ensureDecoderState(std::__1::shared_ptr<C2BlockPool> const&, void*&)+248) (BuildId: c678e8f38fd875357ba6240aeba0ff36)
+      #06 pc 0000dc40  /vendor/lib/libcodec2_unisoc_avcdec.so (android::C2UnisocAvcDec::process(std::__1::unique_ptr<C2Work, std::__1::default_delete<C2Work> > const&, std::__1::shared_ptr<C2BlockPool> const&)+1052) (BuildId: c678e8f38fd875357ba6240aeba0ff36)
+      #07 pc 0001bf17  /vendor/lib/libcodec2_unisoc_common.so (android::SimpleUnisocC2Component::processQueue()+666) (BuildId: fdee27b21fa0b5efe1bb5be688f1a856)
+      #08 pc 0001bac7  /vendor/lib/libcodec2_unisoc_common.so (android::SimpleUnisocC2Component::WorkHandler::onMessageReceived(android::sp<android::AMessage> const&)+70) (BuildId: fdee27b21fa0b5efe1bb5be688f1a856)
+      #09 pc 000107b5  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (android::AHandler::deliverMessage(android::sp<android::AMessage> const&)+24) (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa)
+      #10 pc 00012e73  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (android::AMessage::deliver()+82) (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa)
+      #11 pc 00010f83  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (android::ALooper::loop()+510) (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa)
+      #12 pc 0000d789  /apex/com.android.vndk.v33/lib/libutils.so (android::Thread::_threadLoop(void*)+264) (BuildId: 612ae32fde5fc8cc3e1e84d39261d021)
+      #13 pc 00094c5f  /apex/com.android.runtime/lib/bionic/libc.so (__pthread_start(void*)+40) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #14 pc 0004b653  /apex/com.android.runtime/lib/bionic/libc.so (__start_thread+30) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+Cmdline: media.unisoc.codec2 id.hardware.media.c2@1.1-unisoc-service
+pid: 598, tid: 11295, name: decoder_fetcher  >>> media.unisoc.codec2 <<<
+uid: 1046
+    r0  ffffffc2  r1  00006d05  r2  00000000  r3  e8bfcfc4
+    r4  e57fb000  r5  00000036  r6  e8bfcfd8  r7  00000036
+    r8  e8bfd038  r9  00000001  r10 e8bfd03c  r11 e8bfcfc8
+    ip  f0fc6550  sp  e8bfcfb0  lr  eef291e3  pc  eef5d674
+
+13 total frames
+backtrace:
+      #00 pc 00085674  /apex/com.android.runtime/lib/bionic/libc.so (__ioctl+12) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #01 pc 000511df  /apex/com.android.runtime/lib/bionic/libc.so (ioctl+26) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #02 pc 00015c60  /vendor/lib/libomx_avcdec_hw_sprd.so (VSP_Get_IOVA+96) (BuildId: 17405981d85d08b8ca41da5d942ea622)
+      #03 pc 0000e564  /vendor/lib/libomx_avcdec_hw_sprd.so (H264Dec_get_iova+16) (BuildId: 17405981d85d08b8ca41da5d942ea622)
+      #04 pc 0000eb78  /vendor/lib/libcodec2_unisoc_avcdec.so (android::C2UnisocAvcDec::getPhyAddr(android::OutBlockInfo*&)+568) (BuildId: c678e8f38fd875357ba6240aeba0ff36)
+      #05 pc 00025a67  /vendor/lib/libcodec2_unisoc_common.so (android::C2UnisocVideoDecoderComponent::onFetch()+238) (BuildId: fdee27b21fa0b5efe1bb5be688f1a856)
+      #06 pc 00025355  /vendor/lib/libcodec2_unisoc_common.so (android::C2UnisocVideoDecoderComponent::FetchHandler::onMessageReceived(android::sp<android::AMessage> const&)+144) (BuildId: fdee27b21fa0b5efe1bb5be688f1a856)
+      #07 pc 000107b5  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (android::AHandler::deliverMessage(android::sp<android::AMessage> const&)+24) (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa)
+      #08 pc 00012e73  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (android::AMessage::deliver()+82) (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa)
+      #09 pc 00010f83  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (android::ALooper::loop()+510) (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa)
+      #10 pc 0000d789  /apex/com.android.vndk.v33/lib/libutils.so (android::Thread::_threadLoop(void*)+264) (BuildId: 612ae32fde5fc8cc3e1e84d39261d021)
+      #11 pc 00094c5f  /apex/com.android.runtime/lib/bionic/libc.so (__pthread_start(void*)+40) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #12 pc 0004b653  /apex/com.android.runtime/lib/bionic/libc.so (__start_thread+30) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+Cmdline: media.unisoc.codec2 id.hardware.media.c2@1.1-unisoc-service
+pid: 598, tid: 11305, name: soc.avc.decoder  >>> media.unisoc.codec2 <<<
+uid: 1046
+    r0  ee1c541c  r1  00000089  r2  00000002  r3  00000000
+    r4  00000000  r5  ffffffff  r6  e87facc4  r7  000000f0
+    r8  00000002  r9  ee1c541c  r10 0000003e  r11 00000001
+    ip  e87fac78  sp  e87fac68  lr  eef22ff3  pc  eef1d5a0
+
+15 total frames
+backtrace:
+      #00 pc 000455a0  /apex/com.android.runtime/lib/bionic/libc.so (syscall+28) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #01 pc 0004afef  /apex/com.android.runtime/lib/bionic/libc.so (__futex_wait_ex(void volatile*, bool, int, bool, timespec const*)+94) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #02 pc 000959df  /apex/com.android.runtime/lib/bionic/libc.so (NonPI::MutexLockWithTimeout(pthread_mutex_internal_t*, bool, timespec const*)+142) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #03 pc 0001cafb  /vendor/lib/libcodec2_unisoc_common.so (android::Mutex::lock()+2) (BuildId: fdee27b21fa0b5efe1bb5be688f1a856)
+      #04 pc 00026137  /vendor/lib/libcodec2_unisoc_common.so (android::C2UnisocVideoDecoderComponent::getOneOutBlock(android::OutBlockInfo*&)+82) (BuildId: fdee27b21fa0b5efe1bb5be688f1a856)
+      #05 pc 0000f64c  /vendor/lib/libcodec2_unisoc_avcdec.so (android::C2UnisocAvcDec::ensureDecoderState(std::__1::shared_ptr<C2BlockPool> const&, void*&)+248) (BuildId: c678e8f38fd875357ba6240aeba0ff36)
+      #06 pc 0000dc40  /vendor/lib/libcodec2_unisoc_avcdec.so (android::C2UnisocAvcDec::process(std::__1::unique_ptr<C2Work, std::__1::default_delete<C2Work> > const&, std::__1::shared_ptr<C2BlockPool> const&)+1052) (BuildId: c678e8f38fd875357ba6240aeba0ff36)
+      #07 pc 0001bf17  /vendor/lib/libcodec2_unisoc_common.so (android::SimpleUnisocC2Component::processQueue()+666) (BuildId: fdee27b21fa0b5efe1bb5be688f1a856)
+      #08 pc 0001bac7  /vendor/lib/libcodec2_unisoc_common.so (android::SimpleUnisocC2Component::WorkHandler::onMessageReceived(android::sp<android::AMessage> const&)+70) (BuildId: fdee27b21fa0b5efe1bb5be688f1a856)
+      #09 pc 000107b5  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (android::AHandler::deliverMessage(android::sp<android::AMessage> const&)+24) (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa)
+      #10 pc 00012e73  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (android::AMessage::deliver()+82) (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa)
+      #11 pc 00010f83  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (android::ALooper::loop()+510) (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa)
+      #12 pc 0000d789  /apex/com.android.vndk.v33/lib/libutils.so (android::Thread::_threadLoop(void*)+264) (BuildId: 612ae32fde5fc8cc3e1e84d39261d021)
+      #13 pc 00094c5f  /apex/com.android.runtime/lib/bionic/libc.so (__pthread_start(void*)+40) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #14 pc 0004b653  /apex/com.android.runtime/lib/bionic/libc.so (__start_thread+30) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+Cmdline: media.unisoc.codec2 id.hardware.media.c2@1.1-unisoc-service
+pid: 598, tid: 11306, name: decoder_fetcher  >>> media.unisoc.codec2 <<<
+uid: 1046
+    r0  ffffffc2  r1  00006d05  r2  00000000  r3  e86f9fc4
+    r4  e46f9000  r5  0000004f  r6  e86f9fd8  r7  00000036
+    r8  e86fa038  r9  00000001  r10 e86fa03c  r11 e86f9fc8
+    ip  f0ffb620  sp  e86f9fb0  lr  eef291e3  pc  eef5d674
+
+13 total frames
+backtrace:
+      #00 pc 00085674  /apex/com.android.runtime/lib/bionic/libc.so (__ioctl+12) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #01 pc 000511df  /apex/com.android.runtime/lib/bionic/libc.so (ioctl+26) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #02 pc 00015c60  /vendor/lib/libomx_avcdec_hw_sprd.so (VSP_Get_IOVA+96) (BuildId: 17405981d85d08b8ca41da5d942ea622)
+      #03 pc 0000e564  /vendor/lib/libomx_avcdec_hw_sprd.so (H264Dec_get_iova+16) (BuildId: 17405981d85d08b8ca41da5d942ea622)
+      #04 pc 0000eb78  /vendor/lib/libcodec2_unisoc_avcdec.so (android::C2UnisocAvcDec::getPhyAddr(android::OutBlockInfo*&)+568) (BuildId: c678e8f38fd875357ba6240aeba0ff36)
+      #05 pc 00025a67  /vendor/lib/libcodec2_unisoc_common.so (android::C2UnisocVideoDecoderComponent::onFetch()+238) (BuildId: fdee27b21fa0b5efe1bb5be688f1a856)
+      #06 pc 00025355  /vendor/lib/libcodec2_unisoc_common.so (android::C2UnisocVideoDecoderComponent::FetchHandler::onMessageReceived(android::sp<android::AMessage> const&)+144) (BuildId: fdee27b21fa0b5efe1bb5be688f1a856)
+      #07 pc 000107b5  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (android::AHandler::deliverMessage(android::sp<android::AMessage> const&)+24) (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa)
+      #08 pc 00012e73  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (android::AMessage::deliver()+82) (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa)
+      #09 pc 00010f83  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (android::ALooper::loop()+510) (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa)
+      #10 pc 0000d789  /apex/com.android.vndk.v33/lib/libutils.so (android::Thread::_threadLoop(void*)+264) (BuildId: 612ae32fde5fc8cc3e1e84d39261d021)
+      #11 pc 00094c5f  /apex/com.android.runtime/lib/bionic/libc.so (__pthread_start(void*)+40) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #12 pc 0004b653  /apex/com.android.runtime/lib/bionic/libc.so (__start_thread+30) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+Cmdline: media.unisoc.codec2 id.hardware.media.c2@1.1-unisoc-service
+pid: 598, tid: 11704, name: soc.avc.decoder  >>> media.unisoc.codec2 <<<
+uid: 1046
+    r0  ee1c1b0c  r1  00000089  r2  00000002  r3  00000000
+    r4  00000000  r5  ffffffff  r6  ec478cac  r7  000000f0
+    r8  00000002  r9  ee1c1b0c  r10 00000002  r11 00000001
+    ip  ec478c60  sp  ec478c50  lr  eef22ff3  pc  eef1d5a0
+
+15 total frames
+backtrace:
+      #00 pc 000455a0  /apex/com.android.runtime/lib/bionic/libc.so (syscall+28) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #01 pc 0004afef  /apex/com.android.runtime/lib/bionic/libc.so (__futex_wait_ex(void volatile*, bool, int, bool, timespec const*)+94) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #02 pc 000959df  /apex/com.android.runtime/lib/bionic/libc.so (NonPI::MutexLockWithTimeout(pthread_mutex_internal_t*, bool, timespec const*)+142) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #03 pc 000942e3  /apex/com.android.runtime/lib/bionic/libc.so (pthread_cond_timedwait+92) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #04 pc 00026273  /vendor/lib/libcodec2_unisoc_common.so (android::C2UnisocVideoDecoderComponent::getOneOutBlock(android::OutBlockInfo*&)+398) (BuildId: fdee27b21fa0b5efe1bb5be688f1a856)
+      #05 pc 0000f64c  /vendor/lib/libcodec2_unisoc_avcdec.so (android::C2UnisocAvcDec::ensureDecoderState(std::__1::shared_ptr<C2BlockPool> const&, void*&)+248) (BuildId: c678e8f38fd875357ba6240aeba0ff36)
+      #06 pc 0000dc40  /vendor/lib/libcodec2_unisoc_avcdec.so (android::C2UnisocAvcDec::process(std::__1::unique_ptr<C2Work, std::__1::default_delete<C2Work> > const&, std::__1::shared_ptr<C2BlockPool> const&)+1052) (BuildId: c678e8f38fd875357ba6240aeba0ff36)
+      #07 pc 0001bf17  /vendor/lib/libcodec2_unisoc_common.so (android::SimpleUnisocC2Component::processQueue()+666) (BuildId: fdee27b21fa0b5efe1bb5be688f1a856)
+      #08 pc 0001bac7  /vendor/lib/libcodec2_unisoc_common.so (android::SimpleUnisocC2Component::WorkHandler::onMessageReceived(android::sp<android::AMessage> const&)+70) (BuildId: fdee27b21fa0b5efe1bb5be688f1a856)
+      #09 pc 000107b5  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (android::AHandler::deliverMessage(android::sp<android::AMessage> const&)+24) (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa)
+      #10 pc 00012e73  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (android::AMessage::deliver()+82) (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa)
+      #11 pc 00010f83  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (android::ALooper::loop()+510) (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa)
+      #12 pc 0000d789  /apex/com.android.vndk.v33/lib/libutils.so (android::Thread::_threadLoop(void*)+264) (BuildId: 612ae32fde5fc8cc3e1e84d39261d021)
+      #13 pc 00094c5f  /apex/com.android.runtime/lib/bionic/libc.so (__pthread_start(void*)+40) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #14 pc 0004b653  /apex/com.android.runtime/lib/bionic/libc.so (__start_thread+30) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+Cmdline: media.unisoc.codec2 id.hardware.media.c2@1.1-unisoc-service
+pid: 598, tid: 11705, name: decoder_fetcher  >>> media.unisoc.codec2 <<<
+uid: 1046
+    r0  ffffffc2  r1  00006d05  r2  00000000  r3  ec2fbfec
+    r4  e7815000  r5  ec2fbff0  r6  ffffffff  r7  00000036
+    r8  25fca000  r9  00000001  r10 00152000  r11 00000000
+    ip  ec2fc000  sp  ec2fbfd8  lr  eef291e3  pc  eef5d674
+
+12 total frames
+backtrace:
+      #00 pc 00085674  /apex/com.android.runtime/lib/bionic/libc.so (__ioctl+12) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #01 pc 000511df  /apex/com.android.runtime/lib/bionic/libc.so (ioctl+26) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #02 pc 00015e68  /vendor/lib/libomx_avcdec_hw_sprd.so (VSP_Free_IOVA+104) (BuildId: 17405981d85d08b8ca41da5d942ea622)
+      #03 pc 0000e790  /vendor/lib/libcodec2_unisoc_avcdec.so (android::C2UnisocAvcDec::resetOutBlock(android::OutBlockInfo*)+452) (BuildId: c678e8f38fd875357ba6240aeba0ff36)
+      #04 pc 00025a51  /vendor/lib/libcodec2_unisoc_common.so (android::C2UnisocVideoDecoderComponent::onFetch()+216) (BuildId: fdee27b21fa0b5efe1bb5be688f1a856)
+      #05 pc 00025355  /vendor/lib/libcodec2_unisoc_common.so (android::C2UnisocVideoDecoderComponent::FetchHandler::onMessageReceived(android::sp<android::AMessage> const&)+144) (BuildId: fdee27b21fa0b5efe1bb5be688f1a856)
+      #06 pc 000107b5  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (android::AHandler::deliverMessage(android::sp<android::AMessage> const&)+24) (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa)
+      #07 pc 00012e73  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (android::AMessage::deliver()+82) (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa)
+      #08 pc 00010f83  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (android::ALooper::loop()+510) (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa)
+      #09 pc 0000d789  /apex/com.android.vndk.v33/lib/libutils.so (android::Thread::_threadLoop(void*)+264) (BuildId: 612ae32fde5fc8cc3e1e84d39261d021)
+      #10 pc 00094c5f  /apex/com.android.runtime/lib/bionic/libc.so (__pthread_start(void*)+40) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #11 pc 0004b653  /apex/com.android.runtime/lib/bionic/libc.so (__start_thread+30) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+Cmdline: media.unisoc.codec2 id.hardware.media.c2@1.1-unisoc-service
+pid: 598, tid: 11778, name: soc.avc.decoder  >>> media.unisoc.codec2 <<<
+uid: 1046
+    r0  ee1c203c  r1  00000089  r2  00000002  r3  00000000
+    r4  00000000  r5  ffffffff  r6  ebc38cac  r7  000000f0
+    r8  00000002  r9  ee1c203c  r10 00000002  r11 00000001
+    ip  ebc38c60  sp  ebc38c50  lr  eef22ff3  pc  eef1d5a0
+
+15 total frames
+backtrace:
+      #00 pc 000455a0  /apex/com.android.runtime/lib/bionic/libc.so (syscall+28) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #01 pc 0004afef  /apex/com.android.runtime/lib/bionic/libc.so (__futex_wait_ex(void volatile*, bool, int, bool, timespec const*)+94) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #02 pc 000959df  /apex/com.android.runtime/lib/bionic/libc.so (NonPI::MutexLockWithTimeout(pthread_mutex_internal_t*, bool, timespec const*)+142) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #03 pc 000942e3  /apex/com.android.runtime/lib/bionic/libc.so (pthread_cond_timedwait+92) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #04 pc 00026273  /vendor/lib/libcodec2_unisoc_common.so (android::C2UnisocVideoDecoderComponent::getOneOutBlock(android::OutBlockInfo*&)+398) (BuildId: fdee27b21fa0b5efe1bb5be688f1a856)
+      #05 pc 0000f64c  /vendor/lib/libcodec2_unisoc_avcdec.so (android::C2UnisocAvcDec::ensureDecoderState(std::__1::shared_ptr<C2BlockPool> const&, void*&)+248) (BuildId: c678e8f38fd875357ba6240aeba0ff36)
+      #06 pc 0000dc40  /vendor/lib/libcodec2_unisoc_avcdec.so (android::C2UnisocAvcDec::process(std::__1::unique_ptr<C2Work, std::__1::default_delete<C2Work> > const&, std::__1::shared_ptr<C2BlockPool> const&)+1052) (BuildId: c678e8f38fd875357ba6240aeba0ff36)
+      #07 pc 0001bf17  /vendor/lib/libcodec2_unisoc_common.so (android::SimpleUnisocC2Component::processQueue()+666) (BuildId: fdee27b21fa0b5efe1bb5be688f1a856)
+      #08 pc 0001bac7  /vendor/lib/libcodec2_unisoc_common.so (android::SimpleUnisocC2Component::WorkHandler::onMessageReceived(android::sp<android::AMessage> const&)+70) (BuildId: fdee27b21fa0b5efe1bb5be688f1a856)
+      #09 pc 000107b5  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (android::AHandler::deliverMessage(android::sp<android::AMessage> const&)+24) (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa)
+      #10 pc 00012e73  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (android::AMessage::deliver()+82) (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa)
+      #11 pc 00010f83  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (android::ALooper::loop()+510) (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa)
+      #12 pc 0000d789  /apex/com.android.vndk.v33/lib/libutils.so (android::Thread::_threadLoop(void*)+264) (BuildId: 612ae32fde5fc8cc3e1e84d39261d021)
+      #13 pc 00094c5f  /apex/com.android.runtime/lib/bionic/libc.so (__pthread_start(void*)+40) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #14 pc 0004b653  /apex/com.android.runtime/lib/bionic/libc.so (__start_thread+30) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+Cmdline: media.unisoc.codec2 id.hardware.media.c2@1.1-unisoc-service
+pid: 598, tid: 11779, name: decoder_fetcher  >>> media.unisoc.codec2 <<<
+uid: 1046
+    r0  ffffffc2  r1  00006d05  r2  00000000  r3  e6854fc4
+    r4  e662e000  r5  0000000b  r6  e6854fd8  r7  00000036
+    r8  e6855038  r9  00000001  r10 e685503c  r11 e6854fc8
+    ip  f0fe0ec0  sp  e6854fb0  lr  eef291e3  pc  eef5d674
+
+13 total frames
+backtrace:
+      #00 pc 00085674  /apex/com.android.runtime/lib/bionic/libc.so (__ioctl+12) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #01 pc 000511df  /apex/com.android.runtime/lib/bionic/libc.so (ioctl+26) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #02 pc 00015c60  /vendor/lib/libomx_avcdec_hw_sprd.so (VSP_Get_IOVA+96) (BuildId: 17405981d85d08b8ca41da5d942ea622)
+      #03 pc 0000e564  /vendor/lib/libomx_avcdec_hw_sprd.so (H264Dec_get_iova+16) (BuildId: 17405981d85d08b8ca41da5d942ea622)
+      #04 pc 0000eb78  /vendor/lib/libcodec2_unisoc_avcdec.so (android::C2UnisocAvcDec::getPhyAddr(android::OutBlockInfo*&)+568) (BuildId: c678e8f38fd875357ba6240aeba0ff36)
+      #05 pc 00025a67  /vendor/lib/libcodec2_unisoc_common.so (android::C2UnisocVideoDecoderComponent::onFetch()+238) (BuildId: fdee27b21fa0b5efe1bb5be688f1a856)
+      #06 pc 00025355  /vendor/lib/libcodec2_unisoc_common.so (android::C2UnisocVideoDecoderComponent::FetchHandler::onMessageReceived(android::sp<android::AMessage> const&)+144) (BuildId: fdee27b21fa0b5efe1bb5be688f1a856)
+      #07 pc 000107b5  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (android::AHandler::deliverMessage(android::sp<android::AMessage> const&)+24) (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa)
+      #08 pc 00012e73  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (android::AMessage::deliver()+82) (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa)
+      #09 pc 00010f83  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (android::ALooper::loop()+510) (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa)
+      #10 pc 0000d789  /apex/com.android.vndk.v33/lib/libutils.so (android::Thread::_threadLoop(void*)+264) (BuildId: 612ae32fde5fc8cc3e1e84d39261d021)
+      #11 pc 00094c5f  /apex/com.android.runtime/lib/bionic/libc.so (__pthread_start(void*)+40) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #12 pc 0004b653  /apex/com.android.runtime/lib/bionic/libc.so (__start_thread+30) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+Cmdline: media.unisoc.codec2 id.hardware.media.c2@1.1-unisoc-service
+pid: 598, tid: 13435, name: HwBinder:598_6  >>> media.unisoc.codec2 <<<
+uid: 1046
+    r0  fffffffc  r1  c0306201  r2  ec57a0d8  r3  ec57a0bc
+    r4  ee1410f0  r5  00000000  r6  c0306201  r7  00000036
+    r8  ee141144  r9  ee141188  r10 edabaee8  r11 00000000
+    ip  ec57a0d8  sp  ec57a0a8  lr  eef291e3  pc  eef5d674
+
+9 total frames
+backtrace:
+      #00 pc 00085674  /apex/com.android.runtime/lib/bionic/libc.so (__ioctl+12) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #01 pc 000511df  /apex/com.android.runtime/lib/bionic/libc.so (ioctl+26) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #02 pc 0005fc5d  /apex/com.android.vndk.v33/lib/libhidlbase.so (android::hardware::IPCThreadState::talkWithDriver(bool)+168) (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6)
+      #03 pc 0005fd65  /apex/com.android.vndk.v33/lib/libhidlbase.so (android::hardware::IPCThreadState::getAndExecuteCommand()+20) (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6)
+      #04 pc 00060b81  /apex/com.android.vndk.v33/lib/libhidlbase.so (android::hardware::IPCThreadState::joinThreadPool(bool)+120) (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6)
+      #05 pc 00068aad  /apex/com.android.vndk.v33/lib/libhidlbase.so (android::hardware::PoolThread::threadLoop()+12) (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6)
+      #06 pc 0000d789  /apex/com.android.vndk.v33/lib/libutils.so (android::Thread::_threadLoop(void*)+264) (BuildId: 612ae32fde5fc8cc3e1e84d39261d021)
+      #07 pc 00094c5f  /apex/com.android.runtime/lib/bionic/libc.so (__pthread_start(void*)+40) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #08 pc 0004b653  /apex/com.android.runtime/lib/bionic/libc.so (__start_thread+30) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+Cmdline: media.unisoc.codec2 id.hardware.media.c2@1.1-unisoc-service
+pid: 598, tid: 31765, name: HwBinder:598_5  >>> media.unisoc.codec2 <<<
+uid: 1046
+    r0  f0e5e8b0  r1  00000089  r2  00000006  r3  00000000
+    r4  00000000  r5  ffffffff  r6  f0fd9810  r7  000000f0
+    r8  00000006  r9  f0e5e8b0  r10 00000000  r11 f0e5e880
+    ip  eab12c88  sp  eab12c78  lr  eef22ff3  pc  eef1d5a0
+
+17 total frames
+backtrace:
+      #00 pc 000455a0  /apex/com.android.runtime/lib/bionic/libc.so (syscall+28) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #01 pc 0004afef  /apex/com.android.runtime/lib/bionic/libc.so (__futex_wait_ex(void volatile*, bool, int, bool, timespec const*)+94) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #02 pc 0009426d  /apex/com.android.runtime/lib/bionic/libc.so (pthread_cond_wait+32) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #03 pc 000111f7  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (android::ALooper::awaitResponse(android::sp<android::AReplyToken> const&, android::sp<android::AMessage>*)+78) (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa)
+      #04 pc 0001305b  /apex/com.android.vndk.v33/lib/libstagefright_foundation.so (android::AMessage::postAndAwaitResponse(android::sp<android::AMessage>*)+222) (BuildId: fe13fc109b446f4a0fe2640b9c6eebaa)
+      #05 pc 0001db3f  /vendor/lib/libcodec2_unisoc_common.so (android::SimpleUnisocC2Component::release()+102) (BuildId: fdee27b21fa0b5efe1bb5be688f1a856)
+      #06 pc 0000c8bb  /vendor/lib/libcodec2_hidl@1.1.so (android::hardware::media::c2::V1_1::utils::Component::release()+50) (BuildId: 424252bde154a0ecff8af6d7f6cf7fa2)
+      #07 pc 000292d5  /vendor/lib/android.hardware.media.c2@1.0.so (android::hardware::media::c2::V1_0::BnHwComponent::_hidl_release(android::hidl::base::V1_0::BnHwBase*, android::hardware::Parcel const&, android::hardware::Parcel*, std::__1::function<void (android::hardware::Parcel&)>)+76) (BuildId: c46ad6ef4d8fc291454f908e941f766c)
+      #08 pc 00011c75  /vendor/lib/android.hardware.media.c2@1.1.so (android::hardware::media::c2::V1_1::BnHwComponent::onTransact(unsigned int, android::hardware::Parcel const&, android::hardware::Parcel*, unsigned int, std::__1::function<void (android::hardware::Parcel&)>)+1084) (BuildId: ce1d51eaa9c7114c0bf88b07b4db91d0)
+      #09 pc 0005cf89  /apex/com.android.vndk.v33/lib/libhidlbase.so (android::hardware::BHwBinder::transact(unsigned int, android::hardware::Parcel const&, android::hardware::Parcel*, unsigned int, std::__1::function<void (android::hardware::Parcel&)>)+96) (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6)
+      #10 pc 000607d3  /apex/com.android.vndk.v33/lib/libhidlbase.so (android::hardware::IPCThreadState::executeCommand(int)+2258) (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6)
+      #11 pc 0005fdcd  /apex/com.android.vndk.v33/lib/libhidlbase.so (android::hardware::IPCThreadState::getAndExecuteCommand()+124) (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6)
+      #12 pc 00060b81  /apex/com.android.vndk.v33/lib/libhidlbase.so (android::hardware::IPCThreadState::joinThreadPool(bool)+120) (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6)
+      #13 pc 00068aad  /apex/com.android.vndk.v33/lib/libhidlbase.so (android::hardware::PoolThread::threadLoop()+12) (BuildId: ce2ad314360bd9af06c8ab72c83c3bc6)
+      #14 pc 0000d789  /apex/com.android.vndk.v33/lib/libutils.so (android::Thread::_threadLoop(void*)+264) (BuildId: 612ae32fde5fc8cc3e1e84d39261d021)
+      #15 pc 00094c5f  /apex/com.android.runtime/lib/bionic/libc.so (__pthread_start(void*)+40) (BuildId: 9559d8975108e367c7e229de57df0a3b)
+      #16 pc 0004b653  /apex/com.android.runtime/lib/bionic/libc.so (__start_thread+30) (BuildId: 9559d8975108e367c7e229de57df0a3b)

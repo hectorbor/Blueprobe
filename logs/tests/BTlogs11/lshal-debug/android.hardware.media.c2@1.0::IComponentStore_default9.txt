@@ -1,0 +1,23 @@
+Beginning of dump -- C2ComponentStore: vendor.componentStore.dolby
+
+  Supported components:
+
+    name: c2.dolby.ac4.decoder
+    domain: 2
+    kind: 1
+    rank: 8
+    mediaType: audio/ac4
+    aliases:
+
+    name: c2.dolby.eac3.decoder
+    domain: 2
+    kind: 1
+    rank: 8
+    mediaType: audio/eac3-joc
+    aliases:
+
+  Active components:
+
+    NONE
+
+End of dump -- C2ComponentStore: vendor.componentStore.dolby
