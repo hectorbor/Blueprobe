@@ -1,3 +1,0 @@
-"No.","Time","Source","Destination","Protocol","Length","Info","OpGroup","OpCode","Bytes","Event Code","Sub Event","Command Opcode","EvBytes","CID","Command Code","DLCI","Frame type","MCC Command Type","Transaction","C/R","Ctype","Opcode","PDU ID","Operation ID","Transaction","Message Type","Signal","ACP SEID","INT SEID","Expected data speed","Opcode","Handle","Value"
-"3827","2025-01-05 04:30:27.952540","controller","host","HCI_EVT","7","Rcvd Disconnect Complete","","","05:04","Disconnect Complete","","","05","","","","","","","","","","","","","","","","","","","",""
-"3828","2025-01-05 04:30:28.528978","controller","host","HCI_EVT","7","Rcvd Disconnect Complete","","","05:04","Disconnect Complete","","","05","","","","","","","","","","","","","","","","","","","",""
