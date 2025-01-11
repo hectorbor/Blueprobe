@@ -1,0 +1,1 @@
+*** command 'lshal debug -E android.hardware.wifi@1.3::IWifi/default' timed out after 3.156s (killing pid 30886)

@@ -1,0 +1,235 @@
+[1007/222927.999860] [INFO:main.cc(54)] A/B Update Engine starting
+[1007/222928.007102] [INFO:BootControlClient.cpp(341)] AIDL IBootControl not available, falling back to HIDL.
+[1007/222928.012742] [INFO:BootControlClient.cpp(354)] Using HIDL version 1.2 of IBootControl
+[1007/222928.016746] [INFO:boot_control_android.cc(64)] Loaded boot control hal.
+[1007/222928.067952] [INFO:vendor_update_engine_utils.cpp(590)] createUnisocSplUpdateHelperFactory!
+[1007/222928.069205] createSplUpdateHelperFactory uni_ext: 0xb4000073e65d1820
+[1007/222928.069598] ISplUpdateHelper spl_ext 0xb4000073e65d1820
+[1007/222928.075413] [ERROR:update_attempter_android.cc(950)] prefs_->GetInt64(kPrefsPreviousSlot, &previous_slot) failed.
+[1007/222928.079779] [INFO:update_attempter_android.cc(202)] OTAResult::NOT_ATTEMPTED
+[1007/222928.082792] [INFO:update_attempter_android.cc(842)] Clearing update complete marker.
+[1007/222928.083646] [INFO:update_attempter_android.cc(1293)] Scheduling CleanupPreviousUpdateAction.
+[1007/222928.084004] ISplUpdateHelper spl_ext 0xb4000073e65d1820
+[1007/222928.084897] [INFO:action_processor.cc(51)] ActionProcessor: starting CleanupPreviousUpdateAction
+[1007/222928.086894] [INFO:cleanup_previous_update_action.cc(152)] Starting/resuming CleanupPreviousUpdateAction
+[1007/222928.087543] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 1 for WaitBootCompleted
+[1007/222930.090691] [INFO:cleanup_previous_update_action.cc(115)] Executing task 1
+[1007/222930.153940] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 3 for WaitBootCompleted
+[1007/222932.156808] [INFO:cleanup_previous_update_action.cc(115)] Executing task 3
+[1007/222932.158578] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 4 for WaitBootCompleted
+[1007/222934.160880] [INFO:cleanup_previous_update_action.cc(115)] Executing task 4
+[1007/222934.162519] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 5 for WaitBootCompleted
+[1007/222936.165031] [INFO:cleanup_previous_update_action.cc(115)] Executing task 5
+[1007/222936.701382] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 6 for WaitBootCompleted
+[1007/222938.704518] [INFO:cleanup_previous_update_action.cc(115)] Executing task 6
+[1007/222938.706974] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 7 for WaitBootCompleted
+[1007/222940.709958] [INFO:cleanup_previous_update_action.cc(115)] Executing task 7
+[1007/222940.710762] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 8 for WaitBootCompleted
+[1007/222942.712726] [INFO:cleanup_previous_update_action.cc(115)] Executing task 8
+[1007/222942.816729] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 9 for WaitBootCompleted
+[1007/222944.819941] [INFO:cleanup_previous_update_action.cc(115)] Executing task 9
+[1007/222944.821270] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 10 for WaitBootCompleted
+[1007/222946.823664] [INFO:cleanup_previous_update_action.cc(115)] Executing task 10
+[1007/222946.921213] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 11 for WaitBootCompleted
+[1007/222948.924068] [INFO:cleanup_previous_update_action.cc(115)] Executing task 11
+[1007/222948.924982] [INFO:cleanup_previous_update_action.cc(127)] CleanupPreviousUpdateAction scheduled task ID 12 for WaitBootCompleted
+[1007/222950.930340] [INFO:cleanup_previous_update_action.cc(115)] Executing task 12
+[1007/222950.944069] [INFO:cleanup_previous_update_action.cc(192)] Boot completed, waiting on markBootSuccessful()
+[1007/222950.955817] [INFO:snapshot.cpp(3836)] EnsureMetadataMounted does nothing in Android mode.
+[1007/222950.963952] [INFO:snapshot_stats.cpp(37)] Read merge statistics file failed: No such file or directory
+[1007/222950.970164] [INFO:cleanup_previous_update_action.cc(264)] Waiting for any previous merge request to complete. This can take up to several minutes.
+[1007/222950.987195] [INFO:snapshot.cpp(1077)] CheckMergeState for snapshots returned: None
+[1007/222951.008926] [INFO:snapshot.cpp(1049)] ProcessUpdateState handling state: None
+[1007/222951.012383] [INFO:cleanup_previous_update_action.cc(300)] Can't find any snapshot to merge.
+[1007/222951.032720] [INFO:cleanup_previous_update_action.cc(133)] Stopping/suspending/completing CleanupPreviousUpdateAction
+[1007/222951.069180] [INFO:cleanup_previous_update_action.cc(490)] Not reporting merge stats because state is None
+[1007/222951.081203] [INFO:cleanup_previous_update_action.cc(133)] Stopping/suspending/completing CleanupPreviousUpdateAction
+[1007/222951.093029] [INFO:action_processor.cc(116)] ActionProcessor: finished last action CleanupPreviousUpdateAction with code ErrorCode::kSuccess
+[1007/222951.098680] [INFO:update_attempter_android.cc(589)] Processing Done.
+[1007/222951.113268] [INFO:update_attempter_android.cc(842)] Clearing update complete marker.
+[1007/222951.115556] [INFO:update_attempter_android.cc(737)] Terminating cleanup previous update.
+[1013/164958.540421] [INFO:binder_service_android.cc(182)] Received a request of verifying payload metadata in /data/misc_ne/payload_metadata.bin.
+[1013/164958.609290] [INFO:payload_verifier.cc(101)] signature blob size = 267
+[1013/164958.615368] [INFO:payload_verifier.cc(117)] Truncating the signature to its unpadded size: 256.
+[1013/164958.630572] [INFO:payload_verifier.cc(128)] Verified correct signature 1 out of 1 signatures.
+[1013/164958.631897] [INFO:payload_metadata.cc(221)] Metadata hash signature matches value in Omaha response.
+[1013/164958.821020] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/164958.822711] [INFO:dynamic_partition_control_android.cc(1267)] boot_b is not in super partition metadata.
+[1013/164958.825520] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/164959.082436] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/164959.086329] [INFO:dynamic_partition_control_android.cc(1267)] dtbo_b is not in super partition metadata.
+[1013/164959.089176] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/164959.166004] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/164959.167728] [INFO:dynamic_partition_control_android.cc(1267)] init_boot_b is not in super partition metadata.
+[1013/164959.169881] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/164959.215721] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/164959.217292] [INFO:dynamic_partition_control_android.cc(1267)] l_agdsp_b is not in super partition metadata.
+[1013/164959.219583] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/164959.277246] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/164959.278943] [INFO:dynamic_partition_control_android.cc(1267)] l_deltanv_b is not in super partition metadata.
+[1013/164959.280921] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/164959.294148] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/164959.295428] [INFO:dynamic_partition_control_android.cc(1267)] l_gdsp_b is not in super partition metadata.
+[1013/164959.297289] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/164959.457173] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/164959.458900] [INFO:dynamic_partition_control_android.cc(1267)] l_ldsp_b is not in super partition metadata.
+[1013/164959.461131] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/164959.648426] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/164959.650080] [INFO:dynamic_partition_control_android.cc(1267)] l_modem_b is not in super partition metadata.
+[1013/164959.651993] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/164959.777960] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/164959.780354] [INFO:dynamic_partition_control_android.cc(1286)] odm_b is mapped on device mapper: /dev/block/dm-4
+[1013/165000.596758] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/165000.599065] [INFO:dynamic_partition_control_android.cc(1267)] pm_sys_b is not in super partition metadata.
+[1013/165000.601512] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/165000.619148] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/165000.621436] [INFO:dynamic_partition_control_android.cc(1286)] product_b is mapped on device mapper: /dev/block/dm-3
+[1013/165009.305955] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/165009.308161] [INFO:dynamic_partition_control_android.cc(1267)] sml_b is not in super partition metadata.
+[1013/165009.310479] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/165009.330534] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/165009.332615] [INFO:dynamic_partition_control_android.cc(1286)] system_b is mapped on device mapper: /dev/block/dm-0
+[1013/165019.649953] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/165019.652062] [INFO:dynamic_partition_control_android.cc(1286)] system_dlkm_b is mapped on device mapper: /dev/block/dm-6
+[1013/165019.698985] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/165019.700404] [INFO:dynamic_partition_control_android.cc(1286)] system_ext_b is mapped on device mapper: /dev/block/dm-1
+[1013/165022.905540] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/165022.907684] [INFO:dynamic_partition_control_android.cc(1267)] teecfg_b is not in super partition metadata.
+[1013/165022.910435] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/165022.925128] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/165022.926706] [INFO:dynamic_partition_control_android.cc(1267)] trustos_b is not in super partition metadata.
+[1013/165022.928930] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/165022.979317] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/165022.981244] [INFO:dynamic_partition_control_android.cc(1267)] uboot_b is not in super partition metadata.
+[1013/165022.983345] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/165023.034524] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/165023.036513] [INFO:dynamic_partition_control_android.cc(1267)] vbmeta_b is not in super partition metadata.
+[1013/165023.040075] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/165023.062287] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/165023.064382] [INFO:dynamic_partition_control_android.cc(1267)] vbmeta_odm_b is not in super partition metadata.
+[1013/165023.066463] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/165023.076191] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/165023.078198] [INFO:dynamic_partition_control_android.cc(1267)] vbmeta_product_b is not in super partition metadata.
+[1013/165023.080412] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/165023.090544] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/165023.092155] [INFO:dynamic_partition_control_android.cc(1267)] vbmeta_system_b is not in super partition metadata.
+[1013/165023.094694] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/165023.105530] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/165023.106905] [INFO:dynamic_partition_control_android.cc(1267)] vbmeta_system_ext_b is not in super partition metadata.
+[1013/165023.108831] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/165023.116836] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/165023.117890] [INFO:dynamic_partition_control_android.cc(1267)] vbmeta_vendor_b is not in super partition metadata.
+[1013/165023.119528] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/165023.127972] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/165023.129618] [INFO:dynamic_partition_control_android.cc(1286)] vendor_b is mapped on device mapper: /dev/block/dm-2
+[1013/165033.223863] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/165033.225877] [INFO:dynamic_partition_control_android.cc(1267)] vendor_boot_b is not in super partition metadata.
+[1013/165033.228036] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/165033.706838] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/165033.708945] [INFO:dynamic_partition_control_android.cc(1286)] vendor_dlkm_b is mapped on device mapper: /dev/block/dm-5
+[1013/165034.871051] [INFO:binder_service_android.cc(214)] Received a request of allocating space for /data/misc_ne/payload_metadata.bin.
+[1013/165034.906498] [INFO:payload_verifier.cc(101)] signature blob size = 267
+[1013/165034.909733] [INFO:payload_verifier.cc(117)] Truncating the signature to its unpadded size: 256.
+[1013/165034.913650] [INFO:payload_verifier.cc(128)] Verified correct signature 1 out of 1 signatures.
+[1013/165034.915463] [INFO:payload_metadata.cc(221)] Metadata hash signature matches value in Omaha response.
+[1013/165036.041102] Waited one second for apexservice (is service started? Number of threads started in the threadpool: 1. Are binder threads started and available?)
+[1013/165036.066933] [INFO:delta_performer.cc(843)] Preparing partitions for new update. last hash = , new hash = Uel7feyamXGW0n9XugMaAhTG97n3A0hKpwO3eyRUrtw=4OLYNTmDdRNaZVu+Mru6ftMZyJM/W9KgJ/PweK3wByE=
+[1013/165036.131794] [INFO:delta_performer.cc(1412)] Resetting recorded hash for prepared partitions.
+[1013/165036.135204] [INFO:snapshot.cpp(3836)] EnsureMetadataMounted does nothing in Android mode.
+[1013/165036.138499] [INFO:dynamic_partition_control_android.cc(799)] Erasing AVB footer of system_other partition before update.
+[1013/165036.148845] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/165036.150961] [INFO:dynamic_partition_control_android.cc(752)] Can't find system_a in metadata source slot, skip erasing.
+[1013/165036.157507] [INFO:dynamic_partition_control_android.cc(365)] Loaded metadata from slot B in /dev/block/by-name/super
+[1013/165037.163982] Waited one second for gsiservice (is service started? Number of threads started in the threadpool: 1. Are binder threads started and available?)
+[1013/165037.207261] [INFO:BootControlClient.cpp(341)] AIDL IBootControl not available, falling back to HIDL.
+[1013/165037.250817] [INFO:BootControlClient.cpp(354)] Using HIDL version 1.2 of IBootControl
+[1013/165037.302958] [INFO:builder.cpp(1093)] [liblp] Partition odm_a will resize from 88289280 bytes to 88313856 bytes
+[1013/165037.305778] [INFO:builder.cpp(1093)] [liblp] Partition product_a will resize from 1788870656 bytes to 1924583424 bytes
+[1013/165037.309398] [INFO:builder.cpp(1093)] [liblp] Partition system_a will resize from 934744064 bytes to 941211648 bytes
+[1013/165037.312829] [INFO:builder.cpp(1093)] [liblp] Partition system_ext_a will resize from 427909120 bytes to 428470272 bytes
+[1013/165037.316230] [INFO:builder.cpp(1093)] [liblp] Partition vendor_a will resize from 897421312 bytes to 897519616 bytes
+[1013/165037.319591] [INFO:builder.cpp(1093)] [liblp] Partition vendor_dlkm_a will resize from 10084352 bytes to 10104832 bytes
+[1013/165037.486459] [INFO:snapshot.cpp(3220)]  dap_metadata.cow_version(): 2 writer.GetCowVersion(): 2
+[1013/165037.507314] [INFO:partition_cow_creator.cpp(252)] Remaining free space for COW: 1578631168 bytes
+[1013/165037.509695] [INFO:snapshot.cpp(3422)] For partition system_a, device size = 941211648, snapshot size = 941211648, cow partition size = 287289344, cow file size = 0
+[1013/165037.519152] [INFO:builder.cpp(1093)] [liblp] Partition system_a-cow will resize from 0 bytes to 287289344 bytes
+[1013/165037.522808] [INFO:snapshot.cpp(3491)] Successfully created snapshot partition for system_a
+[1013/165037.526268] [INFO:partition_cow_creator.cpp(252)] Remaining free space for COW: 1291321344 bytes
+[1013/165037.529678] [INFO:snapshot.cpp(3422)] For partition system_ext_a, device size = 428470272, snapshot size = 428470272, cow partition size = 94822400, cow file size = 0
+[1013/165037.539498] [INFO:builder.cpp(1093)] [liblp] Partition system_ext_a-cow will resize from 0 bytes to 94822400 bytes
+[1013/165037.543061] [INFO:snapshot.cpp(3491)] Successfully created snapshot partition for system_ext_a
+[1013/165037.546486] [INFO:partition_cow_creator.cpp(252)] Remaining free space for COW: 1196425216 bytes
+[1013/165037.549831] [INFO:snapshot.cpp(3422)] For partition vendor_a, device size = 897519616, snapshot size = 897519616, cow partition size = 39231488, cow file size = 0
+[1013/165037.558971] [INFO:builder.cpp(1093)] [liblp] Partition vendor_a-cow will resize from 0 bytes to 39231488 bytes
+[1013/165037.561548] [INFO:snapshot.cpp(3491)] Successfully created snapshot partition for vendor_a
+[1013/165037.565001] [INFO:partition_cow_creator.cpp(252)] Remaining free space for COW: 1157103616 bytes
+[1013/165037.567223] [INFO:snapshot.cpp(3422)] For partition product_a, device size = 1924583424, snapshot size = 1924583424, cow partition size = 1157103616, cow file size = 418037760
+[1013/165037.574475] [INFO:builder.cpp(1093)] [liblp] Partition product_a-cow will resize from 0 bytes to 1157103616 bytes
+[1013/165037.576617] [INFO:snapshot.cpp(3491)] Successfully created snapshot partition for product_a
+[1013/165037.578348] [INFO:partition_cow_creator.cpp(252)] Remaining free space for COW: 0 bytes
+[1013/165037.580088] [INFO:snapshot.cpp(3422)] For partition odm_a, device size = 88313856, snapshot size = 88313856, cow partition size = 0, cow file size = 8519680
+[1013/165037.587047] [INFO:snapshot.cpp(3491)] Successfully created snapshot partition for odm_a
+[1013/165037.589218] [INFO:partition_cow_creator.cpp(252)] Remaining free space for COW: 0 bytes
+[1013/165037.590990] [INFO:snapshot.cpp(3422)] For partition vendor_dlkm_a, device size = 10104832, snapshot size = 10104832, cow partition size = 0, cow file size = 13537280
+[1013/165037.597686] [INFO:snapshot.cpp(3491)] Successfully created snapshot partition for vendor_dlkm_a
+[1013/165037.599951] [INFO:partition_cow_creator.cpp(252)] Remaining free space for COW: 0 bytes
+[1013/165037.602448] [INFO:snapshot.cpp(3422)] For partition system_dlkm_a, device size = 348160, snapshot size = 348160, cow partition size = 0, cow file size = 4292608
+[1013/165037.609116] [INFO:snapshot.cpp(3491)] Successfully created snapshot partition for system_dlkm_a
+[1013/165037.612704] [INFO:snapshot.cpp(3494)] Allocating CoW images.
+[1013/165037.677482] [INFO:snapshot.cpp(3503)] Successfully created snapshot for odm_a
+[1013/165038.606820] [INFO:snapshot.cpp(3503)] Successfully created snapshot for product_a
+[1013/165038.609947] [INFO:snapshot.cpp(3503)] Successfully created snapshot for system_a
+[1013/165038.639294] [INFO:snapshot.cpp(3503)] Successfully created snapshot for system_dlkm_a
+[1013/165038.642435] [INFO:snapshot.cpp(3503)] Successfully created snapshot for system_ext_a
+[1013/165038.644861] [INFO:snapshot.cpp(3503)] Successfully created snapshot for vendor_a
+[1013/165038.694351] [INFO:snapshot.cpp(3503)] Successfully created snapshot for vendor_dlkm_a
+[1013/165038.697181] [INFO:builder.cpp(1271)] [liblp] Partition group group_unisoc_a remaining size : 1577279488
+[1013/165038.701759] [INFO:snapshot.cpp(2558)] Successfully unmapped snapshot system_a
+[1013/165038.731787] [INFO:snapshot.cpp(2629)] Mapped COW device for system_a at /dev/block/dm-7
+[1013/165038.737382] [INFO:cow_writer.cpp(242)] COW image /dev/block/dm-7 has size 287289344
+[1013/165038.768690] [INFO:cow_writer.cpp(274)] Batch writes: enabled
+[1013/165038.773213] [INFO:cow_writer.cpp(288)] 2 thread used for compression
+[1013/165038.814820] [INFO:snapshot.cpp(2558)] Successfully unmapped snapshot system_ext_a
+[1013/165038.842750] [INFO:snapshot.cpp(2629)] Mapped COW device for system_ext_a at /dev/block/dm-7
+[1013/165038.847096] [INFO:cow_writer.cpp(242)] COW image /dev/block/dm-7 has size 94822400
+[1013/165038.873223] [INFO:cow_writer.cpp(274)] Batch writes: enabled
+[1013/165038.877086] [INFO:cow_writer.cpp(288)] 2 thread used for compression
+[1013/165038.915802] [INFO:snapshot.cpp(2558)] Successfully unmapped snapshot vendor_a
+[1013/165038.942076] [INFO:snapshot.cpp(2629)] Mapped COW device for vendor_a at /dev/block/dm-7
+[1013/165038.946046] [INFO:cow_writer.cpp(242)] COW image /dev/block/dm-7 has size 39231488
+[1013/165038.968929] [INFO:cow_writer.cpp(274)] Batch writes: enabled
+[1013/165038.972442] [INFO:cow_writer.cpp(288)] 2 thread used for compression
+[1013/165039.011104] [INFO:snapshot.cpp(2558)] Successfully unmapped snapshot product_a
+[1013/165039.057214] [INFO:snapshot.cpp(645)] Mapped product_a-cow-img to /dev/block/dm-7
+[1013/165039.085432] [INFO:snapshot.cpp(2629)] Mapped COW device for product_a at /dev/block/dm-8
+[1013/165039.090654] [INFO:cow_writer.cpp(242)] COW image /dev/block/dm-8 has size 1575141376
+[1013/165039.113271] [INFO:cow_writer.cpp(274)] Batch writes: enabled
+[1013/165039.115854] [INFO:cow_writer.cpp(288)] 2 thread used for compression
+[1013/165039.160728] [INFO:snapshot.cpp(2558)] Successfully unmapped snapshot odm_a
+[1013/165039.194222] [INFO:snapshot.cpp(645)] Mapped odm_a-cow-img to /dev/block/dm-7
+[1013/165039.196731] [INFO:snapshot.cpp(2589)] Mapped COW image for odm_a at odm_a-cow-img
+[1013/165039.198934] [INFO:cow_writer.cpp(242)] COW image /dev/block/dm-7 has size 8519680
+[1013/165039.224291] [INFO:cow_writer.cpp(274)] Batch writes: enabled
+[1013/165039.228389] [INFO:cow_writer.cpp(288)] 2 thread used for compression
+[1013/165039.261488] [INFO:snapshot.cpp(2558)] Successfully unmapped snapshot vendor_dlkm_a
+[1013/165039.292684] [INFO:snapshot.cpp(645)] Mapped vendor_dlkm_a-cow-img to /dev/block/dm-7
+[1013/165039.295765] [INFO:snapshot.cpp(2589)] Mapped COW image for vendor_dlkm_a at vendor_dlkm_a-cow-img
+[1013/165039.298276] [INFO:cow_writer.cpp(242)] COW image /dev/block/dm-7 has size 13537280
+[1013/165039.319378] [INFO:cow_writer.cpp(274)] Batch writes: enabled
+[1013/165039.322187] [INFO:cow_writer.cpp(288)] 2 thread used for compression
+[1013/165039.353088] [INFO:snapshot.cpp(2558)] Successfully unmapped snapshot system_dlkm_a
+[1013/165039.388071] [INFO:snapshot.cpp(645)] Mapped system_dlkm_a-cow-img to /dev/block/dm-7
+[1013/165039.390788] [INFO:snapshot.cpp(2589)] Mapped COW image for system_dlkm_a at system_dlkm_a-cow-img
+[1013/165039.393910] [INFO:cow_writer.cpp(242)] COW image /dev/block/dm-7 has size 4292608
+[1013/165039.415970] [INFO:cow_writer.cpp(274)] Batch writes: enabled
+[1013/165039.418908] [INFO:cow_writer.cpp(288)] 2 thread used for compression
+[1013/165039.451886] [INFO:writer.cpp(397)] [liblp] Updated logical partition table at slot 0 on device super
+[1013/165039.453980] [INFO:builder.cpp(1271)] [liblp] Partition group group_unisoc_b remaining size : 1720164352
+[1013/165039.458130] [INFO:snapshot.cpp(3326)] Virtual A/B using userspace snapshots
+[1013/165039.460263] [INFO:snapshot.cpp(3330)] io_uring for snapshots enabled
+[1013/165044.503445] [ERROR:snapuserd_client.cpp(83)] Timed out connecting to snapuserd socket: snapuserd
+[1013/165044.535781] [INFO:snapshot.cpp(3358)] Successfully created all snapshots for target slot _a
+[1013/165044.585791] [INFO:delta_performer.cc(861)] PreparePartitionsForUpdate done.
+[1013/165044.589395] [INFO:update_attempter_android.cc(1155)] Successfully allocated space for payload.
+[1013/191038.830452] SaveLog2Cache flag:1
+[1013/191038.866235] cachesavelog log_to_cache:1
