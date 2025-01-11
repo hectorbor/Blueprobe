@@ -1,6 +1,6 @@
 Module metadata package name: com.google.android.modulemetadata
 Duration of 'DUMPSYS CRITICAL': 1.55s
-Duration of 'EVENT LOG': 0.14s
+Duration of 'EVENT LOG': 0.11s
 Duration of 'STATS LOG': 0.02s
 Duration of 'RADIO LOG': 0.14s
 logcat: Logcat read failure: No such file or directory
@@ -10,26 +10,26 @@ Adding dir /cache/recovery (recursive: 1)
 Adding dir /data/misc/recovery (recursive: 1)
 Adding dir /data/misc/update_engine_log (recursive: 1)
 Adding dir /data/misc/update_engine/prefs (recursive: 1)
-Duration of '/data/misc/update_engine/prefs': 0.71s
+Duration of '/data/misc/update_engine/prefs': 0.70s
 Adding dir /data/misc/logd (recursive: 0)
 /data/misc/logd: No such file or directory
 Adding dir /data/misc/prereboot (recursive: 0)
-MOUNT INFO: 57 entries added to zip file
-Duration of 'LPDUMP': 1.04s
+MOUNT INFO: 56 entries added to zip file
+Duration of 'LPDUMP': 1.05s
 Duration of 'DEVICE-MAPPER': 1.05s
 Adding dir /metadata/ota (recursive: 1)
 execvp on command 'iotop -n 1 -m 100' failed (error: No such file or directory)
 *** command 'iotop -n 1 -m 100' failed: exit code 1
-Duration of 'Dmabuf dump': 1.24s
-Duration of 'DUMP TRACES': 20.85s
-Duration of 'Wait for ': 16.10s
+Duration of 'Dmabuf dump': 1.08s
+Duration of 'DUMP TRACES': 21.64s
+Duration of 'Wait for ': 17.11s
 shutdown thread pool
 Start thread pool:3
+section 1000 status 1
 Warning: Skipping "android.frameworks.cameraservice.service@2.0::ICameraService/default": cannot be fetched from service manager (null)
 Warning: Skipping "android.frameworks.cameraservice.service@2.1::ICameraService/default": cannot be fetched from service manager (null)
 Warning: Skipping "android.frameworks.cameraservice.service@2.2::ICameraService/default": cannot be fetched from service manager (null)
 Warning: Skipping "android.frameworks.sensorservice@1.0::ISensorManager/default": cannot be fetched from service manager (null)
-section 1000 status 1
 Warning: Skipping "android.hardware.boot@1.0::IBootControl/default": cannot be fetched from service manager (null)
 Warning: Skipping "android.hardware.boot@1.1::IBootControl/default": cannot be fetched from service manager (null)
 Warning: Skipping "android.hardware.boot@1.2::IBootControl/default": cannot be fetched from service manager (null)
@@ -41,10 +41,10 @@ section 1000 status 2
 section 1002 status 1
 section 1002 status 2
 section 1109 status 1
-section 1109 status 2
-section 1110 status 1
 Warning: Skipping "android.hardware.media.omx@1.0::IOmx/default": cannot be fetched from service manager (null)
 Warning: Skipping "android.hardware.media.omx@1.0::IOmxStore/default": cannot be fetched from service manager (null)
+section 1109 status 2
+section 1110 status 1
 section 1110 status 2
 section 1111 status 1
 section 1111 status 2
@@ -75,13 +75,13 @@ Warning: Skipping "vendor.sprd.hardware.thermal@2.0::IExtThermal/default": canno
 *** command 'lshal --all --types=all' failed: exit code 136
 android.frameworks.cameraservice.service@2.0::ICameraService/default does not exist, or no permission to connect.
 *** command 'lshal debug -E android.frameworks.cameraservice.service@2.0::ICameraService/default' failed: exit code 128
-android.frameworks.cameraservice.service@2.1::ICameraService/default does not exist, or no permission to connect.
-*** command 'lshal debug -E android.frameworks.cameraservice.service@2.1::ICameraService/default' failed: exit code 128
 No IDumpstateDevice AIDL implementation
 No IDumpstateDevice HIDL implementation
 Could not find IDumpstateDevice implementation
 Failed to unlink file (/data/user_de/0/com.android.shell/files/bugreports/dumpstate_board.bin): No such file or directory
 Failed to unlink file (/data/user_de/0/com.android.shell/files/bugreports/dumpstate_board.txt): No such file or directory
+android.frameworks.cameraservice.service@2.1::ICameraService/default does not exist, or no permission to connect.
+*** command 'lshal debug -E android.frameworks.cameraservice.service@2.1::ICameraService/default' failed: exit code 128
 android.frameworks.cameraservice.service@2.2::ICameraService/default does not exist, or no permission to connect.
 *** command 'lshal debug -E android.frameworks.cameraservice.service@2.2::ICameraService/default' failed: exit code 128
 android.frameworks.sensorservice@1.0::ISensorManager/default does not exist, or no permission to connect.
@@ -100,12 +100,11 @@ android.hardware.cas@1.2::IMediaCasService/default does not exist, or no permiss
 *** command 'lshal debug -E android.hardware.cas@1.2::IMediaCasService/default' failed: exit code 128
 android.hardware.gatekeeper@1.0::IGatekeeper/default does not exist, or no permission to connect.
 *** command 'lshal debug -E android.hardware.gatekeeper@1.0::IGatekeeper/default' failed: exit code 128
-Duration of 'DUMP CHECKINS': 0.97s
 android.hardware.media.omx@1.0::IOmx/default does not exist, or no permission to connect.
 *** command 'lshal debug -E android.hardware.media.omx@1.0::IOmx/default' failed: exit code 128
 android.hardware.media.omx@1.0::IOmxStore/default does not exist, or no permission to connect.
+Duration of 'CPU INFO': 1.57s
 *** command 'lshal debug -E android.hardware.media.omx@1.0::IOmxStore/default' failed: exit code 128
-Duration of 'CPU INFO': 1.54s
 android.hidl.allocator@1.0::IAllocator/ashmem does not exist, or no permission to connect.
 *** command 'lshal debug -E android.hidl.allocator@1.0::IAllocator/ashmem' failed: exit code 128
 android.hidl.base@1.0::IBase/ashmem does not exist, or no permission to connect.
@@ -131,22 +130,22 @@ vendor.dolby.hardware.dms@2.0::IDms/default does not exist, or no permission to 
 *** command 'lshal debug -E vendor.dolby.hardware.dms@2.0::IDms/default' failed: exit code 128
 vendor.sprd.hardware.boot@1.2::IBootControl/default does not exist, or no permission to connect.
 *** command 'lshal debug -E vendor.sprd.hardware.boot@1.2::IBootControl/default' failed: exit code 128
+Duration of 'PROCESSES AND THREADS': 0.79s
 vendor.sprd.hardware.connmgr@1.0::IConnmgr/default does not exist, or no permission to connect.
 *** command 'lshal debug -E vendor.sprd.hardware.connmgr@1.0::IConnmgr/default' failed: exit code 128
 vendor.sprd.hardware.thermal@1.0::IExtThermal/default does not exist, or no permission to connect.
 *** command 'lshal debug -E vendor.sprd.hardware.thermal@1.0::IExtThermal/default' failed: exit code 128
 vendor.sprd.hardware.thermal@2.0::IExtThermal/default does not exist, or no permission to connect.
 *** command 'lshal debug -E vendor.sprd.hardware.thermal@2.0::IExtThermal/default' failed: exit code 128
-Duration of 'DUMP HALS': 2.44s
-Duration of 'PROCESSES AND THREADS': 0.73s
+Duration of 'DUMP HALS': 2.93s
 Adding dir /system/etc/vintf/ (recursive: 1)
 Adding dir /vendor/etc/vintf/ (recursive: 1)
 Adding dir /odm/etc/vintf/ (recursive: 1)
 Adding dir /product/etc/vintf/ (recursive: 1)
 Adding dir /system_ext/etc/vintf/ (recursive: 1)
 Adding dir /data/misc/nfc/logs (recursive: 1)
-AddAnrTraceDir(): dump_traces_file=/data/user_de/0/com.android.shell/files/bugreports/dumptrace_4mOCO7, anr_traces_dir=/data/anr
-Dumping current ANR traces (/data/user_de/0/com.android.shell/files/bugreports/dumptrace_4mOCO7) to the main bugreport entry
+AddAnrTraceDir(): dump_traces_file=/data/user_de/0/com.android.shell/files/bugreports/dumptrace_XqYGAe, anr_traces_dir=/data/anr
+Dumping current ANR traces (/data/user_de/0/com.android.shell/files/bugreports/dumptrace_XqYGAe) to the main bugreport entry
 open(/data/misc/perfetto-traces/bugreport/systrace.pftrace): No such file or directory
 Failed to unlink file (/data/misc/perfetto-traces/bugreport/systrace.pftrace): No such file or directory
 section 1116 status 2
@@ -261,8 +260,8 @@ section 3055 status 2
 section 3056 status 1
 section 3056 status 2
 done
-Duration of 'INCIDENT REPORT': 7.71s
-Duration of 'DUMPSYS HIGH': 12.83s
+Duration of 'INCIDENT REPORT': 7.73s
+Duration of 'DUMPSYS HIGH': 13.60s
 Adding dir /data/misc/snapshotctl_log (recursive: 0)
 Can't find service: android.hardware.radio.config.IRadioConfig/default
 Failed to start dump thread for service: android.hardware.radio.config.IRadioConfig/default, status: -2Can't find service: android.hardware.radio.data.IRadioData/slot1
@@ -292,6 +291,9 @@ Error with service 'ims_ut_ex' while dumping: UNKNOWN_TRANSACTION
 Error with service 'ions_ex' while dumping: UNKNOWN_TRANSACTION
 Error with service 'irit' while dumping: UNKNOWN_TRANSACTION
 Error with service 'linkturbonative' while dumping: FAILED_TRANSACTION
+*** command '/system/bin/dumpsys -T 30000 netstats --checkin' timed out after 47.647s (killing pid 18671)
+Duration of 'CHECKIN NETSTATS': 47.65s
+Duration of 'DUMP CHECKINS': 48.55s
 Error with service 'remotedisplay' while dumping: FAILED_TRANSACTION
 Error with service 'vendor.sprd.hardware.cplog_svc.ILogTransportInductor/default' while dumping: FAILED_TRANSACTION
 Error with service 'vendor.sprd.hardware.cplog_svc.ISysLogControl/default' while dumping: FAILED_TRANSACTION
@@ -320,15 +322,22 @@ Error with service 'vendor.unisoc.hardware.radio.sim.IExtRadioSim/slot2' while d
 Error with service 'vendor.unisoc.hardware.radio.voice.IExtRadioVoice/slot1' while dumping: FAILED_TRANSACTION
 Error with service 'vendor.unisoc.hardware.radio.voice.IExtRadioVoice/slot2' while dumping: FAILED_TRANSACTION
 Can't find service: vold
-Failed to start dump thread for service: vold, status: -2Duration of 'DUMPSYS': 30.88s
+Failed to start dump thread for service: vold, status: -2Duration of 'DUMPSYS': 41.20s
 Adding dir /data/misc/bluetooth/logs (recursive: 1)
-Duration of 'APP SERVICES NON-PLATFORM': 2.44s
-Duration of 'APP PROVIDERS PLATFORM': 2.14s
-Duration of 'APP PROVIDERS NON-PLATFORM': 2.92s
+Duration of '/data/misc/bluetooth/logs': 2.61s
+Duration of 'APP SERVICES NON-PLATFORM': 4.15s
+Duration of 'APP PROVIDERS PLATFORM': 1.89s
+Duration of 'APP PROVIDERS NON-PLATFORM': 3.87s
 Adding dir /linkerconfig (recursive: 1)
 Adding frozen processes from /sys/fs/cgroup
-Duration of 'DUMPSTATE': 56.34s
-Adding main entry (bugreport-lion_gq-ULA34.89-164-4-2025-01-09-20-05-05.txt) from /data/user_de/0/com.android.shell/files/bugreports/bugreport-lion_gq-ULA34.89-164-4-2025-01-09-20-05-05.tmp to .zip bugreport
-dumpstate id 6 finished around 2025/01/09 20:06:26 (81 s)
+read(FS/sys/fs/cgroup/uid_10309//pid_18423/cgroup.kill): Invalid argument
+read(FS/sys/fs/cgroup/uid_10309//pid_17010/cgroup.kill): Invalid argument
+read(FS/sys/fs/cgroup/uid_10116//pid_18806/cgroup.kill): Invalid argument
+read(FS/sys/fs/cgroup/uid_10122//pid_17554/cgroup.kill): Invalid argument
+read(FS/sys/fs/cgroup/uid_10120//pid_18128/cgroup.kill): Invalid argument
+read(FS/sys/fs/cgroup/uid_10213//pid_17674/cgroup.kill): Invalid argument
+Duration of 'DUMPSTATE': 73.67s
+Adding main entry (bugreport-lion_gq-ULA34.89-164-4-2025-01-10-04-56-39.txt) from /data/user_de/0/com.android.shell/files/bugreports/bugreport-lion_gq-ULA34.89-164-4-2025-01-10-04-56-39.tmp to .zip bugreport
+dumpstate id 10 finished around 2025/01/10 04:58:19 (100 s)
 Adding zip text entry main_entry.txt
 dumpstate_log.txt entry on zip file logged up to here

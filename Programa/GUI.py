@@ -16,7 +16,7 @@ import webbrowser
 
 Classic_BLE_Common_Comm=[0x0009,0x0011, 0x0013, 0x0001, 0x0003, 0x0001, 0x001A, 0x0006, 0x002A, 0x0005, 0x0002, 0x0026, 0x0024, 0x0023, 0x0025, 0x000C, 0x0022, 0x0021, 0x0030, 0x0005, 0x0019, 0x000D, 0x0030, 0x0029, 0x0027, 0x0023, 0x0024, 0x0031, 0x0032, 0x0033, 0x0034, 0x0035]
 Classic_BLE_Common_Ev=[0x0E, 0x0F, 0x1D, 0x05, 0x08, 0x30, 0x13, 0x1A, 0x03]
-Supported_Protocols=["HCI_CMD", "HCI_EVT", "L2CAP", "RFCOMM", "AVCTP", "AVRCP","AVDTP","SBC", "ATT"]
+Supported_Protocols=["HCI_CMD", "HCI_EVT", "L2CAP", "RFCOMM", "AVCTP", "AVRCP","AVDTP","SBC", "ATT", "SMP"]
 
 #Auxiliary functions
 
@@ -91,6 +91,8 @@ def format_packets_LE(values_timed,protocols_list):
                 protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3], "CID":i[14], "Opcode":i[15]})
             case 'ATT':
                 protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3],"Operation":i[31],"Handle":i[32],"Value":i[33]})
+            case 'SMP':
+                protocols_list[i[4]].append({"order":i[0],"time":i[1], "source":i[2],"destination":i[3], "info":i[6], "Opcode":i[34]})
 
 def format_packets_Not_Implemented(values_timed, protocols_list):
     for i in values_timed:
@@ -165,7 +167,14 @@ def present_packets(protocol_list,protocol,column,LE):
                     counter+=1
             case 'ATT':
                 for i in protocol_list:
-                    column.append([sg.Text("From "+ i['source']+ " to "+i['destination']+" at "+i['time']+" : doing "+i['Operation']+" with handle "+i['Handle'],key="box"+str(counter))])
+                    column.append([sg.Text("From "+ i['source']+ " to "+i['destination']+" at "+i['time']+" : doing "+i['Operation']+" with handle "+i['Handle']+" and value "+ i['Value'],key="box"+str(counter))])
+                    counter+=1
+            case 'SMP':
+                for i in protocol_list:
+                    if i['Opcode']=="Pairing Request" or i['Opcode']=="Pairing Response":
+                        column.append([sg.Text("From "+ i['source']+ " to "+i['destination']+" at "+i['time']+" : doing "+i['info'],key="box"+str(counter))])
+                    else:
+                        column.append([sg.Text("From "+ i['source']+ " to "+i['destination']+" at "+i['time']+" : doing "+i['Opcode'],key="box"+str(counter))])
                     counter+=1
             case _:
                 for i in protocol_list:
@@ -179,11 +188,9 @@ layout1 = [ [sg.Text('Introduce the .csv file to be analyzed', background_color=
             [sg.CalendarButton("From", close_when_date_chosen=True,  target='-FROM-', location=(0,0), no_titlebar=False ), sg.Input(key='-FROM-', size=(20,1))],
             [sg.CalendarButton("To", close_when_date_chosen=True,  target='-TO-', location=(0,0), no_titlebar=False ), sg.Input(key='-TO-', size=(20,1))],
             [sg.Radio('Bluetooth Classic', background_color='#0082FC',group_id=1, default=True, key="Classic"), sg.Radio('Bluetooth Low Energy', background_color='#0082FC',group_id=1,key="BLE"),sg.Radio('Not implemented', background_color='#0082FC',group_id=1, key="NotImp")],            
-            [sg.Button('Analyze'), sg.Button('Clear')] ]
+            [sg.Button('Analyze')] ]
 
 layout2 = [ [sg.Text('Successful analysis.', background_color='#0082FC',key='AnalysisSuccess')],
-            [sg.Text('Sources', background_color='#0082FC'),sg.Combo([''], key='-SOURCES-',size=((20,3)))],
-            [sg.Text('Destinations', background_color='#0082FC'),sg.Combo([''], key='-DESTINATIONS-',size=((20,3)))],
             [sg.Text('Protocols', background_color='#0082FC'),sg.Combo([''], key='-PROTOCOLS-',size=((20,3)))],
             [sg.Button('Filter'),sg.Button('?',key='Help')]]
 
